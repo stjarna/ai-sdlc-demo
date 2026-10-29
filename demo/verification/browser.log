@@ -1,0 +1,31 @@
+
+Running 22 tests using 1 worker
+
+  ✓   1 [desktop] › test/browser/tasks.spec.mjs:6:1 › empty state, required title and quick creation without description (517ms)
+  ✓   2 [desktop] › test/browser/tasks.spec.mjs:16:1 › supports title and optional description, newest-first ordering and filters (660ms)
+  ✓   3 [desktop] › test/browser/tasks.spec.mjs:26:1 › autosaves valid edits and keeps previous valid title when draft is empty (1.4s)
+  ✓   4 [desktop] › test/browser/tasks.spec.mjs:40:1 › cancel discards only the unsaved draft, including a pending valid edit (573ms)
+  ✓   5 [desktop] › test/browser/tasks.spec.mjs:48:1 › delete is confirmed, cancellable, and works for completed tasks too (730ms)
+  ✓   6 [desktop] › test/browser/tasks.spec.mjs:60:1 › tasks and completion survive browser reload and actual server process restart (714ms)
+  ✓   7 [desktop] › test/browser/tasks.spec.mjs:69:1 › keyboard focus remains usable after completion and deleting the final task (674ms)
+  ✓   8 [desktop] › test/browser/tasks.spec.mjs:78:1 › personal text is rendered literally and never interpreted as HTML (437ms)
+  ✓   9 [desktop] › test/browser/tasks.spec.mjs:84:1 › network failure keeps a new-task draft and supports a successful retry (474ms)
+  ✓  10 [desktop] › test/browser/tasks.spec.mjs:91:1 › failed autosave is visible and does not pretend that the draft was persisted (1.4s)
+  ✓  11 [desktop] › test/browser/tasks.spec.mjs:101:1 › responsive layout has no horizontal overflow or date-related controls (506ms)
+  ✓  12 [mobile] › test/browser/tasks.spec.mjs:6:1 › empty state, required title and quick creation without description (476ms)
+  ✓  13 [mobile] › test/browser/tasks.spec.mjs:16:1 › supports title and optional description, newest-first ordering and filters (649ms)
+  ✓  14 [mobile] › test/browser/tasks.spec.mjs:26:1 › autosaves valid edits and keeps previous valid title when draft is empty (1.3s)
+  ✓  15 [mobile] › test/browser/tasks.spec.mjs:40:1 › cancel discards only the unsaved draft, including a pending valid edit (522ms)
+  ✓  16 [mobile] › test/browser/tasks.spec.mjs:48:1 › delete is confirmed, cancellable, and works for completed tasks too (708ms)
+  ✓  17 [mobile] › test/browser/tasks.spec.mjs:60:1 › tasks and completion survive browser reload and actual server process restart (668ms)
+  ✓  18 [mobile] › test/browser/tasks.spec.mjs:69:1 › keyboard focus remains usable after completion and deleting the final task (629ms)
+  ✓  19 [mobile] › test/browser/tasks.spec.mjs:78:1 › personal text is rendered literally and never interpreted as HTML (394ms)
+  ✓  20 [mobile] › test/browser/tasks.spec.mjs:84:1 › network failure keeps a new-task draft and supports a successful retry (445ms)
+  ✓  21 [mobile] › test/browser/tasks.spec.mjs:91:1 › failed autosave is visible and does not pretend that the draft was persisted (1.4s)
+  ✓  22 [mobile] › test/browser/tasks.spec.mjs:101:1 › responsive layout has no horizontal overflow or date-related controls (527ms)
+
+  22 passed (16.8s)
+(node:49932) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:50157) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

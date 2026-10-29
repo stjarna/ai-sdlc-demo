@@ -1,0 +1,8 @@
+[
+  {"title":"Take a proper screen break","description":"Step away, stretch, and give my eyes a rest.","completed":true},
+  {"title":"Read a few chapters","description":"Pick up the book waiting on my nightstand.","completed":false},
+  {"title":"Make room on my desk","description":"Sort the loose notes and keep only the essentials.","completed":false},
+  {"title":"Pick up a few groceries","description":"Coffee, fresh fruit, and something good for dinner.","completed":false},
+  {"title":"Organize my reading list","description":"Keep a small collection of books I actually want to read.","completed":false},
+  {"title":"Send a thank-you note","description":"A little appreciation goes a long way.","completed":true}
+]

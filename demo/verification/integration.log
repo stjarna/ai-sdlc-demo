@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: real HTTP CRUD, completion, ordering and persistence across server process restart
+ok 1 - real HTTP CRUD, completion, ordering and persistence across server process restart
+  ---
+  duration_ms: 350.176125
+  type: 'test'
+  ...
+# Subtest: invalid edits and unsupported fields do not alter persisted task content
+ok 2 - invalid edits and unsupported fields do not alter persisted task content
+  ---
+  duration_ms: 117.789625
+  type: 'test'
+  ...
+# Subtest: rejects malformed JSON, unexpected nodes, unsupported media and oversized bodies
+ok 3 - rejects malformed JSON, unexpected nodes, unsupported media and oversized bodies
+  ---
+  duration_ms: 112.17225
+  type: 'test'
+  ...
+# Subtest: serves local assets, rejects traversal and unknown methods, and emits protective headers
+ok 4 - serves local assets, rejects traversal and unknown methods, and emits protective headers
+  ---
+  duration_ms: 115.088042
+  type: 'test'
+  ...
+# Subtest: rejects foreign browser origins and untrusted Host headers without mutations
+ok 5 - rejects foreign browser origins and untrusted Host headers without mutations
+  ---
+  duration_ms: 113.513542
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 921.514917

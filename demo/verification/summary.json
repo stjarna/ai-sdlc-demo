@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-29T14:04:00.819Z",
+  "node": "v25.9.0",
+  "source": {
+    "src/config.mjs": "eb6ea6949c085b4579781286d59013ff858b3c251a607edc442b126a0bdd2858",
+    "src/http.mjs": "e0eca4333fbf5ed3d88379a54dbae49d2073ad71d73e558e37eacd4c0b26c337",
+    "src/server.mjs": "0e17a767c93b6b90122b300a73e9c8910a70b64e0c9f3694e2cabd0f69dd1702",
+    "src/tasks.mjs": "d77688656b7ea015c240260ec9748b862752b424a9abd4d243587307b3001220",
+    "public/app.js": "407ceeef57e54f5d2231f3006e187731d272e13a09a5a5d583a3fe314817a604",
+    "public/favicon.svg": "9067682903dc48ae44e8c1fcf288ba141786adc1c2ae76060b96c44217e507cf",
+    "public/index.html": "47708c10793b6c79ce99e895aa3269b998251f3a3b34d08ed0acfd1abdbe0358",
+    "public/styles.css": "a324b05861da359cd85723d91e070da5c409ed5e67b2d359347ac824d7b860cf",
+    "test/browser/fixtures.mjs": "3f9b32367085711b0595516d1f17da28fb8c27bad5f608a5370043bcd89c30ec",
+    "test/browser/tasks.spec.mjs": "af44f483d9216ee0aa0d0f870fb961355357e515939c46d2ee71c48065ea7270",
+    "test/helpers/server.mjs": "a1b351004a1f45e7d0ef82ac9387bc0dce5ea98b6438040eac9b35c05712ba02",
+    "test/integration/http.test.mjs": "b5bef599705a1d1548ac9147db3fcfa920b7faa2e6d9a80a1d314ccb9c206180",
+    "test/unit/config.test.mjs": "811fba136a2366cd5cb23571b81c3dc806ddd38b93eea446e5c069b591445e85",
+    "test/unit/tasks.test.mjs": "96e079c56b06e403686e0ef780a662f67f4dff96d490e3bf66547d7c642d2bae",
+    "scripts/capture-before.mjs": "a32f229dffd7722fc6c2479034114afb9d3d390d19e988a84e9d1907d73f4541",
+    "scripts/check.mjs": "fabcfb6cb85128a3fc9afc11e64d52f0ad5a3c9bd7d3c7c56d1d7b0eeef84b0e",
+    "scripts/demo-fixtures.json": "82d93af6326a5aeb82f981a06595170bc107d9af195254edcc9645c8495f06c1",
+    "scripts/record-verification.mjs": "56c7858230af64a56e6e6277abfbe3fbdac08b902bfad6d7f50c8b8a58e2308f",
+    "scripts/verify-before.mjs": "76adbe8a51d70b3e5d13bce868cffbe475968baab638aba7b6200b79c4c17524",
+    "package.json": "67e3536c94567c43512e3f0ea331c95c24a3cb98dc3b11a515aa0b77fd41078f",
+    "package-lock.json": "aa88d1ebe8e3c27f37cd68282e489526f440282d048998cd4df0b2b5273acc57",
+    "playwright.config.mjs": "cef415ae6c92e7cc2c8e3a38bb4c3a7f8c792d5de97b135e6af7880d6d4fb938",
+    ".nvmrc": "f399c8bddb720028cf5d92150a8472ee9b47ba620915755b141a6d737ef55f6a"
+  },
+  "sourceUnchanged": true,
+  "passed": true,
+  "results": [
+    {
+      "name": "static",
+      "command": [
+        "/opt/homebrew/Cellar/node/25.9.0_2/bin/node",
+        "scripts/check.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "log": "static.log"
+    },
+    {
+      "name": "unit",
+      "command": [
+        "/opt/homebrew/Cellar/node/25.9.0_2/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/unit/config.test.mjs",
+        "test/unit/tasks.test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "log": "unit.log",
+      "counts": {
+        "tests": 15,
+        "pass": 15,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "integration",
+      "command": [
+        "/opt/homebrew/Cellar/node/25.9.0_2/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/integration/http.test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "log": "integration.log",
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "browser",
+      "command": [
+        "/opt/homebrew/Cellar/node/25.9.0_2/bin/node",
+        "node_modules/@playwright/test/cli.js",
+        "test"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "log": "browser.log",
+      "counts": {
+        "startTime": "2026-10-29T14:03:44.029Z",
+        "duration": 16766.463000000003,
+        "expected": 22,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "files": {
+    "browser-results.json": "51654d2d0fbc36077fd14ada3845ec0a7fd2a56c34034fa0595b799841429939",
+    "browser.log": "cc5a50376a82185ba12961c96cbd0b4a0d8c36e0dccbb6985064f9a1e8340479",
+    "integration.log": "781dc3c4d93775ef454d5a85f43907374c56d2a323993659559c776ceb15c12b",
+    "static.log": "c2443af343809c90919beed97a52f535f932fe78ed3bbc67d2edd9c83a931789",
+    "unit.log": "9de447e66153c8760c3050b02d8946850bdeabb58b3b4f3da3efd72be912a7d0"
+  }
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#254c3d">
+  <title>Littlelist — room for what matters</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to tasks</a>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15Z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7M14 10v7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="m3 6 1 1 2-2m-3 7 1 1 2-2m-3 7 1 1 2-2M10 6h11M10 12h11M10 18h11"/></symbol>
+    <symbol id="i-storage" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 9h8M8 13h5M8 17h2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M5 4h14v12l-4 4H5ZM15 20v-5h4M8 8h8M8 12h6"/></symbol>
+  </svg>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Workspace">
+      <a class="brand" href="/" aria-label="Littlelist home"><span class="brand-mark"><svg class="icon"><use href="#i-check"/></svg></span><span>littlelist<span class="brand-dot">.</span></span></a>
+      <div class="workspace-label">YOUR WORKSPACE</div>
+      <div class="nav-current" aria-current="page"><svg class="icon"><use href="#i-list"/></svg><span>My tasks</span><span id="nav-count" class="nav-count">0</span></div>
+      <div class="sidebar-bottom">
+        <div class="quiet-art" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <p>A little less on your mind.</p><span>One small thing at a time.</span>
+      </div>
+      <div class="workspace-person"><span class="avatar">Y</span><div><strong>Your personal space</strong><span>Simple. Just yours.</span></div></div>
+    </aside>
+    <main id="main" class="main">
+      <header class="topbar"><span><span class="topbar-label">Personal space</span><span class="breadcrumb">/</span>My tasks</span><span class="local-badge"><svg class="icon"><use href="#i-storage"/></svg>Saved locally</span></header>
+      <section class="workspace-content" aria-labelledby="page-title">
+        <div class="hero"><div><p class="eyebrow">A LITTLE SPACE TO THINK</p><h1 id="page-title">Room for what matters.</h1><p class="hero-copy">Keep the everyday out of your head and on your list.</p></div><div class="hero-stamp" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M50 7 61 20 78 18 81 35 95 45 85 59 87 76 70 80 59 94 45 84 28 87 23 70 8 59 18 44 16 27 34 23Z"/><path d="m31 50 13 13 26-28"/></svg></div></div>
+        <div id="connection-error" class="notice error-notice" role="alert" hidden><span id="connection-message"></span><button id="retry-load" class="text-button" type="button">Try again</button></div>
+        <section class="composer" aria-label="Add a task">
+          <form id="create-form" novalidate>
+            <div class="compose-line"><span class="compose-circle" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span><label class="sr-only" for="new-title">New task title</label><input id="new-title" name="title" required maxlength="120" placeholder="What would you like to get done?" autocomplete="off" aria-describedby="new-title-error"><button id="create-button" class="button primary" type="submit"><svg class="icon"><use href="#i-plus"/></svg><span>Add task</span></button></div>
+            <p id="new-title-error" class="field-error compose-error" role="alert" hidden></p>
+            <div id="new-description-section" class="compose-description" hidden><label class="sr-only" for="new-description">Task description</label><textarea id="new-description" name="description" maxlength="2000" rows="3" placeholder="A few details, if you need them…"></textarea></div>
+            <button id="description-toggle" class="text-button description-toggle" type="button" aria-expanded="false" aria-controls="new-description-section"><svg class="icon"><use href="#i-note"/></svg><span>Add a description</span><span class="optional">optional</span></button>
+          </form>
+        </section>
+        <section aria-labelledby="list-heading" class="task-section">
+          <div class="list-heading-row"><h2 id="list-heading">Your tasks <span id="task-total" class="total-badge">0</span></h2><span class="sort-note">Newest first</span></div>
+          <div class="list-toolbar"><div class="filters" role="group" aria-label="Filter tasks"><button type="button" class="filter active" data-filter="active" aria-pressed="true">Active <span id="count-active">0</span></button><button type="button" class="filter" data-filter="completed" aria-pressed="false">Completed <span id="count-completed">0</span></button><button type="button" class="filter" data-filter="all" aria-pressed="false">All <span id="count-all">0</span></button></div><p id="progress-copy" class="progress-copy"></p></div>
+          <div id="loading" class="loading" role="status">Opening your list…</div>
+          <ul id="task-list" class="task-list" aria-label="Tasks" hidden></ul>
+          <div id="empty-state" class="empty-state" hidden><div class="empty-icon" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></div><h3 id="empty-title">A clear space. A fresh start.</h3><p id="empty-copy">Add your first task above. Small is a good place to start.</p></div>
+          <footer class="list-footer"><span class="footer-dot" aria-hidden="true"></span><span>Your list stays here, even when you close the app.</span></footer>
+        </section>
+      </section>
+    </main>
+  </div>
+  <dialog id="edit-dialog" class="edit-dialog" aria-labelledby="edit-heading">
+    <div class="dialog-top"><div><p class="eyebrow">MAKE IT YOURS</p><h2 id="edit-heading">Task details</h2></div><button class="icon-button" id="edit-close" type="button" aria-label="Close task details"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <form id="edit-form" novalidate>
+      <label for="edit-title">Task title <span class="required-hint">required</span></label><input id="edit-title" name="title" maxlength="120" aria-describedby="edit-title-error" autocomplete="off" required>
+      <p id="edit-title-error" class="field-error" role="alert" hidden></p>
+      <label for="edit-description">Description <span class="optional">optional</span></label><textarea id="edit-description" name="description" maxlength="2000" rows="7" placeholder="Add a little context…"></textarea>
+      <p id="edit-error" class="field-error" role="alert" hidden></p>
+      <div class="save-status" id="edit-save-status" role="status">All changes saved</div>
+      <div class="edit-help">Changes save automatically. Cancel discards only your unsaved draft; saved changes stay saved.</div>
+      <div class="dialog-actions"><button id="edit-cancel" class="button secondary" type="button">Cancel draft</button><button id="edit-done" class="button primary" type="submit">Done<svg class="icon"><use href="#i-check"/></svg></button></div>
+    </form>
+  </dialog>
+  <dialog id="delete-dialog" class="delete-dialog" aria-labelledby="delete-heading" aria-describedby="delete-copy"><div class="delete-symbol" aria-hidden="true"><svg class="icon"><use href="#i-trash"/></svg></div><h2 id="delete-heading">Delete this task?</h2><p id="delete-copy">This permanently removes the task from your list. This action cannot be undone.</p><p id="delete-task-title" class="delete-task-title"></p><p id="delete-error" class="field-error" role="alert" hidden></p><div class="dialog-actions"><button id="delete-cancel" class="button secondary" type="button" autofocus>Keep task</button><button id="delete-confirm" class="button danger" type="button">Delete task</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="announcer" class="sr-only" aria-live="polite"></div>
+</body>
+</html>
