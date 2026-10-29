@@ -1,0 +1,71 @@
+schema_version: '0.2'
+id: REQ-0001
+title: Littlelist optional task due dates
+status: business_refinement
+artifacts:
+  idea: idea.md
+ownership:
+  owner: David Krzystek
+  assignee: null
+  required_role: Product Owner
+  assignment_status: awaiting_assignment
+  target_stage: business_refinement
+  since: '2026-10-29T15:07:28Z'
+  history:
+  - operation_id: ownership-created
+    action: initialize
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T14:59:13Z'
+    expected_revision: null
+    from_owner: null
+    to_owner: David Krzystek
+    assignee: David Krzystek
+    required_role: Requester / Business Stakeholder
+    assignment_status: assigned
+    target_stage: discovery
+    lifecycle_id: null
+    decision: Initial accountability belongs to the declared requester.
+  - operation_id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T15:07:28Z'
+    expected_revision: aace6da02d66f27b0e0aba068d0de4cc8204d9a03bc42cab2ef02351ac64ac6f
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Product Owner
+    assignment_status: awaiting_assignment
+    target_stage: business_refinement
+    lifecycle_id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+    decision: I confirm that Discovery for REQ-0001 is complete. I explicitly authorize
+      the transition to Business Refinement readiness.
+template_provenance:
+  schema_version: '0.1'
+  idea:
+    id: idea
+    version: 1.0.0
+    digest: e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f
+    content_digest: d4492c9487fcd5d6c4690f342e7f7d6d391493fae13cfc180c6ea5905ace02bb
+    validation_contract: discovery.idea/1
+lifecycle:
+- id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+  action: complete
+  from: discovery
+  to: ready_for_refinement
+  base_revision: aace6da02d66f27b0e0aba068d0de4cc8204d9a03bc42cab2ef02351ac64ac6f
+  actor: David Krzystek
+  decision: I confirm that Discovery for REQ-0001 is complete. I explicitly authorize
+    the transition to Business Refinement readiness.
+  timestamp: '2026-10-29T15:07:28Z'
+  identity_source: local_profile
+- id: 7365e1f8-646f-4434-8eda-92727dbd3e21
+  action: refine
+  from: ready_for_refinement
+  to: business_refinement
+  base_revision: 975de366a822dba605a241bd02fdceb5c017f9531e169837061cf6f35adcab1d
+  actor: AI SDLC Assistant (AI-authored draft)
+  decision: User authorized drafting from completed Discovery; no Business approval
+    or further advancement authorized.
+  timestamp: '2026-10-29T15:07:48Z'

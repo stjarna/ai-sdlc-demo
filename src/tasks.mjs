@@ -1,3 +1,4 @@
+import { validCalendarDate } from '../public/calendar-date.js';
 import { DatabaseSync } from 'node:sqlite';
 import { randomUUID } from 'node:crypto';
 import { mkdirSync } from 'node:fs';
@@ -14,7 +15,7 @@ export function validateTaskInput(input, { partial = false } = {}) {
   if (!input || typeof input !== 'object' || Array.isArray(input)) {
     throw new TaskError('INVALID_TASK', 'Supply a task object.');
   }
-  const allowed = partial ? ['title', 'description', 'completed'] : ['title', 'description'];
+  const allowed = partial ? ['title', 'description', 'completed', 'dueDate'] : ['title', 'description', 'dueDate'];
   if (Object.keys(input).some(key => !allowed.includes(key)) || (partial && !Object.keys(input).length)) {
     throw new TaskError('INVALID_FIELDS', 'The task contains unsupported or missing fields.');
   }
@@ -40,11 +41,18 @@ export function validateTaskInput(input, { partial = false } = {}) {
     if (typeof input.completed !== 'boolean') throw new TaskError('INVALID_COMPLETION', 'Completion must be true or false.', 400, 'completed');
     result.completed = input.completed;
   }
+  if (!partial || Object.hasOwn(input, 'dueDate')) {
+    const dueDate = Object.hasOwn(input, 'dueDate') ? input.dueDate : null;
+    if (dueDate !== null && !validCalendarDate(dueDate)) {
+      throw new TaskError('INVALID_DUE_DATE', 'Enter a valid calendar date, or clear the due date.', 400, 'dueDate');
+    }
+    result.dueDate = dueDate;
+  }
   return result;
 }
 
 function task(row) {
-  return row ? { id: row.id, title: row.title, description: row.description, completed: row.completed === 1 } : null;
+  return row ? { id: row.id, title: row.title, description: row.description, completed: row.completed === 1, dueDate: row.due_date } : null;
 }
 
 export function createTaskStore(filename) {
@@ -52,20 +60,26 @@ export function createTaskStore(filename) {
   const db = new DatabaseSync(filename);
   try {
     db.exec('PRAGMA busy_timeout = 5000; PRAGMA journal_mode = WAL;');
-    const version = db.prepare('PRAGMA user_version').get().user_version;
-    if (![0, 1].includes(version)) throw new Error(`Unsupported database schema ${version}; existing data was not replaced.`);
-    db.exec(`CREATE TABLE IF NOT EXISTS tasks (
-      sequence INTEGER PRIMARY KEY AUTOINCREMENT,
-      id TEXT NOT NULL UNIQUE,
-      title TEXT NOT NULL CHECK(length(trim(title)) BETWEEN 1 AND 120),
-      description TEXT NOT NULL DEFAULT '' CHECK(length(description) <= 2000),
-      completed INTEGER NOT NULL DEFAULT 0 CHECK(completed IN (0,1))
-    ); PRAGMA user_version = 1;`);
+    db.exec('BEGIN IMMEDIATE');
+    try {
+      // Re-read under the write lock so simultaneous startups cannot both migrate v1.
+      const version = db.prepare('PRAGMA user_version').get().user_version;
+      if (![0, 1, 2].includes(version)) throw new Error(`Unsupported database schema ${version}; existing data was not replaced.`);
+      if (version === 0) db.exec(`CREATE TABLE IF NOT EXISTS tasks (
+        sequence INTEGER PRIMARY KEY AUTOINCREMENT,
+        id TEXT NOT NULL UNIQUE,
+        title TEXT NOT NULL CHECK(length(trim(title)) BETWEEN 1 AND 120),
+        description TEXT NOT NULL DEFAULT '' CHECK(length(description) <= 2000),
+        completed INTEGER NOT NULL DEFAULT 0 CHECK(completed IN (0,1))
+      )`);
+      if (version < 2) db.exec('ALTER TABLE tasks ADD COLUMN due_date TEXT; PRAGMA user_version = 2;');
+      db.exec('COMMIT');
+    } catch (error) { db.exec('ROLLBACK'); throw error; }
     const queries = {
-      list: db.prepare('SELECT id,title,description,completed FROM tasks ORDER BY sequence DESC'),
-      get: db.prepare('SELECT id,title,description,completed FROM tasks WHERE id = ?'),
-      create: db.prepare('INSERT INTO tasks(id,title,description) VALUES(?,?,?)'),
-      update: db.prepare('UPDATE tasks SET title=?,description=?,completed=? WHERE id=?'),
+      list: db.prepare('SELECT id,title,description,completed,due_date FROM tasks ORDER BY sequence DESC'),
+      get: db.prepare('SELECT id,title,description,completed,due_date FROM tasks WHERE id = ?'),
+      create: db.prepare('INSERT INTO tasks(id,title,description,due_date) VALUES(?,?,?,?)'),
+      update: db.prepare('UPDATE tasks SET title=?,description=?,completed=?,due_date=? WHERE id=?'),
       remove: db.prepare('DELETE FROM tasks WHERE id=?'),
     };
     let closed = false;
@@ -79,7 +93,7 @@ export function createTaskStore(filename) {
       get,
       create(input) {
         const value = validateTaskInput(input); const id = randomUUID();
-        queries.create.run(id, value.title, value.description); return get(id);
+        queries.create.run(id, value.title, value.description, value.dueDate); return get(id);
       },
       update(id, input) {
         const changes = validateTaskInput(input, { partial: true });
@@ -87,7 +101,7 @@ export function createTaskStore(filename) {
         db.exec('BEGIN IMMEDIATE');
         try {
           const value = { ...get(id), ...changes };
-          queries.update.run(value.title, value.description, Number(value.completed), id);
+          queries.update.run(value.title, value.description, Number(value.completed), value.dueDate, id);
           db.exec('COMMIT'); return get(id);
         } catch (error) { db.exec('ROLLBACK'); throw error; }
       },

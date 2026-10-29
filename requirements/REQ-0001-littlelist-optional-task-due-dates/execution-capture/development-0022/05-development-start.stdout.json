@@ -1,0 +1,1 @@
+{"operation": "development-start", "ok": false, "diagnostics": [{"severity": "error", "code": "E_APPROVAL_STALE", "file": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml", "message": "Application changed since the approved plan; replan before development.", "line": null}]}

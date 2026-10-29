@@ -1,0 +1,248 @@
+# AI SDLC Demo — Phase 3: Governed Due Dates Change
+
+## Context
+
+We are preparing an Alza Head of Engineering case-study demonstration showing how an existing software product adopts an AI-assisted SDLC and delivers a governed product change.
+
+Application: Littlelist
+Project: `/Users/davidkrzystek/Development/Interview/ai-sdlc-demo`
+
+Installed AI SDLC Orchestrator:
+`d058e5fad9fd8459068951f0dea19dbfabba5fd6`
+
+The external `$sdlc` skill has already been installed and verified.
+
+Existing milestones:
+- `baseline-crud` — original CRUD application.
+- `800679e` — external SDLC installation evidence.
+
+The application currently supports task CRUD, completion/reopening and SQLite persistence. Due Dates are not implemented.
+
+## Objective
+
+Introduce optional task Due Dates as a new product requirement and deliver the change through the actual AI SDLC Orchestrator.
+
+Demonstrate that AI-assisted engineering can extend an existing product while preserving requirements traceability, governance, human accountability and independent quality assurance.
+
+## 1. Use the installed SDLC skill
+
+Operate from the Littlelist project directory.
+
+Invoke the installed `$sdlc` skill and use its existing conversational workflow.
+
+Begin with a new Discovery request describing the business need:
+
+"Littlelist users should be able to optionally assign a due date to a task, view that date in their task list and manage it when editing a task. Existing tasks without due dates must remain supported."
+
+Let Discovery, Business Refinement and Functional Analysis determine the detailed behavior.
+
+Do not bypass the orchestrator by writing application code directly.
+
+Do not introduce new lifecycle stages or modify the orchestrator.
+
+## 2. Minimize human interaction
+
+Use a low-interruption execution approach.
+
+- Let domain agents independently propose reasonable business, UX and technical solutions.
+- Reuse information already established in approved artifacts.
+- Avoid repeatedly asking for preferences that do not materially affect the outcome.
+- Present concise recommendations whenever a human decision is required.
+- Group related questions where the existing workflow permits it.
+- Prefer sensible, documented technical choices over unnecessary questions.
+- Continue autonomously through operations that do not require explicit human authorization.
+
+Important: Do not fabricate human decisions, identities, approval records or authorization.
+
+Mandatory approval gates must remain genuine.
+
+Do not interpret general trust in the agent as permission to approve future unknown artifact revisions.
+
+## 3. Business requirements
+
+The new feature should support:
+
+- Optional due dates.
+- Assigning a due date when creating or editing tasks.
+- Displaying assigned dates clearly.
+- Changing or removing previously assigned dates.
+- Preserving tasks that have no due date.
+- Preserving existing CRUD and completion behavior.
+- Persisting due dates across application restarts.
+- An intuitive and visually polished experience consistent with Littlelist.
+
+Discovery should explicitly address consequential ambiguities, particularly:
+
+- Whether past dates are permitted.
+- Whether today's date is permitted.
+- How overdue tasks should be represented.
+- Whether completed tasks retain due dates.
+- Date editing and clearing behavior.
+- Validation and calendar-date interpretation.
+
+These are topics for Discovery and human business decisions, not implementation assumptions.
+
+Do not introduce prototype-only limitations merely to avoid resolving business requirements.
+
+Keep the feature appropriately scoped for a local single-user demonstrator.
+
+## 4. Follow the real governed SDLC
+
+Use the supported `$sdlc` operations to progress through:
+
+Discovery → Business Refinement → Functional Analysis
+
+Then the governed Engineering and QA work tracks.
+
+Allow the installed orchestrator to resolve the correct commands, roles, skills, artifact templates, approvals and transitions.
+
+Preserve:
+
+- Versioned domain skill references.
+- Versioned artifact template provenance.
+- Requirements and acceptance criteria.
+- Source-bound implementation evidence.
+- Human approval and advancement records.
+- Engineering and QA independence.
+- Security Review.
+- Final Verification.
+
+Do not invent unsupported SDLC commands or skip required gates.
+
+At every mandatory human gate, pause and present:
+1. What requires approval.
+2. The recommended decision and its rationale.
+3. Any unresolved questions or material risks.
+4. The exact next action available.
+
+Resume only after the actual human decision.
+
+## 5. Engineering and QA
+
+Once appropriately authorized:
+
+- Extend the existing Littlelist application.
+- Preserve its current architecture unless an approved design requires changes.
+- Maintain SQLite persistence and compatibility with existing records.
+- Implement the approved Due Dates behavior.
+- Maintain the existing visual design language.
+- Run the existing regression tests.
+- Add unit, integration and real-browser tests for the new feature.
+- Verify existing CRUD and completion functionality remain operational.
+- Perform source-bound Code Review and Security Review.
+- Preserve actual test outputs and evidence.
+
+QA scenarios should derive from the approved Functional Analysis independently of the technical implementation design.
+
+Do not claim verification for functionality that remains blocked or unresolved.
+
+## 6. Capture the real SDLC journey for the Alza video
+
+The final presentation will show:
+
+Littlelist BEFORE → External SDLC Adoption → Governed Due Dates Change → Littlelist AFTER
+
+Capture the Phase 3 process using existing lifecycle records and supplemental presentation evidence.
+
+Create a separate presentation evidence area under:
+
+`demo/phase-03-due-dates/`
+
+Keep it separate from governed artifacts and application source code.
+
+For each meaningful lifecycle event, preserve where available:
+
+- Stage and timestamp.
+- Invoked `$sdlc` command or user interaction.
+- Responsible human role.
+- Active AI/domain skill and exact version.
+- Generated artifact name, revision, template and provenance.
+- Actual questions, recommendations and human decisions.
+- Approval gate and outcome.
+- Engineering/QA track transitions.
+- Test and verification results.
+- Relevant evidence paths and hashes.
+
+Capture representative screenshots or readable terminal output for major transitions, especially approval gates and Engineering/QA progression.
+
+Preserve the difference between AI-authored recommendations and actual human decisions.
+
+Do not fabricate events, approvals, dialogue or test results.
+
+Do not interrupt the actual SDLC process merely to create presentation assets. Prefer extracting metadata from existing records.
+
+## 7. Presentation-friendly capture
+
+The resulting material should support a professional approximately three-minute animated demonstration.
+
+We do not need a continuous recording of the entire Codex conversation.
+
+Prioritize authentic, concise evidence of:
+- The new business request.
+- Discovery and clarification.
+- Generated Business and Functional Analysis artifacts.
+- Human approval gates.
+- Technical Design and Implementation Plan.
+- Engineering and QA work.
+- Test results.
+- Final Verification.
+- The resulting Due Dates functionality.
+
+If terminal or browser recordings are created, preserve their original speed and timestamps.
+
+Use readable fonts, stable framing and suitable pauses for any presentation-specific capture.
+
+Do not artificially alter command output or claim recreated scenes are original recordings.
+
+Do not assemble the final MP4 yet.
+
+## 8. Existing product baseline
+
+Preserve:
+- Original `baseline-crud` tag.
+- Original CRUD commit and source history.
+- Phase 1 BEFORE screenshots and recordings.
+- Phase 2 installation evidence.
+- Current Git remote and branch history.
+
+Do not rewrite existing commits or tags.
+
+Do not push to GitHub.
+
+Do not commit presentation evidence or application changes automatically unless explicitly authorized by the actual workflow or a subsequent human instruction.
+
+## 9. Execution approach
+
+Start by invoking the installed `$sdlc` skill, confirming the current project status and creating the Due Dates Discovery request through the supported workflow.
+
+After initiation, proceed as far as the existing governance model permits without human intervention.
+
+Stop at the first genuine mandatory business decision or approval gate.
+
+Provide a concise status containing:
+- Current SDLC stage.
+- Active responsible role.
+- Artifacts created.
+- Outstanding questions or decisions.
+- Recommended human action.
+- Evidence collected for the future video.
+
+Continue the same request after each decision rather than starting a new one.
+
+## 10. Completion criteria
+
+The overall Phase 3 is complete only when:
+
+- The Due Dates feature has been implemented according to approved requirements.
+- Original CRUD behavior remains functional.
+- Relevant unit, integration and browser tests have passed.
+- Required Engineering and QA reviews are completed.
+- Final Verification is recorded with its actual scope and limitations.
+- The application can be reproduced in its AFTER state.
+- The SDLC history and presentation evidence are available for the final animation.
+
+Keep Verified distinct from Released.
+
+Do not claim the phase is complete before these conditions are met.
+
+Begin with `$sdlc` and proceed until the first mandatory human decision. Report the result and wait.

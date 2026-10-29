@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-10-29T15:40:53.687154+00:00",
+  "event": "Explicit human approval binds independent QA strategy and scenarios together",
+  "user_command": "$sdlc approve qa",
+  "request_id": "REQ-0001",
+  "actor": "David Krzystek",
+  "identity_source": "local_profile",
+  "authenticated": false,
+  "qa_stage": "test_design",
+  "engineering_stage": "technical_design",
+  "approval_event": {
+    "operation_id": "b16bcf51-bcdc-4b2b-95bb-a0eef9540e2f",
+    "action": "approve",
+    "kind": "scenarios",
+    "actor": "David Krzystek",
+    "identity_source": "local_profile",
+    "decision": "$sdlc approve qa",
+    "expected_revision": "8cb02f29f0dc07f94c14fd2002752c47826e48f1f10bd96a302822caf4712fbf",
+    "timestamp": "2026-10-29T15:40:50Z",
+    "baseline_id": "40231cdbd8ac87490358ad65a52afd7293577007e812e1430dfc67a7e8c913d2",
+    "cycle": "faa97785-1068-4c72-9d78-e3683828ed05"
+  },
+  "reviewed_qa_revision": "8cb02f29f0dc07f94c14fd2002752c47826e48f1f10bd96a302822caf4712fbf",
+  "approved_documents": {
+    "strategy": "e049b646afc18713965788880e2636bc850ba6574a6c07025ac2a42b05769f1c",
+    "scenarios": "b26987cde4fc49dcca36cf35122a44a2e2b4e745fc04facba52be9d935c975df"
+  },
+  "cases": 23,
+  "covered_fr_ac_items": 22,
+  "unresolved": [],
+  "advanced": false,
+  "automation_created": false,
+  "executed_tests": 0,
+  "application_and_prior_committed_evidence_unchanged": true,
+  "runtime_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+  "next_human_decision": "Separate explicit QA advancement to Test Automation."
+}

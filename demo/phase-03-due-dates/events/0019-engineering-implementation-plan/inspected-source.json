@@ -1,0 +1,13 @@
+{
+  "src/tasks.mjs": "d77688656b7ea015c240260ec9748b862752b424a9abd4d243587307b3001220",
+  "src/http.mjs": "e0eca4333fbf5ed3d88379a54dbae49d2073ad71d73e558e37eacd4c0b26c337",
+  "public/app.js": "407ceeef57e54f5d2231f3006e187731d272e13a09a5a5d583a3fe314817a604",
+  "public/index.html": "47708c10793b6c79ce99e895aa3269b998251f3a3b34d08ed0acfd1abdbe0358",
+  "public/styles.css": "a324b05861da359cd85723d91e070da5c409ed5e67b2d359347ac824d7b860cf",
+  "test/unit/tasks.test.mjs": "96e079c56b06e403686e0ef780a662f67f4dff96d490e3bf66547d7c642d2bae",
+  "test/integration/http.test.mjs": "b5bef599705a1d1548ac9147db3fcfa920b7faa2e6d9a80a1d314ccb9c206180",
+  "test/browser/tasks.spec.mjs": "af44f483d9216ee0aa0d0f870fb961355357e515939c46d2ee71c48065ea7270",
+  "scripts/check.mjs": "fabcfb6cb85128a3fc9afc11e64d52f0ad5a3c9bd7d3c7c56d1d7b0eeef84b0e",
+  "package.json": "67e3536c94567c43512e3f0ea331c95c24a3cb98dc3b11a515aa0b77fd41078f",
+  "README.md": "7ac6e1abe9fd2995f248ddb5ba1209fdc393d356ecd9f728daacc39a7fe4a5c4"
+}

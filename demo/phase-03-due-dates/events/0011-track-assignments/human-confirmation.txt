@@ -1,0 +1,1 @@
+I explicitly confirm assigning David Krzystek as both Engineering Lead and QA Lead / Tester for REQ-0001.

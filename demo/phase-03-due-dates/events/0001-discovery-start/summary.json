@@ -1,0 +1,45 @@
+{
+  "event": "Discovery initiated; awaiting first human business decision",
+  "timestamp": "2026-10-29T15:00:15.920053+00:00",
+  "project": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "request_id": "REQ-0001",
+  "stage": "discovery",
+  "responsible_role": "Requester / Business Stakeholder",
+  "responsible_person": "David Krzystek",
+  "identity_source": "local_profile",
+  "identity_authenticated": false,
+  "runtime_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+  "shared_skill_sha256": "a815b5ad69a08c65c06494590fc7a1be2fb5f675d0d246d0902c1a3e8e1aac24",
+  "domain_skills_invoked": [],
+  "idea_template": {
+    "id": "idea",
+    "version": "1.0.0",
+    "digest": "e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f",
+    "content_digest": "d4492c9487fcd5d6c4690f342e7f7d6d391493fae13cfc180c6ea5905ace02bb",
+    "validation_contract": "discovery.idea/1"
+  },
+  "record_ids": [
+    "D-0001",
+    "D-0002",
+    "D-0003",
+    "D-0004",
+    "D-0005",
+    "D-0006",
+    "D-0007",
+    "D-0008"
+  ],
+  "confirmed_scope": "User-supplied scope is recorded with verbatim evidence; no business specification approval yet.",
+  "ai_recommendation_unconfirmed": "Proposed policy, awaiting human confirmation: permit any valid calendar date, including today and past dates. This does not yet define overdue presentation or calendar-date interpretation.",
+  "question_presented": "Should users be allowed to assign a valid calendar date in the past, as well as today or a future date? I recommend allowing all three; this avoids preventing users from recording tasks that are already overdue.",
+  "other_topics_not_yet_decided": [
+    "Overdue presentation",
+    "Completed tasks retaining due dates",
+    "Calendar-date interpretation and validation",
+    "Detailed editing/clearing interactions"
+  ],
+  "approval_recorded": false,
+  "lifecycle_advanced": false,
+  "application_modified": false,
+  "baseline_and_phase2_unchanged": true,
+  "test_execution_this_event": "Not run: no implementation changes."
+}

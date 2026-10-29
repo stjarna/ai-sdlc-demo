@@ -1,0 +1,16 @@
+{
+  "started_at": "2026-10-29T15:34:58.501797+00:00",
+  "finished_at": "2026-10-29T15:34:58.937684+00:00",
+  "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "argv": [
+    "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+    "-B",
+    "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/sdlc.py",
+    "--project",
+    "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+    "qa-review",
+    "REQ-0001"
+  ],
+  "command": "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python -B /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/sdlc.py --project /Users/davidkrzystek/Development/Interview/ai-sdlc-demo qa-review REQ-0001",
+  "exit_code": 0
+}

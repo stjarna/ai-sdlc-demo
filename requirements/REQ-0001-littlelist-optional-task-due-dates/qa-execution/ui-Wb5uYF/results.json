@@ -1,0 +1,936 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/25.9.0_2/bin/node",
+      "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config=qa/playwright.config.mjs",
+      "--project=mobile-kiritimati"
+    ],
+    "configFile": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/playwright.config.mjs",
+    "rootDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-los-angeles",
+        "name": "desktop-los-angeles",
+        "testDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-kiritimati",
+        "name": "mobile-kiritimati",
+        "testDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-kiritimati",
+        "testDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+        "snapshotDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "browserName": "chromium",
+          "locale": "en-US",
+          "colorScheme": "light",
+          "reducedMotion": "reduce",
+          "trace": "on",
+          "screenshot": "on",
+          "video": "on",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "timezoneId": "Pacific/Kiritimati"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-kiritimati"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "due-dates.spec.mjs",
+      "file": "due-dates.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-001: empty optional due date creates a usable undated task",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 595,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:45.289Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-001-empty-opt-3f047-eates-a-usable-undated-task-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-001-empty-opt-3f047-eates-a-usable-undated-task-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-001-empty-opt-3f047-eates-a-usable-undated-task-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-1193869eaed51955cc87",
+          "file": "due-dates.spec.mjs",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "TC-002 TC-003 TC-016: past/today/future dates accepted on creation and autosaved edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3178,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:46.050Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-002-TC-003-TC-d872b-reation-and-autosaved-edits-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-002-TC-003-TC-d872b-reation-and-autosaved-edits-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-002-TC-003-TC-d872b-reation-and-autosaved-edits-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-5968b3997071be2f950c",
+          "file": "due-dates.spec.mjs",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "TC-004 TC-005: edit and clear autosave without a separate save action",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2232,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:49.269Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-004-TC-005-ed-5c58d-hout-a-separate-save-action-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-004-TC-005-ed-5c58d-hout-a-separate-save-action-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-004-TC-005-ed-5c58d-hout-a-separate-save-action-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-aacae4e48d36ba0796e9",
+          "file": "due-dates.spec.mjs",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "TC-006 TC-017: impossible calendar drafts preserve the saved valid leap day",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1894,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:51.541Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-006-TC-017-im-ec3b2-ve-the-saved-valid-leap-day-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-006-TC-017-im-ec3b2-ve-the-saved-valid-leap-day-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-006-TC-017-im-ec3b2-ve-the-saved-valid-leap-day-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-5a9e570b001067bc1291",
+          "file": "due-dates.spec.mjs",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "TC-006: native partial date input cannot silently clear the saved date",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5851,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at /Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser/due-dates.spec.mjs:69:70",
+                    "location": {
+                      "file": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser/due-dates.spec.mjs",
+                      "column": 70,
+                      "line": 69
+                    },
+                    "snippet": "  67 |   // Real keyboard interaction with the first native date segment, not a mocked validity object.\n  68 |   await date.press('ArrowLeft'); await date.press('ArrowLeft'); await date.press('ArrowLeft'); await date.press('Delete');\n> 69 |   await expect.poll(() => date.evaluate(el => el.validity.badInput)).toBe(true);\n     |                                                                      ^\n  70 |   await expect(page.locator('#edit-due-date-error')).toBeVisible(); await expect(page.locator('#edit-done')).toBeDisabled();\n  71 |   await page.waitForTimeout(650);\n  72 |   const task = (await (await page.request.get(app.url + '/api/tasks')).json()).tasks[0]; expect(task.dueDate).toBe('2024-02-29');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser/due-dates.spec.mjs",
+                        "column": 70,
+                        "line": 69
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  67 |   // Real keyboard interaction with the first native date segment, not a mocked validity object.\n  68 |   await date.press('ArrowLeft'); await date.press('ArrowLeft'); await date.press('ArrowLeft'); await date.press('Delete');\n> 69 |   await expect.poll(() => date.evaluate(el => el.validity.badInput)).toBe(true);\n     |                                                                      ^\n  70 |   await expect(page.locator('#edit-due-date-error')).toBeVisible(); await expect(page.locator('#edit-done')).toBeDisabled();\n  71 |   await page.waitForTimeout(650);\n  72 |   const task = (await (await page.request.get(app.url + '/api/tasks')).json()).tasks[0]; expect(task.dueDate).toBe('2024-02-29');\n    at /Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser/due-dates.spec.mjs:69:70"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:53.465Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-006-native-pa-4e84d-lently-clear-the-saved-date-mobile-kiritimati/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-006-native-pa-4e84d-lently-clear-the-saved-date-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-006-native-pa-4e84d-lently-clear-the-saved-date-mobile-kiritimati/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-006-native-pa-4e84d-lently-clear-the-saved-date-mobile-kiritimati/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser/due-dates.spec.mjs",
+                    "column": 70,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-5d166880a55f7b21631a",
+          "file": "due-dates.spec.mjs",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "TC-007 TC-018: local date survives reload/restart and DST-adjacent editing in each timezone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1581,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:59.710Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-007-TC-018-lo-eb3b1-nt-editing-in-each-timezone-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-007-TC-018-lo-eb3b1-nt-editing-in-each-timezone-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-007-TC-018-lo-eb3b1-nt-editing-in-each-timezone-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-d4cb98c746feb7edc8f1",
+          "file": "due-dates.spec.mjs",
+          "line": 75,
+          "column": 1
+        },
+        {
+          "title": "TC-008 TC-009 TC-019: local year boundary, explicit subtle warning and unchanged ordering",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 675,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:24:01.442Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-008-TC-009-TC-333d9-ning-and-unchanged-ordering-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-008-TC-009-TC-333d9-ning-and-unchanged-ordering-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-008-TC-009-TC-333d9-ning-and-unchanged-ordering-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-d4ab8aed08b19ec3d23c",
+          "file": "due-dates.spec.mjs",
+          "line": 83,
+          "column": 1
+        },
+        {
+          "title": "TC-010 TC-021: completion retains date, removes warning, reopening restores it without reordering",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 721,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:24:02.150Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-010-TC-021-co-bbd06-tores-it-without-reordering-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-010-TC-021-co-bbd06-tores-it-without-reordering-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-010-TC-021-co-bbd06-tores-it-without-reordering-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-ad36ff9539fa00ec80e5",
+          "file": "due-dates.spec.mjs",
+          "line": 90,
+          "column": 1
+        },
+        {
+          "title": "TC-011 TC-022: Cancel keeps the latest saved date or saved cleared state, discarding only a draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2683,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:24:02.900Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-011-TC-022-Ca-80b8a-ate-discarding-only-a-draft-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-011-TC-022-Ca-80b8a-ate-discarding-only-a-draft-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-011-TC-022-Ca-80b8a-ate-discarding-only-a-draft-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-289acc7a729db4685dc9",
+          "file": "due-dates.spec.mjs",
+          "line": 102,
+          "column": 1
+        },
+        {
+          "title": "TC-012 TC-023: actual process restart retains dates, changes, clearing and completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2647,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:24:05.635Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-012-TC-023-ac-0099c-ges-clearing-and-completion-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-012-TC-023-ac-0099c-ges-clearing-and-completion-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-012-TC-023-ac-0099c-ges-clearing-and-completion-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-cd4b86014f73dd396778",
+          "file": "due-dates.spec.mjs",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "TC-014: title validation, CRUD, completion, reopening and confirmed deletion remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1691,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:24:08.704Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-014-title-val-fe559-rmed-deletion-remain-usable-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-014-title-val-fe559-rmed-deletion-remain-usable-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-014-title-val-fe559-rmed-deletion-remain-usable-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-d22db26608fca66895cf",
+          "file": "due-dates.spec.mjs",
+          "line": 136,
+          "column": 1
+        },
+        {
+          "title": "TC-015: readable labelled date controls, responsive layout and restored keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1361,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:24:10.430Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-015-readable--3be99-and-restored-keyboard-focus-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-015-readable--3be99-and-restored-keyboard-focus-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-015-readable--3be99-and-restored-keyboard-focus-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-9c5edffc68602b41d11f",
+          "file": "due-dates.spec.mjs",
+          "line": 150,
+          "column": 1
+        },
+        {
+          "title": "TC-020: next local calendar day changes overdue presentation without changing the saved date",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 503,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:24:11.813Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-020-next-loca-b7a80-out-changing-the-saved-date-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-020-next-loca-b7a80-out-changing-the-saved-date-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-020-next-loca-b7a80-out-changing-the-saved-date-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-554530f1ba8aefcc6b7b",
+          "file": "due-dates.spec.mjs",
+          "line": 162,
+          "column": 1
+        },
+        {
+          "title": "TC-002 TC-004: extended calendar years do not silently clear on editing another field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-kiritimati",
+              "projectName": "mobile-kiritimati",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1361,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:24:12.335Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-002-TC-004-ex-c8048-ar-on-editing-another-field-mobile-kiritimati/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-002-TC-004-ex-c8048-ar-on-editing-another-field-mobile-kiritimati/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-TC-002-TC-004-ex-c8048-ar-on-editing-another-field-mobile-kiritimati/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-112a3e43e7b2713f15e5",
+          "file": "due-dates.spec.mjs",
+          "line": 168,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "legacy v1 data",
+          "file": "due-dates.spec.mjs",
+          "line": 126,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-013: legacy task fields/completion remain visible without dates after migration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-kiritimati",
+                  "projectName": "mobile-kiritimati",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 363,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-29T17:24:08.325Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-legacy-v1-data-T-41050-thout-dates-after-migration-mobile-kiritimati/test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-legacy-v1-data-T-41050-thout-dates-after-migration-mobile-kiritimati/video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/results/due-dates-legacy-v1-data-T-41050-thout-dates-after-migration-mobile-kiritimati/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "271c5fb7f6bd32e7de7c-be4459022be4a409332f",
+              "file": "due-dates.spec.mjs",
+              "line": 128,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-29T17:23:44.979Z",
+    "duration": 28783.732,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

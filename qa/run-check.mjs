@@ -1,0 +1,17 @@
+import { spawn } from 'node:child_process';
+import { mkdtemp, mkdir } from 'node:fs/promises';
+import { join } from 'node:path';
+import { project } from './helpers.mjs';
+const kind = process.argv[2];
+if (!['integration', 'ui'].includes(kind)) throw new Error('Choose integration or ui.');
+const browserProject = process.argv[3];
+if (kind === 'ui' && !['desktop-los-angeles', 'mobile-kiritimati'].includes(browserProject)) throw new Error('Choose a reviewed browser project.');
+const evidenceRoot = join(project, 'requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution');
+await mkdir(evidenceRoot, { recursive: true });
+const evidence = await mkdtemp(join(evidenceRoot, kind+'-'));
+console.log(JSON.stringify({ check: kind, evidence, note: 'Fresh execution evidence; no historical report is overwritten.' }));
+const args = kind === 'integration' ? ['--test', 'qa/integration.test.mjs'] : ['qa/node_modules/@playwright/test/cli.js', 'test', '--config=qa/playwright.config.mjs', '--project='+browserProject];
+const child = spawn(process.execPath, args, { cwd: project, stdio: 'inherit', env: { ...process.env, SDLC_QA_EVIDENCE: evidence } });
+process.on('SIGTERM', () => child.kill('SIGTERM'));
+child.on('error', error => { console.error(error); process.exitCode = 1; });
+child.on('exit', (code, signal) => { process.exitCode = signal ? 1 : code; });

@@ -1,0 +1,694 @@
+schema_version: '0.6'
+id: REQ-0001
+title: Littlelist optional task due dates
+status: verification
+artifacts:
+  idea: idea.md
+ownership:
+  owner: David Krzystek
+  assignee: null
+  required_role: QA / Quality Engineering
+  assignment_status: awaiting_assignment
+  target_stage: verification
+  since: '2026-10-29T17:10:21Z'
+  history:
+  - operation_id: ownership-created
+    action: initialize
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T14:59:13Z'
+    expected_revision: null
+    from_owner: null
+    to_owner: David Krzystek
+    assignee: David Krzystek
+    required_role: Requester / Business Stakeholder
+    assignment_status: assigned
+    target_stage: discovery
+    lifecycle_id: null
+    decision: Initial accountability belongs to the declared requester.
+  - operation_id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T15:07:28Z'
+    expected_revision: aace6da02d66f27b0e0aba068d0de4cc8204d9a03bc42cab2ef02351ac64ac6f
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Product Owner
+    assignment_status: awaiting_assignment
+    target_stage: business_refinement
+    lifecycle_id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+    decision: I confirm that Discovery for REQ-0001 is complete. I explicitly authorize
+      the transition to Business Refinement readiness.
+  - operation_id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T15:14:31Z'
+    expected_revision: b51bfac524fbe750c0ad19daafa4d21e969ab4a2cd10d1fae296e60c4ebcfab6
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Business Analyst
+    assignment_status: awaiting_assignment
+    target_stage: functional_analysis
+    lifecycle_id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+    decision: $sdlc advance
+  - operation_id: faa97785-1068-4c72-9d78-e3683828ed05
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T15:21:05Z'
+    expected_revision: 949845abd9e640c7d2ab2c92e33b55d1d440edba36d9c63c8961e5f1418e4121
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Engineering Lead / Architect
+    assignment_status: awaiting_assignment
+    target_stage: technical_design
+    lifecycle_id: faa97785-1068-4c72-9d78-e3683828ed05
+    decision: $sdlc advance
+  - operation_id: bec54905-4a95-43a6-bbbd-8844ac51cf3a
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T15:41:46Z'
+    expected_revision: 09b7898ed35fb7b5224d8ab0e826eecef208b38adb268dcda0b9439fc34bffec
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Engineering Lead
+    assignment_status: awaiting_assignment
+    target_stage: implementation_planning
+    lifecycle_id: bec54905-4a95-43a6-bbbd-8844ac51cf3a
+    decision: $sdlc advance engineering
+  - operation_id: 0aa7d6de-55e2-467c-83a0-979b9e456a35
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T15:49:36Z'
+    expected_revision: 3e8c4169f5657ef5e47df0c852dfbf2786f123a8a086496317f388b8d339d437
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Developer
+    assignment_status: awaiting_assignment
+    target_stage: development
+    lifecycle_id: 0aa7d6de-55e2-467c-83a0-979b9e456a35
+    decision: $sdlc advance engineering
+  - operation_id: 4b8d7948-f663-438b-9487-c0424d1a7ae4
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T16:57:48Z'
+    expected_revision: 37a7f13ee1cc091de5795dca713ed2c0ec2ed1e9efa066806ddd013125630a17
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Engineering Lead
+    assignment_status: awaiting_assignment
+    target_stage: implementation_planning
+    lifecycle_id: 4b8d7948-f663-438b-9487-c0424d1a7ae4
+    decision: Refresh the Implementation Plan against the current project fingerprint.
+      Business requirements and Technical Design remain unchanged.
+  - operation_id: 2e2e051c-29d4-402c-a81a-9bc8a4c3b03e
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T17:00:00Z'
+    expected_revision: 421ae91639816d112157b1dca847f75020e924b0810fecffaab6c696b389ece3
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Developer
+    assignment_status: awaiting_assignment
+    target_stage: development
+    lifecycle_id: 2e2e051c-29d4-402c-a81a-9bc8a4c3b03e
+    decision: $sdlc advance engineering
+  - operation_id: 8ed08b1e-09b6-4cf0-ad1c-7033c7a28650
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T17:10:21Z'
+    expected_revision: 239e012677d91de713b69537b4347e867482c42c1e2f936778bcdd85ec53902c
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: QA / Quality Engineering
+    assignment_status: awaiting_assignment
+    target_stage: verification
+    lifecycle_id: 8ed08b1e-09b6-4cf0-ad1c-7033c7a28650
+    decision: '`$sdlc advance engineering`'
+template_provenance:
+  schema_version: '0.1'
+  idea:
+    id: idea
+    version: 1.0.0
+    digest: e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f
+    content_digest: d4492c9487fcd5d6c4690f342e7f7d6d391493fae13cfc180c6ea5905ace02bb
+    validation_contract: discovery.idea/1
+lifecycle:
+- id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+  action: complete
+  from: discovery
+  to: ready_for_refinement
+  base_revision: aace6da02d66f27b0e0aba068d0de4cc8204d9a03bc42cab2ef02351ac64ac6f
+  actor: David Krzystek
+  decision: I confirm that Discovery for REQ-0001 is complete. I explicitly authorize
+    the transition to Business Refinement readiness.
+  timestamp: '2026-10-29T15:07:28Z'
+  identity_source: local_profile
+- id: 7365e1f8-646f-4434-8eda-92727dbd3e21
+  action: refine
+  from: ready_for_refinement
+  to: business_refinement
+  base_revision: 975de366a822dba605a241bd02fdceb5c017f9531e169837061cf6f35adcab1d
+  actor: AI SDLC Assistant (AI-authored draft)
+  decision: User authorized drafting from completed Discovery; no Business approval
+    or further advancement authorized.
+  timestamp: '2026-10-29T15:07:48Z'
+- id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+  action: advance
+  from: business_refinement
+  to: ready_for_analysis
+  base_revision: b51bfac524fbe750c0ad19daafa4d21e969ab4a2cd10d1fae296e60c4ebcfab6
+  actor: David Krzystek
+  decision: $sdlc advance
+  timestamp: '2026-10-29T15:14:31Z'
+  identity_source: local_profile
+  review_revision: 7a26ac59ca0b582da60d00cf9c1db005850604d8d2917f7cb4a3d2c731da2f7a
+  business_revision: 5c2b9077ba4fd24dc9babc5fcd3ffe6fd29ae0971cb440e54d814af811deb6c9
+  approval_id: BD-0001
+  baseline_id: 76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e
+- id: 2e251edc-ad99-477d-a48d-ee6f6551b9f5
+  action: analyze
+  from: ready_for_analysis
+  to: functional_analysis
+  base_revision: 187ffd106cc57a2f6258120025733c60ce4affb0aef631014dc03ca787a1c7d5
+  actor: AI SDLC Assistant (AI-authored Functional Analysis)
+  decision: Explicit $sdlc start; draft only from active immutable approved Business
+    baseline. No Analysis approval or further advancement.
+  timestamp: '2026-10-29T15:16:59Z'
+  review_revision: c49361edb2025e001c2b053c206af208ed2d8a49163e6801c55f845a4191cd8d
+  business_revision: 5c2b9077ba4fd24dc9babc5fcd3ffe6fd29ae0971cb440e54d814af811deb6c9
+  baseline_id: 76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e
+  approval_id: BD-0001
+  handoff_id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+- id: faa97785-1068-4c72-9d78-e3683828ed05
+  action: analysis_advance
+  from: functional_analysis
+  to: ready_for_technical_design
+  base_revision: 949845abd9e640c7d2ab2c92e33b55d1d440edba36d9c63c8961e5f1418e4121
+  actor: David Krzystek
+  decision: $sdlc advance
+  timestamp: '2026-10-29T15:21:05Z'
+  identity_source: local_profile
+  review_revision: 719e1fc75ef5f3817b996829502ea46126998d70a9e2bdada35cded6224e830a
+  analysis_revision: fd9a89d70ef08478c9be53ffe41867c8d146dbf37599901921ec1ff34a72494b
+  analysis_operation_id: 2e251edc-ad99-477d-a48d-ee6f6551b9f5
+  business_baseline_id: 76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e
+  business_approval_id: BD-0001
+  business_handoff_id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+  approval_id: AD-0001
+  baseline_id: 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649
+- id: 1589bec4-0cfa-4f77-b937-faa521a3cb35
+  action: engineer
+  from: ready_for_technical_design
+  to: technical_design
+  base_revision: 911ca1163bd4d7778fb49b726f737aaaf10ddc1d7320c10804af3b84f4efbb07
+  actor: David Krzystek
+  decision: $sdlc start engineering
+  timestamp: '2026-10-29T15:35:00Z'
+  baseline_id: 3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a
+  identity_source: local_profile
+- id: bec54905-4a95-43a6-bbbd-8844ac51cf3a
+  action: engineer
+  from: technical_design
+  to: ready_for_implementation_planning
+  base_revision: 09b7898ed35fb7b5224d8ab0e826eecef208b38adb268dcda0b9439fc34bffec
+  actor: David Krzystek
+  decision: $sdlc advance engineering
+  timestamp: '2026-10-29T15:41:46Z'
+  baseline_id: 5f3508d5b314b09abfa07caf879fbefa87f3f23a899ab6f35cab83ffa20051c8
+  identity_source: local_profile
+- id: f23d7330-7750-44ac-95a0-b2cf9706cf8e
+  action: engineer
+  from: ready_for_implementation_planning
+  to: implementation_planning
+  base_revision: 436950ccb57dfeb6e3756538e537565f02c02ec1fba1488428e22c951ff003e5
+  actor: David Krzystek
+  decision: $sdlc start engineering
+  timestamp: '2026-10-29T15:45:39Z'
+  baseline_id: 2db2e1183b4f00ba06396292a89a4b62092b22bb1e8d44c43b87c6b1004eb782
+  identity_source: local_profile
+- id: 0aa7d6de-55e2-467c-83a0-979b9e456a35
+  action: engineer
+  from: implementation_planning
+  to: ready_for_development
+  base_revision: 3e8c4169f5657ef5e47df0c852dfbf2786f123a8a086496317f388b8d339d437
+  actor: David Krzystek
+  decision: $sdlc advance engineering
+  timestamp: '2026-10-29T15:49:36Z'
+  baseline_id: 8b46a82ac080e423f0ca478f26938d19f797c1c4e2a123bf97fd50f39a0cf5ee
+  identity_source: local_profile
+- id: 4b8d7948-f663-438b-9487-c0424d1a7ae4
+  action: engineer
+  from: ready_for_development
+  to: implementation_planning
+  base_revision: 37a7f13ee1cc091de5795dca713ed2c0ec2ed1e9efa066806ddd013125630a17
+  actor: David Krzystek
+  decision: Refresh the Implementation Plan against the current project fingerprint.
+    Business requirements and Technical Design remain unchanged.
+  timestamp: '2026-10-29T16:57:48Z'
+  baseline_id: f9c954e9e255bf7e89e0ad3d5f8e6811720b363e1f8413c501443b8ace1a1758
+  identity_source: local_profile
+- id: 2e2e051c-29d4-402c-a81a-9bc8a4c3b03e
+  action: engineer
+  from: implementation_planning
+  to: ready_for_development
+  base_revision: 421ae91639816d112157b1dca847f75020e924b0810fecffaab6c696b389ece3
+  actor: David Krzystek
+  decision: $sdlc advance engineering
+  timestamp: '2026-10-29T17:00:00Z'
+  baseline_id: 6eb0a3240663d1b8acfb32953e6576ca2181dcbad2c1ac3c445b721b3774be39
+  identity_source: local_profile
+- id: 650fcd5b-b2bf-4122-9f5e-013152adcdda
+  action: engineer
+  from: ready_for_development
+  to: development
+  base_revision: f4f4c78415a9c024beae1c62eef697eaa7938c2c1e0a583cf5c160108f25035e
+  actor: David Krzystek
+  decision: $sdlc start engineering
+  timestamp: '2026-10-29T17:00:26Z'
+  baseline_id: d9bb76618679faa69e37b397ced199878274a4b719c78cb7ec2f18a4d3f86a32
+  identity_source: local_profile
+- id: 8ed08b1e-09b6-4cf0-ad1c-7033c7a28650
+  action: engineer
+  from: development
+  to: verification
+  base_revision: 239e012677d91de713b69537b4347e867482c42c1e2f936778bcdd85ec53902c
+  actor: David Krzystek
+  decision: '`$sdlc advance engineering`'
+  timestamp: '2026-10-29T17:10:21Z'
+  baseline_id: 9cf0a16ce03633b86027bbbeb822e7d74769fa71597b91fb9a0bcff51005c741
+  identity_source: local_profile
+business_decisions:
+- id: BD-0001
+  operation_id: 1d91b310-fdcc-4672-a02f-4a1c2c81c8e2
+  action: approve
+  actor: David Krzystek
+  reason: Explicit short approval command following review of this exact Business
+    specification; no unresolved items and no advancement authorization.
+  decision: $sdlc approve
+  timestamp: '2026-10-29T15:13:23Z'
+  identity_source: local_profile
+  review_revision: 1ffdcc5fd502dd4d0eeaa7d96aca8643f48b6256f3193a69d7562fcf2969dc4b
+  business_revision: 5c2b9077ba4fd24dc9babc5fcd3ffe6fd29ae0971cb440e54d814af811deb6c9
+  business_operation_id: 7365e1f8-646f-4434-8eda-92727dbd3e21
+  source_revision: c94b223731ca60b9267799c1adc2238a29d69b404cb8cc9349bc653a04fcc7d6
+  discovery_completion_id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+  acknowledged_open_items: []
+  baseline_id: 76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e
+analysis_decisions:
+- id: AD-0001
+  operation_id: fca85769-031c-49d4-bf1f-94a51253e620
+  action: approve
+  actor: David Krzystek
+  reason: Explicit short approval command after review of this exact Functional Analysis;
+    no unresolved items. No advancement authorized.
+  decision: $sdlc approve
+  timestamp: '2026-10-29T15:19:32Z'
+  identity_source: local_profile
+  review_revision: 46b7b91e4f41404886c9043ad598bd2f409ac23a15b56f6c754db320a0f2c577
+  analysis_revision: fd9a89d70ef08478c9be53ffe41867c8d146dbf37599901921ec1ff34a72494b
+  analysis_operation_id: 2e251edc-ad99-477d-a48d-ee6f6551b9f5
+  business_baseline_id: 76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e
+  business_approval_id: BD-0001
+  business_handoff_id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+  acknowledged_open_items: []
+  baseline_id: 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649
+work_tracks:
+  schema_version: '0.2'
+  cycles:
+  - id: faa97785-1068-4c72-9d78-e3683828ed05
+    analysis_baseline: 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649
+    origin: advance
+    governance_version: '0.1'
+    engineering:
+      ownership:
+        owner: David Krzystek
+        assignee: David Krzystek
+        required_role: Engineering Lead
+        assignment_status: assigned
+        target_stage: engineering
+        since: '2026-10-29T15:26:21Z'
+        history:
+        - operation_id: track-init-6a5371a23fcf1bb1056c07a39fbc34316714795b0bfbec021d7a2fe5b257ce53
+          action: initialize
+          actor: David Krzystek
+          identity_source: local_profile
+          timestamp: '2026-10-29T15:21:05Z'
+          expected_revision: null
+          from_owner: null
+          to_owner: David Krzystek
+          assignee: null
+          required_role: Engineering Lead
+          assignment_status: awaiting_assignment
+          target_stage: engineering
+          lifecycle_id: null
+          decision: $sdlc advance
+        - operation_id: f442407b-2857-4539-a7ca-3e4d6a4114da
+          action: assign
+          actor: David Krzystek
+          identity_source: local_profile
+          timestamp: '2026-10-29T15:26:21Z'
+          expected_revision: 5c5fe673b0e0fb0067b0644d7e380b4e2ea63b91eb4dfd1f5c390b4ac50af9ee
+          from_owner: David Krzystek
+          to_owner: David Krzystek
+          assignee: David Krzystek
+          required_role: Engineering Lead
+          assignment_status: assigned
+          target_stage: engineering
+          lifecycle_id: null
+          decision: I explicitly confirm assigning David Krzystek as both Engineering
+            Lead and QA Lead / Tester for REQ-0001.
+      reconciliation: []
+      legacy_plan: null
+    qa:
+      ownership:
+        owner: David Krzystek
+        assignee: David Krzystek
+        required_role: QA Lead / Tester
+        assignment_status: assigned
+        target_stage: qa
+        since: '2026-10-29T15:26:22Z'
+        history:
+        - operation_id: track-init-12734754f9aeb07fc7803616bbea922e8ac512b5fc24ff24a2a7a17c6d82f1dd
+          action: initialize
+          actor: David Krzystek
+          identity_source: local_profile
+          timestamp: '2026-10-29T15:21:05Z'
+          expected_revision: null
+          from_owner: null
+          to_owner: David Krzystek
+          assignee: null
+          required_role: QA Lead / Tester
+          assignment_status: awaiting_assignment
+          target_stage: qa
+          lifecycle_id: null
+          decision: $sdlc advance
+        - operation_id: caa878fc-96df-4800-822a-b4f9cd40c748
+          action: assign
+          actor: David Krzystek
+          identity_source: local_profile
+          timestamp: '2026-10-29T15:26:22Z'
+          expected_revision: 470ca3072cd908b66c287a5111c760824a23c70ffcf7f15959adcbfc54a8806f
+          from_owner: David Krzystek
+          to_owner: David Krzystek
+          assignee: David Krzystek
+          required_role: QA Lead / Tester
+          assignment_status: assigned
+          target_stage: qa
+          lifecycle_id: null
+          decision: I explicitly confirm assigning David Krzystek as both Engineering
+            Lead and QA Lead / Tester for REQ-0001.
+      reconciliation: []
+      status: test_automation
+      history:
+      - operation_id: 68f5f554-9330-4fb6-b605-1f1759837c49
+        action: write
+        kind: strategy
+        actor: David Krzystek
+        identity_source: local_profile
+        decision: $sdlc start qa
+        expected_revision: cf8556c9c54e4e96b2f4f5e16bf0f6045cfcfe03de4044cf590677f416f26a28
+        timestamp: '2026-10-29T15:29:58Z'
+        baseline_id: e049b646afc18713965788880e2636bc850ba6574a6c07025ac2a42b05769f1c
+        cycle: faa97785-1068-4c72-9d78-e3683828ed05
+      - operation_id: 46e1f8ec-cce6-4347-a1a0-9429ae07fdde
+        action: write
+        kind: scenarios
+        actor: David Krzystek
+        identity_source: local_profile
+        decision: $sdlc start qa
+        expected_revision: 3823b2b0d2f4aa4a2fe1642b79c79a2662579a4ce90d572f32382948daa65e3c
+        timestamp: '2026-10-29T15:30:00Z'
+        baseline_id: b26987cde4fc49dcca36cf35122a44a2e2b4e745fc04facba52be9d935c975df
+        cycle: faa97785-1068-4c72-9d78-e3683828ed05
+      - operation_id: b16bcf51-bcdc-4b2b-95bb-a0eef9540e2f
+        action: approve
+        kind: scenarios
+        actor: David Krzystek
+        identity_source: local_profile
+        decision: $sdlc approve qa
+        expected_revision: 8cb02f29f0dc07f94c14fd2002752c47826e48f1f10bd96a302822caf4712fbf
+        timestamp: '2026-10-29T15:40:50Z'
+        baseline_id: 40231cdbd8ac87490358ad65a52afd7293577007e812e1430dfc67a7e8c913d2
+        cycle: faa97785-1068-4c72-9d78-e3683828ed05
+      - operation_id: 7745fb2d-7a93-453b-a44d-e62cf4417ebe
+        action: advance
+        kind: scenarios
+        actor: David Krzystek
+        identity_source: local_profile
+        decision: $sdlc advance qa
+        expected_revision: a38e99718200b190b898c399ff24f588aba5aa5843695030ef802580c13990a4
+        timestamp: '2026-10-29T17:11:15Z'
+        baseline_id: 9af6157876c5c70c10fcafa6b4bcffbd7c7319df542e91b89783a5f2db8ffe12
+        cycle: faa97785-1068-4c72-9d78-e3683828ed05
+      - operation_id: 5bdf6e18-0b41-4f0c-813b-f8235a9e726e
+        action: write
+        kind: automation
+        actor: David Krzystek
+        identity_source: local_profile
+        decision: AI-assisted preparation of QA automation explicitly requested by
+          $sdlc start qa. Preserve approved scenario expectations; human automation
+          approval, dependency setup and execution remain pending.
+        expected_revision: 2bf5dcddaa1df1914c449ee95224355087dd7202363a374530ababe53af444ff
+        timestamp: '2026-10-29T17:17:03Z'
+        baseline_id: 758a5bfb42e795e5198bca347f5038266c2eaedd22f5b43e733878b94a42b29c
+        cycle: faa97785-1068-4c72-9d78-e3683828ed05
+  operations:
+  - operation_id: faa97785-1068-4c72-9d78-e3683828ed05
+    action: fork
+    track: null
+    cycle: faa97785-1068-4c72-9d78-e3683828ed05
+    actor: David Krzystek
+    identity_source: local_profile
+    decision: $sdlc advance
+    expected_revision: 719e1fc75ef5f3817b996829502ea46126998d70a9e2bdada35cded6224e830a
+    assignee: null
+    timestamp: '2026-10-29T15:21:05Z'
+  - operation_id: f442407b-2857-4539-a7ca-3e4d6a4114da
+    action: assign
+    track: engineering
+    cycle: faa97785-1068-4c72-9d78-e3683828ed05
+    actor: David Krzystek
+    identity_source: local_profile
+    decision: I explicitly confirm assigning David Krzystek as both Engineering Lead
+      and QA Lead / Tester for REQ-0001.
+    expected_revision: 5c5fe673b0e0fb0067b0644d7e380b4e2ea63b91eb4dfd1f5c390b4ac50af9ee
+    assignee: David Krzystek
+    timestamp: '2026-10-29T15:26:21Z'
+  - operation_id: caa878fc-96df-4800-822a-b4f9cd40c748
+    action: assign
+    track: qa
+    cycle: faa97785-1068-4c72-9d78-e3683828ed05
+    actor: David Krzystek
+    identity_source: local_profile
+    decision: I explicitly confirm assigning David Krzystek as both Engineering Lead
+      and QA Lead / Tester for REQ-0001.
+    expected_revision: 470ca3072cd908b66c287a5111c760824a23c70ffcf7f15959adcbfc54a8806f
+    assignee: David Krzystek
+    timestamp: '2026-10-29T15:26:22Z'
+  legacy_cycle_count: 0
+engineering_history:
+- operation_id: 1589bec4-0cfa-4f77-b937-faa521a3cb35
+  action: write
+  kind: design
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc start engineering
+  expected_revision: 9e4a3b46d4ead145ece6be77c2b084646795bb89b71591b94bb3a4f105eab079
+  timestamp: '2026-10-29T15:35:00Z'
+  baseline_id: 3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 8d324e6b-f22e-4630-8442-df43fc16ebaf
+  action: approve
+  kind: design
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc approve
+  expected_revision: 28c79b04dd594915942cf9371d505ad0f8c23538d0544cc4b8f06b1b6e1738ff
+  timestamp: '2026-10-29T15:37:44Z'
+  baseline_id: 762c1e737535b5c0e1bfd6e48af7cf6d10ff73776b910fe3d7984ce462dc11ba
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: bec54905-4a95-43a6-bbbd-8844ac51cf3a
+  action: advance
+  kind: design
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc advance engineering
+  expected_revision: 6ed17581031d995e2f1030ce9022b0308148222c24cc65fcf1f1ced8c9d1b7e5
+  timestamp: '2026-10-29T15:41:46Z'
+  baseline_id: 5f3508d5b314b09abfa07caf879fbefa87f3f23a899ab6f35cab83ffa20051c8
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: f23d7330-7750-44ac-95a0-b2cf9706cf8e
+  action: write
+  kind: plan
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc start engineering
+  expected_revision: bcf6491f9d3e638c9b9fbd93700aa653fd67bc642a5ca382c1275e5c3956e3f6
+  timestamp: '2026-10-29T15:45:39Z'
+  baseline_id: 2db2e1183b4f00ba06396292a89a4b62092b22bb1e8d44c43b87c6b1004eb782
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 6d6c02c7-3b5e-464d-9b98-2cd6b43dc242
+  action: approve
+  kind: plan
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc approve engineering
+  expected_revision: f0e1ff096effdd03a57fc3ff8d2c64d0feae003e97867292e1b7acccd3b8e532
+  timestamp: '2026-10-29T15:48:39Z'
+  baseline_id: c31930128e8df1ae0e49b791105c15d19d64681b8657750db01c8137b77889c6
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 0aa7d6de-55e2-467c-83a0-979b9e456a35
+  action: advance
+  kind: plan
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc advance engineering
+  expected_revision: a42352c1c465ba9ee65959c47456795d568f5159a53acde593d8f0bf280cb03d
+  timestamp: '2026-10-29T15:49:36Z'
+  baseline_id: 8b46a82ac080e423f0ca478f26938d19f797c1c4e2a123bf97fd50f39a0cf5ee
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 4b8d7948-f663-438b-9487-c0424d1a7ae4
+  action: request_changes
+  kind: plan
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: Refresh the Implementation Plan against the current project fingerprint.
+    Business requirements and Technical Design remain unchanged.
+  expected_revision: 8255708d65ece7c6f66ab803910acca9204a8e9fa55255481ee3515d0e0a0da2
+  timestamp: '2026-10-29T16:57:48Z'
+  baseline_id: f9c954e9e255bf7e89e0ad3d5f8e6811720b363e1f8413c501443b8ace1a1758
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: e5f9d4ab-88af-4745-8fe7-f9655c020b55
+  action: write
+  kind: plan
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: AI-assisted refresh explicitly requested by David Krzystek; preserve business
+    requirements, approved Design, task scope and checks; bind to current project
+    fingerprint and keep new presentation capture external. Not approval or advancement.
+  expected_revision: e5413f8f3a88abee87605e07c391c5781c1c4bb99929d46d5abe63b27d2b5a0c
+  timestamp: '2026-10-29T16:58:22Z'
+  baseline_id: a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 71b1b1d9-d030-48bb-9555-7bf5bd422911
+  action: approve
+  kind: plan
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc approve engineering
+  expected_revision: fecd1d938e542d3e9eb2b19a643e4227019a968aa53e9248daa114b7be75dc0b
+  timestamp: '2026-10-29T16:59:28Z'
+  baseline_id: d1d860b533e25f26d55502ef4bfc283e8e6601f3db26d40830b7bfaae302025f
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 2e2e051c-29d4-402c-a81a-9bc8a4c3b03e
+  action: advance
+  kind: plan
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc advance engineering
+  expected_revision: fd491f8db8dc11fb6120e7fee5a63d7b495ad93b195a9b5dd55b580e1dea1518
+  timestamp: '2026-10-29T17:00:00Z'
+  baseline_id: 6eb0a3240663d1b8acfb32953e6576ca2181dcbad2c1ac3c445b721b3774be39
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 650fcd5b-b2bf-4122-9f5e-013152adcdda
+  action: start
+  kind: development
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc start engineering
+  expected_revision: 27c0500da8ca2886390be57285ab7179a0bc12fb5215af51c1b412ce40c62e52
+  timestamp: '2026-10-29T17:00:26Z'
+  baseline_id: d9bb76618679faa69e37b397ced199878274a4b719c78cb7ec2f18a4d3f86a32
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 529eebe2-01bc-4132-b2c7-46b1622d3e38
+  action: run
+  kind: check
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: Execute the approved Engineering ENG-UNIT check for the implemented due-date
+    change; preserve actual results, not approval or advancement.
+  expected_revision: 3586e1ef89cc68b5babf6844c1609a7448becab93e900ee490610264db8623a4
+  timestamp: '2026-10-29T17:02:59Z'
+  baseline_id: 8cd8b3618a4c5b2d3eb6073a4dc2f28bcb0a604c28e1ce16b614c8a6dee729cd
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: a22d8790-7812-402b-b6da-8ce2dc9efbfb
+  action: run
+  kind: check
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: Execute the approved Engineering ENG-STATIC check for the implemented
+    due-date change; preserve actual results, not approval or advancement.
+  expected_revision: 5e9c2a88bbed77251a14f3f33de03fb8c8cba8ec2929047536803e3b621fb936
+  timestamp: '2026-10-29T17:03:03Z'
+  baseline_id: d7165482c7534ccd62f89ff8c41ad0e1bb02b7baaea0d79179e9a0dfac36b9da
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: ecdf1ed7-6587-436b-b7c8-a6b22c77c779
+  action: run
+  kind: check
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: Execute approved ENG-UNIT after final Engineering refinements. Preserve
+    actual evidence; no approval or lifecycle advancement.
+  expected_revision: 077a03431d12ae167012dc59ce815fdda9d9372274b4e6217522f82b1f1c4b89
+  timestamp: '2026-10-29T17:05:09Z'
+  baseline_id: bea5e27c8fb0438dba740ae800e43a18b3b3fcba73da04bf000698c46f671aec
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 706bae56-3899-419a-9962-581d395dbb0a
+  action: run
+  kind: check
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: Execute approved ENG-STATIC after final Engineering refinements. Preserve
+    actual evidence; no approval or lifecycle advancement.
+  expected_revision: d8e270e95c997e95b2175e9aee6f5ebcd10651d44dedcae046ab45b35528e5d6
+  timestamp: '2026-10-29T17:05:13Z'
+  baseline_id: e6635c9a97fbb7c4b73f48193b6519940469c8ef7646a2d15256eccb69de4066
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: f3f8a088-ee6a-4363-96cb-bdbfcc9d6170
+  action: write
+  kind: implementation
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: AI-authored implementation and source-bound author review after the explicitly
+    authorized Development start and approved Plan. Present actual code/check evidence
+    for human code approval; no human approval or advancement is inferred.
+  expected_revision: 8a474ca1bfa573c53e6f5745f7603697213486ec87385e83d1c2995a04c39fa5
+  timestamp: '2026-10-29T17:06:49Z'
+  baseline_id: c6718055bb384664309173b74610e918ef3ba677dfe6ccdf5458f95dfad3adf8
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 0654d963-31ca-4df4-ae4a-30d8b5126cfd
+  action: approve
+  kind: implementation
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: $sdlc approve engineering
+  expected_revision: 726d8f6d9ce638986d6cbe2088e0d0844958d9c788a71a772c31c3984292a875
+  timestamp: '2026-10-29T17:09:32Z'
+  baseline_id: 144e7763e2c5638e9aeb3b925f599bea6d5d373fdea5cbfc1a42578b1f3622db
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05
+- operation_id: 8ed08b1e-09b6-4cf0-ad1c-7033c7a28650
+  action: advance
+  kind: implementation
+  actor: David Krzystek
+  identity_source: local_profile
+  decision: '`$sdlc advance engineering`'
+  expected_revision: 9c5ca3dbd6b75823b13bfe4fd32307311faa3e42d7e016a6c289b1eb13939ad3
+  timestamp: '2026-10-29T17:10:21Z'
+  baseline_id: 9cf0a16ce03633b86027bbbeb822e7d74769fa71597b91fb9a0bcff51005c741
+  cycle: faa97785-1068-4c72-9d78-e3683828ed05

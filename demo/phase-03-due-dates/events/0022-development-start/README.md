@@ -1,0 +1,3 @@
+# Development source freeze
+
+Explicit human command: $sdlc start engineering. Execution uses the approved five-task Engineering Plan. To avoid modifying source fingerprints during implementation and review, actual command outputs, unit/static results and code-review captures are retained under requirements/REQ-0001-littlelist-optional-task-due-dates/execution-capture/development-0022/ and native engineering-baselines/. This index is prepared before development-start. It claims no execution, approval or successful result. Use authoritative audit records and actual logs for current outcomes. No presentation changes may be made within demo/ during this source-bound run.

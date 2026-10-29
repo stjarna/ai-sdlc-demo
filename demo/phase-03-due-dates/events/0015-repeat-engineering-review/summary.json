@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-29T15:38:46.350807+00:00",
+  "user_commands": [
+    "$sdlc review",
+    "$sdlc approve"
+  ],
+  "selected_track": "engineering",
+  "stage": "technical_design",
+  "reviewed_design": "3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a",
+  "existing_approval_valid": true,
+  "new_approval_created": false,
+  "qa_approval_recorded": false,
+  "lifecycle_advanced": false,
+  "reason": "The selected Technical Design already has an effective approval; repeated short approval intent does not request a new signoff or select QA."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "05-create-request",
+  "started_at": "2026-10-29T14:59:13.747370+00:00",
+  "finished_at": "2026-10-29T14:59:13.880036+00:00",
+  "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "argv": [
+    "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+    "-B",
+    "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/sdlc.py",
+    "--project",
+    "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+    "new",
+    "--title",
+    "Littlelist optional task due dates",
+    "--idea",
+    "Littlelist users should be able to optionally assign a due date to a task, view that date in their task list and manage it when editing a task. Existing tasks without due dates must remain supported.",
+    "--expected-template-digest",
+    "e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f"
+  ],
+  "command": "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python -B /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/sdlc.py --project /Users/davidkrzystek/Development/Interview/ai-sdlc-demo new --title 'Littlelist optional task due dates' --idea 'Littlelist users should be able to optionally assign a due date to a task, view that date in their task list and manage it when editing a task. Existing tasks without due dates must remain supported.' --expected-template-digest e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f",
+  "exit_code": 0
+}

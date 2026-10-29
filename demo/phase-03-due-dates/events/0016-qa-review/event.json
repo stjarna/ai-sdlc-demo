@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-10-29T15:39:58.298075+00:00",
+  "user_command": "$sdlc review qa",
+  "selected_track": "qa",
+  "stage": "test_design",
+  "review_revision": "8cb02f29f0dc07f94c14fd2002752c47826e48f1f10bd96a302822caf4712fbf",
+  "documents": {
+    "strategy": "e049b646afc18713965788880e2636bc850ba6574a6c07025ac2a42b05769f1c",
+    "scenarios": "b26987cde4fc49dcca36cf35122a44a2e2b4e745fc04facba52be9d935c975df"
+  },
+  "approval_recorded": false,
+  "advanced": false,
+  "executed_tests": 0,
+  "next_decision": "Approve Test Strategy and Scenarios together or request changes."
+}

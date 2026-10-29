@@ -1,0 +1,1 @@
+Refresh the Implementation Plan against the current project fingerprint. Business requirements and Technical Design remain unchanged.

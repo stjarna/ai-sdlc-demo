@@ -1,3 +1,5 @@
+import { dateDraft, isOverdue, localCalendarDate } from './calendar-date.js';
+
 const $ = selector => document.querySelector(selector);
 const list = $('#task-list');
 const createForm = $('#create-form');
@@ -68,6 +70,12 @@ function render() {
       const description = document.createElement('p'); description.className = 'task-description';
       description.textContent = task.description; text.append(description);
     }
+    if (task.dueDate) {
+      const due = document.createElement('p'); due.className = 'task-due-date';
+      updateDateLabel(task, due);
+      row.classList.toggle('overdue', isOverdue(task));
+      text.append(due);
+    }
     const actions = document.createElement('div'); actions.className = 'task-actions';
     actions.append(actionButton('edit', `Edit details for “${task.title}”`, 'edit'), actionButton('delete', `Delete “${task.title}”`, 'trash', 'delete-button'));
     row.append(check, text, actions); fragment.append(row);
@@ -76,6 +84,21 @@ function render() {
   $('#empty-state').hidden = !loaded || visible.length > 0;
   const empty = !tasks.length ? ['A clear space. A fresh start.', 'Add your first task above. Small is a good place to start.'] : filter === 'completed' ? ['Good things take small steps.', 'Your completed tasks will appear here. Check one off when you’re ready.'] : ['A little lighter already.', 'You’ve cleared your active list. Enjoy the breathing room, or add something new.'];
   $('#empty-title').textContent = empty[0]; $('#empty-copy').textContent = empty[1];
+}
+function updateDateLabel(task, label) {
+  label.textContent = `Due ${task.dueDate}`;
+  if (isOverdue(task)) {
+    const badge = document.createElement('span'); badge.className = 'overdue-label';
+    badge.textContent = 'Overdue'; label.append(' ', badge);
+  }
+}
+function refreshDatePresentation() {
+  // Updating only date labels preserves focus and in-progress task interactions.
+  for (const row of list.querySelectorAll('[data-id]')) {
+    const task = tasks.find(item => item.id === row.dataset.id);
+    const label = row.querySelector('.task-due-date');
+    if (task && label) { updateDateLabel(task, label); row.classList.toggle('overdue', isOverdue(task)); }
+  }
 }
 function focusList(index = 0) {
   const checks = [...list.querySelectorAll('.task-check')];
@@ -98,10 +121,15 @@ createForm.addEventListener('submit', async event => {
     $('#new-title-error').textContent = 'A title is required.'; $('#new-title-error').hidden = false;
     $('#new-title').setAttribute('aria-invalid', 'true'); $('#new-title').focus(); return;
   }
+  const date = dateDraft($('#new-due-date').value, $('#new-due-date').validity);
+  if (!date.valid) {
+    showDateError('new', true); $('#new-due-date').focus(); return;
+  }
+  showDateError('new', false);
   const description = $('#new-description').value;
   const fields = [...createForm.querySelectorAll('input,textarea,button')]; fields.forEach(field => { field.disabled = true; });
   try {
-    const { task } = await api('', { method: 'POST', body: JSON.stringify({ title, description }) });
+    const { task } = await api('', { method: 'POST', body: JSON.stringify({ title, description, dueDate: date.value }) });
     tasks.unshift(task); createForm.reset(); $('#new-title-error').hidden = true;
     $('#new-title').removeAttribute('aria-invalid'); $('#new-description-section').hidden = true;
     $('#description-toggle').setAttribute('aria-expanded', 'false');
@@ -147,27 +175,55 @@ list.addEventListener('click', async event => {
   finally { pending.delete(task.id); button.removeAttribute('aria-disabled'); }
 });
 
-function draftValid() {
-  return editor && Boolean(editor.draft.title.trim()) && [...editor.draft.title.trim()].length <= 120 && [...editor.draft.description].length <= 2000;
+function showDateError(prefix, invalid) {
+  const field = $(`#${prefix}-due-date`), error = $(`#${prefix}-due-date-error`);
+  field.setAttribute('aria-invalid', String(invalid)); error.hidden = !invalid;
+  error.textContent = invalid ? 'Enter a valid calendar date, or use Clear due date. Your saved value is unchanged.' : '';
 }
-function dirty() { return editor && (editor.draft.title.trim() !== editor.saved.title || editor.draft.description.trim() !== editor.saved.description); }
+for (const prefix of ['new', 'edit']) {
+  $(`#${prefix}-type-date`).addEventListener('click', () => {
+    const field = $(`#${prefix}-due-date`);
+    if (field.validity.badInput) { showDateError(prefix, true); field.focus(); return; }
+    field.type = 'text'; field.placeholder = 'YYYY-MM-DD';
+    $(`#${prefix}-type-date`).hidden = true; field.focus();
+  });
+}
+$('#new-due-date').addEventListener('input' , () => {
+  showDateError('new', !dateDraft($('#new-due-date').value, $('#new-due-date').validity).valid);
+});
+$('#new-clear-date').addEventListener('click', () => {
+  $('#new-due-date').value = ''; showDateError('new', false); $('#new-due-date').focus();
+});
+
+function draftValid() {
+  return editor && editor.dateValid && Boolean(editor.draft.title.trim()) && [...editor.draft.title.trim()].length <= 120 && [...editor.draft.description].length <= 2000;
+}
+function dirty() { return editor && (editor.draft.title.trim() !== editor.saved.title || editor.draft.description.trim() !== editor.saved.description || editor.draft.dueDate !== editor.saved.dueDate || !editor.dateValid); }
 function editorStatus(message) { $('#edit-save-status').textContent = message; }
 function validateEditor() {
   const invalid = !editor.draft.title.trim();
   $('#edit-title-error').hidden = !invalid;
   $('#edit-title-error').textContent = invalid ? 'A title is required. Your previous saved title is unchanged.' : '';
   $('#edit-title').setAttribute('aria-invalid', String(invalid));
+  showDateError('edit', !editor.dateValid);
   $('#edit-done').disabled = !draftValid() || Boolean(editor.saving);
 }
 function openEditor(task) {
-  editor = { id: task.id, saved: { ...task }, draft: { title: task.title, description: task.description }, timer: null, saving: null };
+  editor = { id: task.id, saved: { ...task }, draft: { title: task.title, description: task.description, dueDate: task.dueDate }, dateValid: true, timer: null, saving: null };
+  $('#edit-due-date').value = task.dueDate ?? '';
+  if (task.dueDate && $('#edit-due-date').value !== task.dueDate) {
+    $('#edit-due-date').type = 'text'; $('#edit-due-date').placeholder = 'YYYY-MM-DD';
+    $('#edit-due-date').value = task.dueDate; $('#edit-type-date').hidden = true;
+  }
   $('#edit-title').value = task.title; $('#edit-description').value = task.description;
   $('#edit-error').hidden = true; $('#edit-cancel').disabled = false; $('#edit-close').disabled = false;
   validateEditor(); editorStatus('All changes saved'); editDialog.showModal(); $('#edit-title').focus();
 }
 function onDraftInput() {
   if (!editor) return;
-  editor.draft = { title: $('#edit-title').value, description: $('#edit-description').value };
+  const date = dateDraft($('#edit-due-date').value, $('#edit-due-date').validity);
+  editor.dateValid = date.valid;
+  editor.draft = { title: $('#edit-title').value, description: $('#edit-description').value, dueDate: date.value };
   clearTimeout(editor.timer); $('#edit-error').hidden = true; validateEditor();
   editorStatus(dirty() ? 'Unsaved draft' : 'All changes saved');
   if (draftValid() && dirty()) editor.timer = setTimeout(() => { void saveEditor(); }, 450);
@@ -178,7 +234,7 @@ async function saveEditor() {
   if (state.saving) { await state.saving; return editor === state ? saveEditor() : false; }
   if (!draftValid()) return false;
   if (!dirty()) return true;
-  const patch = { title: state.draft.title.trim(), description: state.draft.description.trim() };
+  const patch = { title: state.draft.title.trim(), description: state.draft.description.trim(), dueDate: state.draft.dueDate };
   editorStatus('Saving changes…'); $('#edit-cancel').disabled = true; $('#edit-close').disabled = true; $('#edit-done').disabled = true;
   let success = false;
   state.saving = (async () => {
@@ -205,15 +261,19 @@ function cancelEditor() {
 }
 $('#edit-title').addEventListener('input', onDraftInput);
 $('#edit-description').addEventListener('input', onDraftInput);
+$('#edit-due-date').addEventListener('input', onDraftInput);
+$('#edit-clear-date').addEventListener('click', () => {
+  $('#edit-due-date').value = ''; onDraftInput(); $('#edit-due-date').focus();
+});
 $('#edit-cancel').addEventListener('click', cancelEditor);
 $('#edit-close').addEventListener('click', cancelEditor);
 editDialog.addEventListener('cancel', event => { event.preventDefault(); cancelEditor(); });
 $('#edit-form').addEventListener('submit', async event => {
   event.preventDefault();
   if (!editor || !draftValid()) return;
-  $('#edit-title').disabled = true; $('#edit-description').disabled = true;
+  $('#edit-title').disabled = true; $('#edit-description').disabled = true; $('#edit-due-date').disabled = true; $('#edit-clear-date').disabled = true;
   try { if (await saveEditor()) cancelEditor(); }
-  finally { $('#edit-title').disabled = false; $('#edit-description').disabled = false; }
+  finally { $('#edit-title').disabled = false; $('#edit-description').disabled = false; $('#edit-due-date').disabled = false; $('#edit-clear-date').disabled = false; }
 });
 
 function openDelete(task) {
@@ -237,4 +297,21 @@ $('#delete-confirm').addEventListener('click', async () => {
   finally { $('#delete-confirm').disabled = false; $('#delete-cancel').disabled = false; }
 });
 $('#retry-load').addEventListener('click', load);
+let dayTimer;
+function scheduleDayRefresh() {
+  clearTimeout(dayTimer);
+  const now = new Date(), next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+  dayTimer = setTimeout(() => { refreshDatePresentation(); scheduleDayRefresh(); }, next.getTime() - now.getTime() + 50);
+}
+let displayedDay = localCalendarDate();
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') { refreshDatePresentation(); scheduleDayRefresh(); }
+});
+window.addEventListener('focus', () => { refreshDatePresentation(); scheduleDayRefresh(); });
+// Also notices clock/timezone changes while the app remains open.
+setInterval(() => {
+  const today = localCalendarDate();
+  if (today !== displayedDay) { displayedDay = today; refreshDatePresentation(); scheduleDayRefresh(); }
+}, 60_000);
+scheduleDayRefresh();
 await load();

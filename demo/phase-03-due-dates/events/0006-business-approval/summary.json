@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-10-29T15:13:24.728373+00:00",
+  "event": "Explicit human Business approval recorded; lifecycle unchanged",
+  "request_id": "REQ-0001",
+  "stage": "business_refinement",
+  "actor": "David Krzystek",
+  "identity_source": "local_profile",
+  "authenticated": false,
+  "decision_wording": "$sdlc approve",
+  "approved_business_revision": "5c2b9077ba4fd24dc9babc5fcd3ffe6fd29ae0971cb440e54d814af811deb6c9",
+  "approval": {
+    "status": "valid",
+    "valid": true,
+    "reasons": [],
+    "latest_decision": {
+      "id": "BD-0001",
+      "operation_id": "1d91b310-fdcc-4672-a02f-4a1c2c81c8e2",
+      "action": "approve",
+      "actor": "David Krzystek",
+      "reason": "Explicit short approval command following review of this exact Business specification; no unresolved items and no advancement authorization.",
+      "decision": "$sdlc approve",
+      "timestamp": "2026-10-29T15:13:23Z",
+      "identity_source": "local_profile",
+      "review_revision": "1ffdcc5fd502dd4d0eeaa7d96aca8643f48b6256f3193a69d7562fcf2969dc4b",
+      "business_revision": "5c2b9077ba4fd24dc9babc5fcd3ffe6fd29ae0971cb440e54d814af811deb6c9",
+      "business_operation_id": "7365e1f8-646f-4434-8eda-92727dbd3e21",
+      "source_revision": "c94b223731ca60b9267799c1adc2238a29d69b404cb8cc9349bc653a04fcc7d6",
+      "discovery_completion_id": "3d89def2-803e-4393-acdf-4db8e0d2c3f5",
+      "acknowledged_open_items": [],
+      "baseline_id": "76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e"
+    },
+    "can_advance": true,
+    "analysis_input": null
+  },
+  "baseline_path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/business-baselines/76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e",
+  "template": {
+    "id": "business",
+    "version": "1.0.0",
+    "digest": "e751d87744e2cd5e3881d3f5bd1b624d9fcd7a4b06336f41efdbb96a59645702",
+    "content_digest": "4f62a07aa6e955c8e142b8655beb9381a737c0877d4f045a4c1b2d822c1b9c20",
+    "validation_contract": "business.specification/1"
+  },
+  "runtime_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+  "unresolved_items": [],
+  "advanced": false,
+  "analysis_started": false,
+  "owner": "David Krzystek",
+  "assignment_status": "awaiting_assignment",
+  "application_and_prior_evidence_unchanged": true,
+  "next_human_decision": "Separate explicit authorization to advance to Functional Analysis readiness. No drafting authorized by approval alone.",
+  "tests": "Not run; no application changes. CLI baseline-integrity review and structural validation executed."
+}

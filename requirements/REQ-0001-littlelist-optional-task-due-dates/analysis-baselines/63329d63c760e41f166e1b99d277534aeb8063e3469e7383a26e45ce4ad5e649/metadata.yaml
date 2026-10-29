@@ -1,0 +1,129 @@
+schema_version: '0.4'
+id: REQ-0001
+title: Littlelist optional task due dates
+status: functional_analysis
+artifacts:
+  idea: idea.md
+ownership:
+  owner: David Krzystek
+  assignee: null
+  required_role: Business Analyst
+  assignment_status: awaiting_assignment
+  target_stage: functional_analysis
+  since: '2026-10-29T15:14:31Z'
+  history:
+  - operation_id: ownership-created
+    action: initialize
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T14:59:13Z'
+    expected_revision: null
+    from_owner: null
+    to_owner: David Krzystek
+    assignee: David Krzystek
+    required_role: Requester / Business Stakeholder
+    assignment_status: assigned
+    target_stage: discovery
+    lifecycle_id: null
+    decision: Initial accountability belongs to the declared requester.
+  - operation_id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T15:07:28Z'
+    expected_revision: aace6da02d66f27b0e0aba068d0de4cc8204d9a03bc42cab2ef02351ac64ac6f
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Product Owner
+    assignment_status: awaiting_assignment
+    target_stage: business_refinement
+    lifecycle_id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+    decision: I confirm that Discovery for REQ-0001 is complete. I explicitly authorize
+      the transition to Business Refinement readiness.
+  - operation_id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+    action: handoff
+    actor: David Krzystek
+    identity_source: local_profile
+    timestamp: '2026-10-29T15:14:31Z'
+    expected_revision: b51bfac524fbe750c0ad19daafa4d21e969ab4a2cd10d1fae296e60c4ebcfab6
+    from_owner: David Krzystek
+    to_owner: David Krzystek
+    assignee: null
+    required_role: Business Analyst
+    assignment_status: awaiting_assignment
+    target_stage: functional_analysis
+    lifecycle_id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+    decision: $sdlc advance
+template_provenance:
+  schema_version: '0.1'
+  idea:
+    id: idea
+    version: 1.0.0
+    digest: e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f
+    content_digest: d4492c9487fcd5d6c4690f342e7f7d6d391493fae13cfc180c6ea5905ace02bb
+    validation_contract: discovery.idea/1
+lifecycle:
+- id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+  action: complete
+  from: discovery
+  to: ready_for_refinement
+  base_revision: aace6da02d66f27b0e0aba068d0de4cc8204d9a03bc42cab2ef02351ac64ac6f
+  actor: David Krzystek
+  decision: I confirm that Discovery for REQ-0001 is complete. I explicitly authorize
+    the transition to Business Refinement readiness.
+  timestamp: '2026-10-29T15:07:28Z'
+  identity_source: local_profile
+- id: 7365e1f8-646f-4434-8eda-92727dbd3e21
+  action: refine
+  from: ready_for_refinement
+  to: business_refinement
+  base_revision: 975de366a822dba605a241bd02fdceb5c017f9531e169837061cf6f35adcab1d
+  actor: AI SDLC Assistant (AI-authored draft)
+  decision: User authorized drafting from completed Discovery; no Business approval
+    or further advancement authorized.
+  timestamp: '2026-10-29T15:07:48Z'
+- id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+  action: advance
+  from: business_refinement
+  to: ready_for_analysis
+  base_revision: b51bfac524fbe750c0ad19daafa4d21e969ab4a2cd10d1fae296e60c4ebcfab6
+  actor: David Krzystek
+  decision: $sdlc advance
+  timestamp: '2026-10-29T15:14:31Z'
+  identity_source: local_profile
+  review_revision: 7a26ac59ca0b582da60d00cf9c1db005850604d8d2917f7cb4a3d2c731da2f7a
+  business_revision: 5c2b9077ba4fd24dc9babc5fcd3ffe6fd29ae0971cb440e54d814af811deb6c9
+  approval_id: BD-0001
+  baseline_id: 76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e
+- id: 2e251edc-ad99-477d-a48d-ee6f6551b9f5
+  action: analyze
+  from: ready_for_analysis
+  to: functional_analysis
+  base_revision: 187ffd106cc57a2f6258120025733c60ce4affb0aef631014dc03ca787a1c7d5
+  actor: AI SDLC Assistant (AI-authored Functional Analysis)
+  decision: Explicit $sdlc start; draft only from active immutable approved Business
+    baseline. No Analysis approval or further advancement.
+  timestamp: '2026-10-29T15:16:59Z'
+  review_revision: c49361edb2025e001c2b053c206af208ed2d8a49163e6801c55f845a4191cd8d
+  business_revision: 5c2b9077ba4fd24dc9babc5fcd3ffe6fd29ae0971cb440e54d814af811deb6c9
+  baseline_id: 76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e
+  approval_id: BD-0001
+  handoff_id: 4d98af74-7793-4ab1-85b1-c822a7192d3e
+business_decisions:
+- id: BD-0001
+  operation_id: 1d91b310-fdcc-4672-a02f-4a1c2c81c8e2
+  action: approve
+  actor: David Krzystek
+  reason: Explicit short approval command following review of this exact Business
+    specification; no unresolved items and no advancement authorization.
+  decision: $sdlc approve
+  timestamp: '2026-10-29T15:13:23Z'
+  identity_source: local_profile
+  review_revision: 1ffdcc5fd502dd4d0eeaa7d96aca8643f48b6256f3193a69d7562fcf2969dc4b
+  business_revision: 5c2b9077ba4fd24dc9babc5fcd3ffe6fd29ae0971cb440e54d814af811deb6c9
+  business_operation_id: 7365e1f8-646f-4434-8eda-92727dbd3e21
+  source_revision: c94b223731ca60b9267799c1adc2238a29d69b404cb8cc9349bc653a04fcc7d6
+  discovery_completion_id: 3d89def2-803e-4393-acdf-4db8e0d2c3f5
+  acknowledged_open_items: []
+  baseline_id: 76f0b3fbf7a093a9633e5ca10b3fc396174bde50e728c4d251ac02a03942250e

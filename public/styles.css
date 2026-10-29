@@ -935,3 +935,15 @@
                                                                                                                                                                                                                                                                                                                                                                                                                       width:40px;
                                                                                                                                                                                                                                                                                                                                                                                                                       min-height:44px}
                                                                                                                                                                                                                                                                                                                                                                                                                     }
+
+/* Date-only controls and status, retaining the existing task layout. */
+.due-date-field { margin-top:16px; min-width:0; }
+.compose-due-date { padding:0 20px 4px; }
+.due-date-field label { display:block; font-size:12px; margin-bottom:8px; }
+.due-date-controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center; min-width:0; }
+.due-date-controls input[type=date] { width:190px; max-width:100%; min-width:0; box-sizing:border-box; padding:10px 12px; border:1px solid #d9ddd7; border-radius:8px; background:#fff; color:#283a32; font:inherit; }
+.due-date-controls input[aria-invalid=true] { border-color:#a35036; }
+.task-due-date { margin:7px 0 0; font-size:12px; color:#62756b; overflow-wrap:anywhere; }
+.overdue-label { display:inline-block; margin-left:6px; padding:2px 7px; border-radius:12px; background:#f9ede2; color:#865323; font-size:11px; font-weight:600; }
+.completed .task-due-date { color:#7c8982; }
+@media(max-width:740px) { .compose-due-date { padding-inline:16px; } .due-date-controls button { min-height:44px; } }

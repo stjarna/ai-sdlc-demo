@@ -10,7 +10,7 @@ function fixture(t) { const store = createTaskStore(':memory:'); t.after(() => s
 
 test('creates an unfinished task with optional description and opaque stable identity', t => {
   const store = fixture(t); const task = store.create({ title: '  Read a chapter  ' });
-  assert.match(task.id, /^[0-9a-f-]{36}$/); assert.deepEqual(task, { id: task.id, title: 'Read a chapter', description: '', completed: false });
+  assert.match(task.id, /^[0-9a-f-]{36}$/); assert.deepEqual(task, { id: task.id, title: 'Read a chapter', description: '', completed: false, dueDate: null });
   assert.deepEqual(store.get(task.id), task);
 });
 test('newest-created tasks remain first when older tasks are edited', t => {
@@ -21,7 +21,7 @@ test('updates title and multiline description while retaining identity and compl
   const store = fixture(t); const original = store.create({ title: 'Initial', description: 'Original' });
   store.update(original.id, { completed: true });
   const updated = store.update(original.id, { title: 'Updated', description: 'First line\nSecond line' });
-  assert.deepEqual(updated, { id: original.id, title: 'Updated', description: 'First line\nSecond line', completed: true });
+  assert.deepEqual(updated, { id: original.id, title: 'Updated', description: 'First line\nSecond line', completed: true, dueDate: null });
 });
 test('completion is reversible without extra state transitions', t => {
   const store = fixture(t); const task = store.create({ title: 'Small step' });

@@ -1,0 +1,351 @@
+{
+  "content": "# Test Scenarios \u2014 REQ-0001\n\n## Authority\n\nAI-authored QA draft from approved Functional Analysis baseline 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649 and explicit advancement faa97785-1068-4c72-9d78-e3683828ed05. The approved Business dependency is retained through that baseline. Testing skill 1.3.0, digest 86975e0917f3db19923051aeee52c367b1b5c9ceac62985190cd4a2f0594de1f. Product expectations derive only from approved FR/AC items; no Technical Design, implementation plan or prototype supplies expected outcomes. Scope: all 7 FRs and 15 ACs, local single-user Littlelist due dates and existing CRUD compatibility. No inherited unresolved items, excluded approved requirements or prototype limitations exist in this Analysis.\n\n## Scenarios\n\n### TC-001 \u2014 Create without a due date\nReferences: FR-001, AC-001\nStatus: specified; not automated or executed.\nPreconditions: A user is creating a task with a valid title.\nAction: The user leaves the due date empty and creates the task.\nExpected: The task is saved without a due date and remains usable.\n\n### TC-002 \u2014 Past, today and future dates are accepted\nReferences: FR-001, FR-003, AC-002\nStatus: specified; not automated or executed.\nPreconditions: A user creates or edits a task and supplies a valid calendar date before, on or after device-local today.\nAction: The task or date change is saved.\nExpected: The selected date is accepted in all three cases; being past is never itself a rejection reason.\n\n### TC-003 \u2014 Assigned date visible in task list\nReferences: FR-001, AC-003\nStatus: specified; not automated or executed.\nPreconditions: A task has a saved due date.\nAction: The user views the task list.\nExpected: The assigned calendar date is clearly visible for that task.\n\n### TC-004 \u2014 Change an existing date\nReferences: FR-002, AC-004\nStatus: specified; not automated or executed.\nPreconditions: An existing task has a saved due date.\nAction: The user selects another valid date and existing autosave completes.\nExpected: The new date replaces the old date and is shown in the list.\n\n### TC-005 \u2014 Clear an existing date\nReferences: FR-002, AC-005\nStatus: specified; not automated or executed.\nPreconditions: A task has a saved due date.\nAction: The user clears it and existing autosave completes.\nExpected: The date is removed; the task remains usable without a date and has no overdue indication.\n\n### TC-006 \u2014 Invalid calendar draft preserves saved value\nReferences: FR-003, AC-006\nStatus: specified; not automated or executed.\nPreconditions: A task has a last valid saved due date.\nAction: The user attempts to save an impossible calendar date.\nExpected: The invalid date is rejected and the last valid saved date remains unchanged.\n\n### TC-007 \u2014 No timezone-related date shift\nReferences: FR-003, AC-007\nStatus: specified; not automated or executed.\nPreconditions: A user selects a calendar date on a device with a local timezone different from UTC.\nAction: The date is saved and the task is viewed or reopened after restart.\nExpected: The same selected calendar date is displayed without shifting it through timezone conversion.\n\n### TC-008 \u2014 Past unfinished task is overdue\nReferences: FR-004, AC-008\nStatus: specified; not automated or executed.\nPreconditions: An unfinished task has a due date earlier than device-local today.\nAction: The user views the task list.\nExpected: The task shows an explicit Overdue label and subtle warning styling without changing task ordering.\n\n### TC-009 \u2014 Today, future and undated tasks are not overdue\nReferences: FR-004, AC-009\nStatus: specified; not automated or executed.\nPreconditions: Unfinished tasks have dates equal to today, after today, or no due date.\nAction: The user views the task list.\nExpected: None of these tasks shows overdue emphasis; ordering remains unchanged.\n\n### TC-010 \u2014 Complete and reopen a dated task\nReferences: FR-005, AC-010\nStatus: specified; not automated or executed.\nPreconditions: An unfinished dated task is overdue.\nAction: The user completes it and later reopens it.\nExpected: Completion retains the date and removes overdue emphasis; reopening restores it if the date is still before local today.\n\n### TC-011 \u2014 Cancel unsaved draft retains saved changes\nReferences: FR-002, AC-011\nStatus: specified; not automated or executed.\nPreconditions: A date change has already autosaved and the user then makes an unsaved or invalid date draft.\nAction: The user cancels the draft.\nExpected: Only that draft is discarded; the most recently autosaved date or saved cleared state remains.\n\n### TC-012 \u2014 Dates and cleared state persist across restart\nReferences: FR-006, AC-012\nStatus: specified; not automated or executed.\nPreconditions: Tasks include an assigned date, a changed date and a cleared date.\nAction: The application is stopped and restarted.\nExpected: Each saved date or cleared state is retained for its task.\n\n### TC-013 \u2014 Existing undated task compatibility\nReferences: FR-006, AC-013\nStatus: specified; not automated or executed.\nPreconditions: Existing task data was created by the original CRUD application with no due-date fields.\nAction: The extended application opens that data.\nExpected: Existing titles, descriptions and completion states remain intact and the tasks have no due date.\n\n### TC-014 \u2014 Original CRUD and completion regression\nReferences: FR-006, AC-014\nStatus: specified; not automated or executed.\nPreconditions: Existing tasks and newly created tasks include dated and undated examples.\nAction: The user creates, reads, edits, completes, reopens and confirms deletion of tasks.\nExpected: The existing CRUD/completion behavior remains operational, including title validation and deletion confirmation.\n\n### TC-015 \u2014 Consistent usable date controls\nReferences: FR-007, AC-015\nStatus: specified; not automated or executed.\nPreconditions: The user operates Littlelist in its existing desktop or phone layout.\nAction: The user creates or edits a date and views its display and validation state.\nExpected: Date controls and messages remain readable and usable, visually consistent with the existing Littlelist layout.\n\n### TC-016 \u2014 Past, today and future dates are accepted\nReferences: FR-001, FR-003, AC-002\nStatus: specified; not automated or executed.\nPreconditions: Run with a controlled device-local today and a task without a date.\nAction: Create and edit tasks using yesterday, today and tomorrow, independently through the actual UI and the supported integration boundary.\nExpected: All valid dates are accepted and remain the selected calendar dates. No minimum-today restriction prevents past-date entry.\n\n### TC-017 \u2014 Invalid calendar draft preserves saved value\nReferences: FR-003, AC-006\nStatus: specified; not automated or executed.\nPreconditions: An existing task has a valid saved due date. Use controlled fixtures containing 2024-02-29, 2025-02-29 and 2024-02-30.\nAction: Save the valid leap-day value, then attempt impossible February dates through the supported data-entry and integration boundary.\nExpected: The valid leap day saves. Impossible dates do not replace it. Validation communicates failure rather than claiming a save.\n\n### TC-018 \u2014 No timezone-related date shift\nReferences: FR-003, AC-007\nStatus: specified; not automated or executed.\nPreconditions: Run equivalent date-entry fixtures in device timezones Pacific/Kiritimati and America/Los_Angeles, with the same selected calendar date.\nAction: Create, save, reload and edit the date, including a fixture near a daylight-saving transition.\nExpected: The selected calendar date never shifts forward or backward because of timezone conversion; no time-of-day meaning is introduced.\n\n### TC-019 \u2014 Past unfinished task is overdue\nReferences: FR-004, AC-008\nStatus: specified; not automated or executed.\nPreconditions: Use two unfinished task fixtures around a controlled local year boundary: 31 December and 1 January.\nAction: View the task list on 1 January device-local today.\nExpected: 31 December is overdue; 1 January is not. Existing creation order remains unchanged.\n\n### TC-020 \u2014 Today, future and undated tasks are not overdue\nReferences: FR-004, AC-009\nStatus: specified; not automated or executed.\nPreconditions: A task is due on device-local today; the test clock can advance to the following local day.\nAction: View the list before midnight, advance the controlled local calendar day, then view the list again.\nExpected: The date remains unchanged. It is not overdue on its due day and is overdue when viewed as unfinished the next day; no requirement for a background timer is invented.\n\n### TC-021 \u2014 Complete and reopen a dated task\nReferences: FR-005, AC-010\nStatus: specified; not automated or executed.\nPreconditions: A task has a past due date and can be shown in the existing Active, Completed and All views.\nAction: Complete it, inspect the completed task date, reopen it and inspect its overdue state.\nExpected: The date is retained across completion and reopening. Completed presentation has no overdue emphasis; reopening restores it without reordering.\n\n### TC-022 \u2014 Cancel unsaved draft retains saved changes\nReferences: FR-002, AC-011\nStatus: specified; not automated or executed.\nPreconditions: A task has an autosaved date change; separately exercise a task whose date was already cleared and saved.\nAction: Enter an unsaved valid date draft or an invalid draft and cancel before it is saved.\nExpected: The latest saved changed date or cleared state is preserved. Cancel does not restore an older date or save the draft.\n\n### TC-023 \u2014 Dates and cleared state persist across restart\nReferences: FR-006, AC-012\nStatus: specified; not automated or executed.\nPreconditions: Prepare dated and cleared tasks with active/completed states using an isolated database.\nAction: Stop the actual application process, restart with the same database, and inspect the saved task states through the UI and integration boundary.\nExpected: Each date or absence of date, along with existing task identity/content/completion, survives restart. No personal database is used.\n\n## Coverage and unresolved items\n\nAll 22 active FR/AC items have planned scenario coverage; 23 specified scenarios, none executed. Structured coverage disposition implemented means specified scenario coverage, not implemented automation or passed tests. No blocked, excluded or unresolved items; no authorized limitations. A new upstream Analysis cycle requires explicit impact reconciliation.\n\n## Test data\n\n<!-- Optional section; omit when not applicable. -->\n\nFictional tasks, controlled device-local today, yesterday/today/tomorrow, month/year boundaries, valid and invalid February dates, positive/negative UTC offset and DST fixtures, active/completed and dated/undated tasks, saved/unsaved/invalid drafts, isolated SQLite-compatible legacy task records. Exact automation mechanics follow approved interfaces; no product date range restriction is introduced.\n",
+  "coverage": {
+    "FR-001": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-001, TC-002, TC-003, TC-016. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-002": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-004, TC-005, TC-011, TC-022. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-003": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-002, TC-006, TC-007, TC-016, TC-017, TC-018. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-004": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-008, TC-009, TC-019, TC-020. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-005": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-010, TC-021. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-006": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-012, TC-013, TC-014, TC-023. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-007": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-015. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-001": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-001. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-002": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-002, TC-016. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-003": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-003. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-004": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-004. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-005": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-005. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-006": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-006, TC-017. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-007": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-007, TC-018. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-008": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-008, TC-019. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-009": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-009, TC-020. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-010": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-010, TC-021. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-011": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-011, TC-022. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-012": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-012, TC-023. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-013": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-013. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-014": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-014. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-015": {
+      "disposition": "implemented",
+      "reason": "Planned specified scenario coverage: TC-015. This means scenario coverage only; automation and execution are not performed."
+    }
+  },
+  "unresolved": [],
+  "cases": [
+    {
+      "id": "TC-001",
+      "requirements": [
+        "FR-001",
+        "AC-001"
+      ],
+      "preconditions": "A user is creating a task with a valid title.",
+      "action": "The user leaves the due date empty and creates the task.",
+      "expected": "The task is saved without a due date and remains usable.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-002",
+      "requirements": [
+        "FR-001",
+        "FR-003",
+        "AC-002"
+      ],
+      "preconditions": "A user creates or edits a task and supplies a valid calendar date before, on or after device-local today.",
+      "action": "The task or date change is saved.",
+      "expected": "The selected date is accepted in all three cases; being past is never itself a rejection reason.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-003",
+      "requirements": [
+        "FR-001",
+        "AC-003"
+      ],
+      "preconditions": "A task has a saved due date.",
+      "action": "The user views the task list.",
+      "expected": "The assigned calendar date is clearly visible for that task.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-004",
+      "requirements": [
+        "FR-002",
+        "AC-004"
+      ],
+      "preconditions": "An existing task has a saved due date.",
+      "action": "The user selects another valid date and existing autosave completes.",
+      "expected": "The new date replaces the old date and is shown in the list.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-005",
+      "requirements": [
+        "FR-002",
+        "AC-005"
+      ],
+      "preconditions": "A task has a saved due date.",
+      "action": "The user clears it and existing autosave completes.",
+      "expected": "The date is removed; the task remains usable without a date and has no overdue indication.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-006",
+      "requirements": [
+        "FR-003",
+        "AC-006"
+      ],
+      "preconditions": "A task has a last valid saved due date.",
+      "action": "The user attempts to save an impossible calendar date.",
+      "expected": "The invalid date is rejected and the last valid saved date remains unchanged.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-007",
+      "requirements": [
+        "FR-003",
+        "AC-007"
+      ],
+      "preconditions": "A user selects a calendar date on a device with a local timezone different from UTC.",
+      "action": "The date is saved and the task is viewed or reopened after restart.",
+      "expected": "The same selected calendar date is displayed without shifting it through timezone conversion.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-008",
+      "requirements": [
+        "FR-004",
+        "AC-008"
+      ],
+      "preconditions": "An unfinished task has a due date earlier than device-local today.",
+      "action": "The user views the task list.",
+      "expected": "The task shows an explicit Overdue label and subtle warning styling without changing task ordering.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-009",
+      "requirements": [
+        "FR-004",
+        "AC-009"
+      ],
+      "preconditions": "Unfinished tasks have dates equal to today, after today, or no due date.",
+      "action": "The user views the task list.",
+      "expected": "None of these tasks shows overdue emphasis; ordering remains unchanged.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-010",
+      "requirements": [
+        "FR-005",
+        "AC-010"
+      ],
+      "preconditions": "An unfinished dated task is overdue.",
+      "action": "The user completes it and later reopens it.",
+      "expected": "Completion retains the date and removes overdue emphasis; reopening restores it if the date is still before local today.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-011",
+      "requirements": [
+        "FR-002",
+        "AC-011"
+      ],
+      "preconditions": "A date change has already autosaved and the user then makes an unsaved or invalid date draft.",
+      "action": "The user cancels the draft.",
+      "expected": "Only that draft is discarded; the most recently autosaved date or saved cleared state remains.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-012",
+      "requirements": [
+        "FR-006",
+        "AC-012"
+      ],
+      "preconditions": "Tasks include an assigned date, a changed date and a cleared date.",
+      "action": "The application is stopped and restarted.",
+      "expected": "Each saved date or cleared state is retained for its task.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-013",
+      "requirements": [
+        "FR-006",
+        "AC-013"
+      ],
+      "preconditions": "Existing task data was created by the original CRUD application with no due-date fields.",
+      "action": "The extended application opens that data.",
+      "expected": "Existing titles, descriptions and completion states remain intact and the tasks have no due date.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-014",
+      "requirements": [
+        "FR-006",
+        "AC-014"
+      ],
+      "preconditions": "Existing tasks and newly created tasks include dated and undated examples.",
+      "action": "The user creates, reads, edits, completes, reopens and confirms deletion of tasks.",
+      "expected": "The existing CRUD/completion behavior remains operational, including title validation and deletion confirmation.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-015",
+      "requirements": [
+        "FR-007",
+        "AC-015"
+      ],
+      "preconditions": "The user operates Littlelist in its existing desktop or phone layout.",
+      "action": "The user creates or edits a date and views its display and validation state.",
+      "expected": "Date controls and messages remain readable and usable, visually consistent with the existing Littlelist layout.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-016",
+      "requirements": [
+        "FR-001",
+        "FR-003",
+        "AC-002"
+      ],
+      "preconditions": "Run with a controlled device-local today and a task without a date.",
+      "action": "Create and edit tasks using yesterday, today and tomorrow, independently through the actual UI and the supported integration boundary.",
+      "expected": "All valid dates are accepted and remain the selected calendar dates. No minimum-today restriction prevents past-date entry.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-017",
+      "requirements": [
+        "FR-003",
+        "AC-006"
+      ],
+      "preconditions": "An existing task has a valid saved due date. Use controlled fixtures containing 2024-02-29, 2025-02-29 and 2024-02-30.",
+      "action": "Save the valid leap-day value, then attempt impossible February dates through the supported data-entry and integration boundary.",
+      "expected": "The valid leap day saves. Impossible dates do not replace it. Validation communicates failure rather than claiming a save.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-018",
+      "requirements": [
+        "FR-003",
+        "AC-007"
+      ],
+      "preconditions": "Run equivalent date-entry fixtures in device timezones Pacific/Kiritimati and America/Los_Angeles, with the same selected calendar date.",
+      "action": "Create, save, reload and edit the date, including a fixture near a daylight-saving transition.",
+      "expected": "The selected calendar date never shifts forward or backward because of timezone conversion; no time-of-day meaning is introduced.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-019",
+      "requirements": [
+        "FR-004",
+        "AC-008"
+      ],
+      "preconditions": "Use two unfinished task fixtures around a controlled local year boundary: 31 December and 1 January.",
+      "action": "View the task list on 1 January device-local today.",
+      "expected": "31 December is overdue; 1 January is not. Existing creation order remains unchanged.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-020",
+      "requirements": [
+        "FR-004",
+        "AC-009"
+      ],
+      "preconditions": "A task is due on device-local today; the test clock can advance to the following local day.",
+      "action": "View the list before midnight, advance the controlled local calendar day, then view the list again.",
+      "expected": "The date remains unchanged. It is not overdue on its due day and is overdue when viewed as unfinished the next day; no requirement for a background timer is invented.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-021",
+      "requirements": [
+        "FR-005",
+        "AC-010"
+      ],
+      "preconditions": "A task has a past due date and can be shown in the existing Active, Completed and All views.",
+      "action": "Complete it, inspect the completed task date, reopen it and inspect its overdue state.",
+      "expected": "The date is retained across completion and reopening. Completed presentation has no overdue emphasis; reopening restores it without reordering.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-022",
+      "requirements": [
+        "FR-002",
+        "AC-011"
+      ],
+      "preconditions": "A task has an autosaved date change; separately exercise a task whose date was already cleared and saved.",
+      "action": "Enter an unsaved valid date draft or an invalid draft and cancel before it is saved.",
+      "expected": "The latest saved changed date or cleared state is preserved. Cancel does not restore an older date or save the draft.",
+      "status": "specified"
+    },
+    {
+      "id": "TC-023",
+      "requirements": [
+        "FR-006",
+        "AC-012"
+      ],
+      "preconditions": "Prepare dated and cleared tasks with active/completed states using an isolated database.",
+      "action": "Stop the actual application process, restart with the same database, and inspect the saved task states through the UI and integration boundary.",
+      "expected": "Each date or absence of date, along with existing task identity/content/completion, survives restart. No personal database is used.",
+      "status": "specified"
+    }
+  ]
+}

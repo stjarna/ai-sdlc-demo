@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-10-29T15:45:43.398200+00:00",
+  "event": "Explicit Engineering start drafted Implementation Plan",
+  "user_command": "$sdlc start engineering",
+  "request_id": "REQ-0001",
+  "stage": "implementation_planning",
+  "actor": "David Krzystek",
+  "identity_source": "local_profile",
+  "author": "AI SDLC Assistant",
+  "runtime_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+  "development_skill": {
+    "name": "development",
+    "description": "Development expertise for independently owned Engineering and QA work tracks.",
+    "version": "1.3.0",
+    "owner": "Engineering Enablement",
+    "stages": [
+      "implementation_planning",
+      "development"
+    ],
+    "inputs": [
+      "Approved Technical Design",
+      "Approved implementation plan"
+    ],
+    "outputs": [
+      "Engineering Implementation Plan",
+      "Code and unit tests",
+      "Build and code-review evidence"
+    ],
+    "standards": [
+      "Project coding conventions",
+      "Human code review"
+    ],
+    "dependencies": {},
+    "schema_version": "0.2",
+    "validation_contract": "sdlc-domain/1",
+    "digest": "fbae39f676cddab88b6b43a74f30df67f6797382ee6f539c2e0546510c119750",
+    "path": "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/domain-skills/development"
+  },
+  "template": {
+    "id": "implementation-plan",
+    "version": "1.0.0",
+    "digest": "4413a6b2b15677cee4b71336454fe622b845757cb1694810f1b65f4bf911f4cb",
+    "content_digest": "e5a3af3058215208b141ef31487426f5b99d442bde88006ff20f9717f20cfff4",
+    "validation_contract": "engineering.plan/1"
+  },
+  "design_baseline": "3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a",
+  "tasks": 5,
+  "named_checks": [
+    {
+      "id": "ENG-UNIT",
+      "category": "unit",
+      "argv": [
+        "npm",
+        "run",
+        "test:unit"
+      ],
+      "cwd": ".",
+      "timeout": 120,
+      "requirements": [
+        "FR-001",
+        "FR-002",
+        "FR-003",
+        "FR-004",
+        "FR-005",
+        "FR-006"
+      ],
+      "scenario": "Execute actual developer unit tests for calendar/date-draft semantics and store persistence/migration/regression. This verifies computational/store behavior, not complete UI or HTTP acceptance. No QA execution is implied.",
+      "limitations": []
+    },
+    {
+      "id": "ENG-STATIC",
+      "category": "build",
+      "argv": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "cwd": ".",
+      "timeout": 120,
+      "requirements": [
+        "FR-001",
+        "FR-002",
+        "FR-003",
+        "FR-004",
+        "FR-005",
+        "FR-006",
+        "FR-007"
+      ],
+      "scenario": "Run the existing no-bundler JavaScript syntax and local-asset reference check. This is the project build/static check, not a claim of browser usability or functional acceptance.",
+      "limitations": []
+    }
+  ],
+  "covered_fr_ac_items": 22,
+  "unresolved": [],
+  "limitations": [],
+  "plan_approved": false,
+  "implementation_started": false,
+  "qa_unchanged": true,
+  "application_and_prior_committed_evidence_unchanged": true,
+  "executed_tests": 0,
+  "next_human_decision": "Approve Engineering-only Implementation Plan or request changes; advancement and development start remain separate."
+}

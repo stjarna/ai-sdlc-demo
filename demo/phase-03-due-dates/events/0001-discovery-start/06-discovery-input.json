@@ -1,0 +1,74 @@
+{
+  "records": [
+    {
+      "kind": "user_statement",
+      "topic": "business_need",
+      "text": "Littlelist users should be able to optionally assign a due date to a task, view that date in their task list and manage it when editing a task. Existing tasks without due dates must remain supported.",
+      "source": {
+        "actor": "user",
+        "quote": "Littlelist users should be able to optionally assign a due date to a task, view that date in their task list and manage it when editing a task. Existing tasks without due dates must remain supported."
+      }
+    },
+    {
+      "kind": "user_statement",
+      "topic": "due_date_management",
+      "text": "Due dates are optional. Users can assign one during creation or editing, see it clearly, and change or remove it later.",
+      "source": {
+        "actor": "user",
+        "quote": "- Optional due dates.\n- Assigning a due date when creating or editing tasks.\n- Displaying assigned dates clearly.\n- Changing or removing previously assigned dates."
+      }
+    },
+    {
+      "kind": "user_statement",
+      "topic": "regression_scope",
+      "text": "Existing tasks without dates and existing CRUD/completion behavior must continue working.",
+      "source": {
+        "actor": "user",
+        "quote": "- Preserving tasks that have no due date.\n- Preserving existing CRUD and completion behavior."
+      }
+    },
+    {
+      "kind": "user_statement",
+      "topic": "persistence",
+      "text": "Assigned due dates persist across application restarts.",
+      "source": {
+        "actor": "user",
+        "quote": "- Persisting due dates across application restarts."
+      }
+    },
+    {
+      "kind": "user_statement",
+      "topic": "experience",
+      "text": "The feature should be intuitive and visually polished, consistent with Littlelist.",
+      "source": {
+        "actor": "user",
+        "quote": "- An intuitive and visually polished experience consistent with Littlelist."
+      }
+    },
+    {
+      "kind": "user_statement",
+      "topic": "scope",
+      "text": "Keep the change appropriately scoped for a local single-user demonstrator.",
+      "source": {
+        "actor": "user",
+        "quote": "Keep the feature appropriately scoped for a local single-user demonstrator."
+      }
+    },
+    {
+      "kind": "ai_assumption",
+      "topic": "permitted_dates",
+      "text": "Proposed policy, awaiting human confirmation: permit any valid calendar date, including today and past dates. This does not yet define overdue presentation or calendar-date interpretation.",
+      "source": {
+        "actor": "ai"
+      }
+    },
+    {
+      "kind": "question",
+      "topic": "permitted_dates",
+      "text": "Should users be allowed to assign a valid calendar date in the past, as well as today or a future date? I recommend allowing all three; this avoids preventing users from recording tasks that are already overdue.",
+      "source": {
+        "actor": "ai"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Fix the mobile test interaction without changing the approved scenario or expected behavior.

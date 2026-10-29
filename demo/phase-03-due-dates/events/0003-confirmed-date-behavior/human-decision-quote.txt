@@ -1,0 +1,10 @@
+I confirm all four proposed defaults as my explicit business decisions:
+
+- Overdue: unfinished tasks with due dates before today display an "Overdue" label and subtle warning styling. Today is not overdue. Existing task ordering remains unchanged.
+- Date interpretation: use calendar dates in the device's local calendar without timezone-related date shifts. Invalid dates must be rejected without overwriting the last valid saved value.
+- Completed tasks: retain their due dates without overdue emphasis. Reopening restores the overdue indication when applicable.
+- Editing and clearing: follow the existing autosave behavior. Clearing a due date is supported. Cancel discards only unsaved or invalid drafts; previously saved changes remain.
+
+Please persist these decisions with the correct human attribution and continue the governed Discovery workflow. Do not treat this confirmation as approval of any subsequent artifact or lifecycle advancement.
+
+Continue autonomously wherever allowed and pause only for mandatory human decisions or approvals.

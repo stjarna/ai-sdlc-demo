@@ -1,6 +1,6 @@
 # Littlelist
 
-A calm, responsive personal task list. This standalone CRUD application is the **BEFORE** baseline for a future existing-project SDLC adoption demonstration. No SDLC Orchestrator is installed or invoked by this application.
+A calm, responsive personal task list. The original **BEFORE** CRUD baseline is preserved at `baseline-crud`. The current governed change adds optional task due dates; the SDLC runtime remains external to the application. See [due-date behavior and migration](docs/due-dates.md).
 
 ![Desktop task list](demo/before/desktop-tasks.png)
 
@@ -32,7 +32,7 @@ Relative database overrides resolve from the application root. `.env.example` do
 - Empty titles show validation and retain the last saved value. **Cancel draft discards only unsaved/invalid edits; already autosaved changes remain saved.**
 - Delete active or completed tasks after confirmation.
 
-There are **no due dates, reminders, date fields, priorities, tags, multiple lists, accounts, synchronization or analytics**. See [behavior and architecture](docs/baseline.md) for implementation choices and limits.
+Due dates are optional: create, change or clear any valid calendar date, including past dates. Unfinished tasks before today in your device’s local calendar show **Overdue**; today is not overdue. Completed tasks retain their dates without warning emphasis. There are no reminders, priorities, tags, multiple lists, accounts, synchronization or analytics. See [behavior and architecture](docs/baseline.md) for implementation choices and limits.
 
 ## Execute tests
 

@@ -98,14 +98,15 @@ test('failed autosave is visible and does not pretend that the draft was persist
   await page.getByRole('button',{ name:'Cancel draft' }).click();
   await expect(page.locator('.task-title')).toHaveText(['Saved original']);
 });
-test('responsive layout has no horizontal overflow or date-related controls', async ({ page }) => {
+test('responsive layout has no horizontal overflow with optional due-date controls', async ({ page }) => {
   await addTask(page,'A comfortably long task title that remains readable in a narrow window','A longer description to exercise wrapping rather than horizontal scrolling.');
   for (const width of [320,390,768,1024,1440]) {
     await page.setViewportSize({ width,height:900 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   }
   await page.setViewportSize({ width:320,height:700 });
-  await expect(page.locator('input[type=date],input[type=datetime-local],input[type=time]')).toHaveCount(0);
+  await expect(page.locator('#new-due-date')).toBeVisible();
+  await expect(page.locator('input[type=datetime-local],input[type=time]')).toHaveCount(0);
   await edit(page,'A comfortably long task title that remains readable in a narrow window');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await expect(page.locator('#edit-title')).toBeFocused();

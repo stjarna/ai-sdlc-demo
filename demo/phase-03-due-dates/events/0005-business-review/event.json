@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-10-29T15:10:46.625035+00:00",
+  "user_command": "$sdlc review",
+  "request_id": "REQ-0001",
+  "stage": "business_refinement",
+  "review_revision": "1ffdcc5fd502dd4d0eeaa7d96aca8643f48b6256f3193a69d7562fcf2969dc4b",
+  "business_revision": "5c2b9077ba4fd24dc9babc5fcd3ffe6fd29ae0971cb440e54d814af811deb6c9",
+  "operation": "read-only business-review via installed SDLC command routing",
+  "approval_recorded": false,
+  "lifecycle_advanced": false,
+  "next_decision": "Product Owner approval or request changes",
+  "evidence": "Actual JSON responses copied from read-only CLI commands; no document or governance state changes."
+}

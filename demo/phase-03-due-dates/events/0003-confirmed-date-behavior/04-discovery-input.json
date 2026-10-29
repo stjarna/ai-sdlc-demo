@@ -1,0 +1,59 @@
+{
+  "records": [
+    {
+      "kind": "human_decision",
+      "topic": "overdue_presentation",
+      "text": "David Krzystek (declared Requester) explicitly confirms: Overdue: unfinished tasks with due dates before today display an \"Overdue\" label and subtle warning styling. Today is not overdue. Existing task ordering remains unchanged.",
+      "source": {
+        "actor": "user",
+        "quote": "I confirm all four proposed defaults as my explicit business decisions:\n\n- Overdue: unfinished tasks with due dates before today display an \"Overdue\" label and subtle warning styling. Today is not overdue. Existing task ordering remains unchanged."
+      },
+      "action": "confirm",
+      "target": "D-0011"
+    },
+    {
+      "kind": "human_decision",
+      "topic": "calendar_interpretation",
+      "text": "David Krzystek (declared Requester) explicitly confirms: Date interpretation: use calendar dates in the device's local calendar without timezone-related date shifts. Invalid dates must be rejected without overwriting the last valid saved value.",
+      "source": {
+        "actor": "user",
+        "quote": "I confirm all four proposed defaults as my explicit business decisions:\n\n- Date interpretation: use calendar dates in the device's local calendar without timezone-related date shifts. Invalid dates must be rejected without overwriting the last valid saved value."
+      },
+      "action": "confirm",
+      "target": "D-0012"
+    },
+    {
+      "kind": "human_decision",
+      "topic": "completed_due_dates",
+      "text": "David Krzystek (declared Requester) explicitly confirms: Completed tasks: retain their due dates without overdue emphasis. Reopening restores the overdue indication when applicable.",
+      "source": {
+        "actor": "user",
+        "quote": "I confirm all four proposed defaults as my explicit business decisions:\n\n- Completed tasks: retain their due dates without overdue emphasis. Reopening restores the overdue indication when applicable."
+      },
+      "action": "confirm",
+      "target": "D-0013"
+    },
+    {
+      "kind": "human_decision",
+      "topic": "date_editing",
+      "text": "David Krzystek (declared Requester) explicitly confirms: Editing and clearing: follow the existing autosave behavior. Clearing a due date is supported. Cancel discards only unsaved or invalid drafts; previously saved changes remain.",
+      "source": {
+        "actor": "user",
+        "quote": "I confirm all four proposed defaults as my explicit business decisions:\n\n- Editing and clearing: follow the existing autosave behavior. Clearing a due date is supported. Cancel discards only unsaved or invalid drafts; previously saved changes remain."
+      },
+      "action": "confirm",
+      "target": "D-0014"
+    },
+    {
+      "kind": "human_decision",
+      "topic": "remaining_date_behavior",
+      "text": "David Krzystek (declared Requester) explicitly accepts all four proposed date-behavior defaults. This resolves the bundled Discovery question and does not approve a subsequent artifact or lifecycle transition.",
+      "source": {
+        "actor": "user",
+        "quote": "I confirm all four proposed defaults as my explicit business decisions:\n\n- Overdue: unfinished tasks with due dates before today display an \"Overdue\" label and subtle warning styling. Today is not overdue. Existing task ordering remains unchanged.\n- Date interpretation: use calendar dates in the device's local calendar without timezone-related date shifts. Invalid dates must be rejected without overwriting the last valid saved value.\n- Completed tasks: retain their due dates without overdue emphasis. Reopening restores the overdue indication when applicable.\n- Editing and clearing: follow the existing autosave behavior. Clearing a due date is supported. Cancel discards only unsaved or invalid drafts; previously saved changes remain."
+      },
+      "action": "answer",
+      "target": "D-0015"
+    }
+  ]
+}

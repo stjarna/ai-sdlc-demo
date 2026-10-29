@@ -1,0 +1,905 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/25.9.0_2/bin/node",
+      "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config=qa/playwright.config.mjs",
+      "--project=desktop-los-angeles"
+    ],
+    "configFile": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/playwright.config.mjs",
+    "rootDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-los-angeles",
+        "name": "desktop-los-angeles",
+        "testDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-kiritimati",
+        "name": "mobile-kiritimati",
+        "testDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-los-angeles",
+        "testDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+        "snapshotDir": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "browserName": "chromium",
+          "locale": "en-US",
+          "colorScheme": "light",
+          "reducedMotion": "reduce",
+          "trace": "on",
+          "screenshot": "on",
+          "video": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "timezoneId": "America/Los_Angeles"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-los-angeles"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "due-dates.spec.mjs",
+      "file": "due-dates.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-001: empty optional due date creates a usable undated task",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 806,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:14.201Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-001-empty-opt-3f047-eates-a-usable-undated-task-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-001-empty-opt-3f047-eates-a-usable-undated-task-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-001-empty-opt-3f047-eates-a-usable-undated-task-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-83df055b5faf2edad2d9",
+          "file": "due-dates.spec.mjs",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "TC-002 TC-003 TC-016: past/today/future dates accepted on creation and autosaved edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3354,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:15.313Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-002-TC-003-TC-d872b-reation-and-autosaved-edits-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-002-TC-003-TC-d872b-reation-and-autosaved-edits-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-002-TC-003-TC-d872b-reation-and-autosaved-edits-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-2a282d0e6ba80d125eb2",
+          "file": "due-dates.spec.mjs",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "TC-004 TC-005: edit and clear autosave without a separate save action",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2310,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:18.711Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-004-TC-005-ed-5c58d-hout-a-separate-save-action-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-004-TC-005-ed-5c58d-hout-a-separate-save-action-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-004-TC-005-ed-5c58d-hout-a-separate-save-action-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-23d95d8be014f12c9737",
+          "file": "due-dates.spec.mjs",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "TC-006 TC-017: impossible calendar drafts preserve the saved valid leap day",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2000,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:21.061Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-006-TC-017-im-ec3b2-ve-the-saved-valid-leap-day-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-006-TC-017-im-ec3b2-ve-the-saved-valid-leap-day-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-006-TC-017-im-ec3b2-ve-the-saved-valid-leap-day-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-ae0795c8d6914f6a9644",
+          "file": "due-dates.spec.mjs",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "TC-006: native partial date input cannot silently clear the saved date",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1365,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:23.094Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-006-native-pa-4e84d-lently-clear-the-saved-date-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-006-native-pa-4e84d-lently-clear-the-saved-date-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-006-native-pa-4e84d-lently-clear-the-saved-date-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-61357a89b2d68958e373",
+          "file": "due-dates.spec.mjs",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "TC-007 TC-018: local date survives reload/restart and DST-adjacent editing in each timezone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1624,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:24.488Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-007-TC-018-lo-eb3b1-nt-editing-in-each-timezone-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-007-TC-018-lo-eb3b1-nt-editing-in-each-timezone-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-007-TC-018-lo-eb3b1-nt-editing-in-each-timezone-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-1cf5cd03e942ca799202",
+          "file": "due-dates.spec.mjs",
+          "line": 75,
+          "column": 1
+        },
+        {
+          "title": "TC-008 TC-009 TC-019: local year boundary, explicit subtle warning and unchanged ordering",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 800,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:26.145Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-008-TC-009-TC-333d9-ning-and-unchanged-ordering-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-008-TC-009-TC-333d9-ning-and-unchanged-ordering-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-008-TC-009-TC-333d9-ning-and-unchanged-ordering-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-1840b7e5019b6c8b84f6",
+          "file": "due-dates.spec.mjs",
+          "line": 83,
+          "column": 1
+        },
+        {
+          "title": "TC-010 TC-021: completion retains date, removes warning, reopening restores it without reordering",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 820,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:26.974Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-010-TC-021-co-bbd06-tores-it-without-reordering-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-010-TC-021-co-bbd06-tores-it-without-reordering-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-010-TC-021-co-bbd06-tores-it-without-reordering-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-78e44bb59a73478b18cd",
+          "file": "due-dates.spec.mjs",
+          "line": 90,
+          "column": 1
+        },
+        {
+          "title": "TC-011 TC-022: Cancel keeps the latest saved date or saved cleared state, discarding only a draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2962,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:27.822Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-011-TC-022-Ca-80b8a-ate-discarding-only-a-draft-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-011-TC-022-Ca-80b8a-ate-discarding-only-a-draft-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-011-TC-022-Ca-80b8a-ate-discarding-only-a-draft-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-02dc07a2bc496b6e8e76",
+          "file": "due-dates.spec.mjs",
+          "line": 102,
+          "column": 1
+        },
+        {
+          "title": "TC-012 TC-023: actual process restart retains dates, changes, clearing and completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2715,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:30.841Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-012-TC-023-ac-0099c-ges-clearing-and-completion-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-012-TC-023-ac-0099c-ges-clearing-and-completion-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-012-TC-023-ac-0099c-ges-clearing-and-completion-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-090bb1da8289c7d3ba97",
+          "file": "due-dates.spec.mjs",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "TC-014: title validation, CRUD, completion, reopening and confirmed deletion remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1843,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:34.073Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-014-title-val-fe559-rmed-deletion-remain-usable-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-014-title-val-fe559-rmed-deletion-remain-usable-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-014-title-val-fe559-rmed-deletion-remain-usable-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-ee7724e7f93587b92dbb",
+          "file": "due-dates.spec.mjs",
+          "line": 136,
+          "column": 1
+        },
+        {
+          "title": "TC-015: readable labelled date controls, responsive layout and restored keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1475,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:35.955Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-015-readable--3be99-and-restored-keyboard-focus-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-015-readable--3be99-and-restored-keyboard-focus-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-015-readable--3be99-and-restored-keyboard-focus-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-85d43a7bdd711585d24c",
+          "file": "due-dates.spec.mjs",
+          "line": 150,
+          "column": 1
+        },
+        {
+          "title": "TC-020: next local calendar day changes overdue presentation without changing the saved date",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 533,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:37.470Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-020-next-loca-b7a80-out-changing-the-saved-date-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-020-next-loca-b7a80-out-changing-the-saved-date-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-020-next-loca-b7a80-out-changing-the-saved-date-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-c28fd74c5afc3b2659a4",
+          "file": "due-dates.spec.mjs",
+          "line": 162,
+          "column": 1
+        },
+        {
+          "title": "TC-002 TC-004: extended calendar years do not silently clear on editing another field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-los-angeles",
+              "projectName": "desktop-los-angeles",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1371,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T17:23:38.025Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-002-TC-004-ex-c8048-ar-on-editing-another-field-desktop-los-angeles/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-002-TC-004-ex-c8048-ar-on-editing-another-field-desktop-los-angeles/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-TC-002-TC-004-ex-c8048-ar-on-editing-another-field-desktop-los-angeles/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "271c5fb7f6bd32e7de7c-956b013dea32a9e1bf6b",
+          "file": "due-dates.spec.mjs",
+          "line": 168,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "legacy v1 data",
+          "file": "due-dates.spec.mjs",
+          "line": 126,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-013: legacy task fields/completion remain visible without dates after migration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-los-angeles",
+                  "projectName": "desktop-los-angeles",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 452,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-29T17:23:33.602Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-legacy-v1-data-T-41050-thout-dates-after-migration-desktop-los-angeles/test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-legacy-v1-data-T-41050-thout-dates-after-migration-desktop-los-angeles/video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/results/due-dates-legacy-v1-data-T-41050-thout-dates-after-migration-desktop-los-angeles/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "271c5fb7f6bd32e7de7c-6be80d2f8bd883187b17",
+              "file": "due-dates.spec.mjs",
+              "line": 128,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-29T17:23:13.816Z",
+    "duration": 25657.495,
+    "expected": 15,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

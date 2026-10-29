@@ -1,0 +1,843 @@
+# Final Verification Report
+
+Verified.
+
+Named check results are execution evidence. A passing command does not by itself establish that every product scenario passed.
+
+This report is not release approval or a security certification.
+
+## Governance assessment
+
+- Contract: 0.1
+
+## Verified scenarios and recorded scenario outcomes
+
+- Record:
+  - Action: The user leaves the due date empty and creates the task.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The task is saved without a due date and remains usable.
+  - Id: TC-001
+  - Preconditions: A user is creating a task with a valid title.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-001
+    - AC-001
+  - Status: specified
+- Record:
+  - Action: The task or date change is saved.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The selected date is accepted in all three cases; being past is never itself a rejection reason.
+  - Id: TC-002
+  - Preconditions: A user creates or edits a task and supplies a valid calendar date before, on or after device-local today.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-001
+    - FR-003
+    - AC-002
+  - Status: specified
+- Record:
+  - Action: The user views the task list.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The assigned calendar date is clearly visible for that task.
+  - Id: TC-003
+  - Preconditions: A task has a saved due date.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-001
+    - AC-003
+  - Status: specified
+- Record:
+  - Action: The user selects another valid date and existing autosave completes.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The new date replaces the old date and is shown in the list.
+  - Id: TC-004
+  - Preconditions: An existing task has a saved due date.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-002
+    - AC-004
+  - Status: specified
+- Record:
+  - Action: The user clears it and existing autosave completes.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The date is removed; the task remains usable without a date and has no overdue indication.
+  - Id: TC-005
+  - Preconditions: A task has a saved due date.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-002
+    - AC-005
+  - Status: specified
+- Record:
+  - Action: The user attempts to save an impossible calendar date.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The invalid date is rejected and the last valid saved date remains unchanged.
+  - Id: TC-006
+  - Preconditions: A task has a last valid saved due date.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-003
+    - AC-006
+  - Status: specified
+- Record:
+  - Action: The date is saved and the task is viewed or reopened after restart.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The same selected calendar date is displayed without shifting it through timezone conversion.
+  - Id: TC-007
+  - Preconditions: A user selects a calendar date on a device with a local timezone different from UTC.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-003
+    - AC-007
+  - Status: specified
+- Record:
+  - Action: The user views the task list.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The task shows an explicit Overdue label and subtle warning styling without changing task ordering.
+  - Id: TC-008
+  - Preconditions: An unfinished task has a due date earlier than device-local today.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-004
+    - AC-008
+  - Status: specified
+- Record:
+  - Action: The user views the task list.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: None of these tasks shows overdue emphasis; ordering remains unchanged.
+  - Id: TC-009
+  - Preconditions: Unfinished tasks have dates equal to today, after today, or no due date.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-004
+    - AC-009
+  - Status: specified
+- Record:
+  - Action: The user completes it and later reopens it.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: Completion retains the date and removes overdue emphasis; reopening restores it if the date is still before local today.
+  - Id: TC-010
+  - Preconditions: An unfinished dated task is overdue.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-005
+    - AC-010
+  - Status: specified
+- Record:
+  - Action: The user cancels the draft.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: Only that draft is discarded; the most recently autosaved date or saved cleared state remains.
+  - Id: TC-011
+  - Preconditions: A date change has already autosaved and the user then makes an unsaved or invalid date draft.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-002
+    - AC-011
+  - Status: specified
+- Record:
+  - Action: The application is stopped and restarted.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: Each saved date or cleared state is retained for its task.
+  - Id: TC-012
+  - Preconditions: Tasks include an assigned date, a changed date and a cleared date.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-006
+    - AC-012
+  - Status: specified
+- Record:
+  - Action: The extended application opens that data.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: Existing titles, descriptions and completion states remain intact and the tasks have no due date.
+  - Id: TC-013
+  - Preconditions: Existing task data was created by the original CRUD application with no due-date fields.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-006
+    - AC-013
+  - Status: specified
+- Record:
+  - Action: The user creates, reads, edits, completes, reopens and confirms deletion of tasks.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The existing CRUD/completion behavior remains operational, including title validation and deletion confirmation.
+  - Id: TC-014
+  - Preconditions: Existing tasks and newly created tasks include dated and undated examples.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-006
+    - AC-014
+  - Status: specified
+- Record:
+  - Action: The user creates or edits a date and views its display and validation state.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: Date controls and messages remain readable and usable, visually consistent with the existing Littlelist layout.
+  - Id: TC-015
+  - Preconditions: The user operates Littlelist in its existing desktop or phone layout.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-007
+    - AC-015
+  - Status: specified
+- Record:
+  - Action: Create and edit tasks using yesterday, today and tomorrow, independently through the actual UI and the supported integration boundary.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: All valid dates are accepted and remain the selected calendar dates. No minimum-today restriction prevents past-date entry.
+  - Id: TC-016
+  - Preconditions: Run with a controlled device-local today and a task without a date.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-001
+    - FR-003
+    - AC-002
+  - Status: specified
+- Record:
+  - Action: Save the valid leap-day value, then attempt impossible February dates through the supported data-entry and integration boundary.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The valid leap day saves. Impossible dates do not replace it. Validation communicates failure rather than claiming a save.
+  - Id: TC-017
+  - Preconditions: An existing task has a valid saved due date. Use controlled fixtures containing 2024-02-29, 2025-02-29 and 2024-02-30.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-003
+    - AC-006
+  - Status: specified
+- Record:
+  - Action: Create, save, reload and edit the date, including a fixture near a daylight-saving transition.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The selected calendar date never shifts forward or backward because of timezone conversion; no time-of-day meaning is introduced.
+  - Id: TC-018
+  - Preconditions: Run equivalent date-entry fixtures in device timezones Pacific/Kiritimati and America/Los\_Angeles, with the same selected calendar date.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-003
+    - AC-007
+  - Status: specified
+- Record:
+  - Action: View the task list on 1 January device-local today.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: 31 December is overdue; 1 January is not. Existing creation order remains unchanged.
+  - Id: TC-019
+  - Preconditions: Use two unfinished task fixtures around a controlled local year boundary: 31 December and 1 January.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-004
+    - AC-008
+  - Status: specified
+- Record:
+  - Action: View the list before midnight, advance the controlled local calendar day, then view the list again.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The date remains unchanged. It is not overdue on its due day and is overdue when viewed as unfinished the next day; no requirement for a background timer is invented.
+  - Id: TC-020
+  - Preconditions: A task is due on device-local today; the test clock can advance to the following local day.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-004
+    - AC-009
+  - Status: specified
+- Record:
+  - Action: Complete it, inspect the completed task date, reopen it and inspect its overdue state.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The date is retained across completion and reopening. Completed presentation has no overdue emphasis; reopening restores it without reordering.
+  - Id: TC-021
+  - Preconditions: A task has a past due date and can be shown in the existing Active, Completed and All views.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-005
+    - AC-010
+  - Status: specified
+- Record:
+  - Action: Enter an unsaved valid date draft or an invalid draft and cancel before it is saved.
+  - Check statuses:
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: The latest saved changed date or cleared state is preserved. Cancel does not restore an older date or save the draft.
+  - Id: TC-022
+  - Preconditions: A task has an autosaved date change; separately exercise a task whose date was already cleared and saved.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-002
+    - AC-011
+  - Status: specified
+- Record:
+  - Action: Stop the actual application process, restart with the same database, and inspect the saved task states through the UI and integration boundary.
+  - Check statuses:
+    - QA-API: passed
+    - QA-UI-DESKTOP: passed
+    - QA-UI-MOBILE: passed
+  - Checks:
+    - QA-API
+    - QA-UI-DESKTOP
+    - QA-UI-MOBILE
+  - Expected: Each date or absence of date, along with existing task identity/content/completion, survives restart. No personal database is used.
+  - Id: TC-023
+  - Preconditions: Prepare dated and cleared tasks with active/completed states using an isolated database.
+  - Qualification: Linked named checks passed; individual scenario outcome is not separately assessed by the CLI.
+  - Requirements:
+    - FR-006
+    - AC-012
+  - Status: specified
+
+## Actual named check results
+
+- ENG-STATIC:
+  - Check:
+    - Argv:
+      - npm
+      - run
+      - check
+    - Category: build
+    - Cwd: .
+    - Id: ENG-STATIC
+    - Limitations: None recorded
+    - Requirements:
+      - FR-001
+      - FR-002
+      - FR-003
+      - FR-004
+      - FR-005
+      - FR-006
+      - FR-007
+    - Scenario: Run the existing no-bundler JavaScript syntax and local-asset reference check. This is the project build/static check, not a claim of browser usability or functional acceptance.
+    - Timeout: 120
+  - Check id: ENG-STATIC
+  - Exit code: 0
+  - Output sha256: dbe2a23c60c91ca24b57efecf59c34eaefe3ef99d6b5e9bc2b5879a99481a2ae
+  - Output truncated: no
+  - Plan: a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966
+  - Source revision: 57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7
+  - Status: passed
+- ENG-UNIT:
+  - Check:
+    - Argv:
+      - npm
+      - run
+      - test:unit
+    - Category: unit
+    - Cwd: .
+    - Id: ENG-UNIT
+    - Limitations: None recorded
+    - Requirements:
+      - FR-001
+      - FR-002
+      - FR-003
+      - FR-004
+      - FR-005
+      - FR-006
+    - Scenario: Execute actual developer unit tests for calendar/date-draft semantics and store persistence/migration/regression. This verifies computational/store behavior, not complete UI or HTTP acceptance. No QA execution is implied.
+    - Timeout: 120
+  - Check id: ENG-UNIT
+  - Exit code: 0
+  - Output sha256: c7bf63588121cb768484a9616c2811b6d775167dd996bba2e36ce6d17e8c11e9
+  - Output truncated: no
+  - Plan: a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966
+  - Source revision: 57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7
+  - Status: passed
+- Qa:QA-API:
+  - Check:
+    - Argv:
+      - node
+      - qa/run-check.mjs
+      - integration
+    - Cases:
+      - TC-001
+      - TC-002
+      - TC-004
+      - TC-005
+      - TC-006
+      - TC-012
+      - TC-013
+      - TC-014
+      - TC-016
+      - TC-017
+      - TC-023
+    - Category: integration
+    - Cwd: .
+    - Id: QA-API
+    - Requirements:
+      - AC-001
+      - AC-002
+      - AC-004
+      - AC-005
+      - AC-006
+      - AC-012
+      - AC-013
+      - AC-014
+      - FR-001
+      - FR-002
+      - FR-003
+      - FR-006
+    - Scenario: Actual HTTP API, persistence and process-boundary checks against an isolated running server; optional/past dates, invalid-write preservation, edit/clear, legacy-schema migration and CRUD/restart compatibility. No UI outcome is inferred.
+    - Timeout: 120
+  - Check id: QA-API
+  - Context:
+    - Analysis baseline: 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649
+    - Analysis handoff: faa97785-1068-4c72-9d78-e3683828ed05
+    - Automation: 114edc6ee5eb098a87474660941449c8c0554573e8f0c1eb8e4a7fc631f70ba7
+    - Automation approval: 763f343dd140bb52cd74bb1787db74e7bcebb07401d856baee87d8eac71036c6
+    - Engineering design: 3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a
+    - Engineering plan: a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966
+    - Implementation: c6718055bb384664309173b74610e918ef3ba677dfe6ccdf5458f95dfad3adf8
+    - Implementation approval: 144e7763e2c5638e9aeb3b925f599bea6d5d373fdea5cbfc1a42578b1f3622db
+    - Qa source revision: 53e61cb2c128c12db9e7a5843035d343bb140bbe7a3b1bc10fcd673318e95f16
+    - Scenarios approval: 40231cdbd8ac87490358ad65a52afd7293577007e812e1430dfc67a7e8c913d2
+    - Source revision: 57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7
+  - Exit code: 0
+  - Output sha256: d2b5b6655ef08c8cf6567a9db7317adbd9bff8ac48712f8de88344e47349df79
+  - Output truncated: no
+  - Status: passed
+  - Status after: ready\_for\_verification
+- Qa:QA-UI-DESKTOP:
+  - Check:
+    - Argv:
+      - node
+      - qa/run-check.mjs
+      - ui
+      - desktop-los-angeles
+    - Cases:
+      - TC-001
+      - TC-002
+      - TC-003
+      - TC-004
+      - TC-005
+      - TC-006
+      - TC-007
+      - TC-008
+      - TC-009
+      - TC-010
+      - TC-011
+      - TC-012
+      - TC-013
+      - TC-014
+      - TC-015
+      - TC-016
+      - TC-017
+      - TC-018
+      - TC-019
+      - TC-020
+      - TC-021
+      - TC-022
+      - TC-023
+    - Category: ui
+    - Cwd: .
+    - Id: QA-UI-DESKTOP
+    - Requirements:
+      - AC-001
+      - AC-002
+      - AC-003
+      - AC-004
+      - AC-005
+      - AC-006
+      - AC-007
+      - AC-008
+      - AC-009
+      - AC-010
+      - AC-011
+      - AC-012
+      - AC-013
+      - AC-014
+      - AC-015
+      - FR-001
+      - FR-002
+      - FR-003
+      - FR-004
+      - FR-005
+      - FR-006
+      - FR-007
+    - Scenario: Real Chromium interactions and observable assertions for all 23 approved scenarios in desktop-los-angeles, with disposable databases, controlled local-day/timezone/DST/year fixtures, saved/invalid draft cancellation, completion/reopening, actual restart, original CRUD and responsive/focus checks. Screenshots, traces, videos and reports are retained in a fresh Epic evidence directory.
+    - Timeout: 120
+  - Check id: QA-UI-DESKTOP
+  - Context:
+    - Analysis baseline: 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649
+    - Analysis handoff: faa97785-1068-4c72-9d78-e3683828ed05
+    - Automation: 114edc6ee5eb098a87474660941449c8c0554573e8f0c1eb8e4a7fc631f70ba7
+    - Automation approval: 763f343dd140bb52cd74bb1787db74e7bcebb07401d856baee87d8eac71036c6
+    - Engineering design: 3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a
+    - Engineering plan: a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966
+    - Implementation: c6718055bb384664309173b74610e918ef3ba677dfe6ccdf5458f95dfad3adf8
+    - Implementation approval: 144e7763e2c5638e9aeb3b925f599bea6d5d373fdea5cbfc1a42578b1f3622db
+    - Qa source revision: 53e61cb2c128c12db9e7a5843035d343bb140bbe7a3b1bc10fcd673318e95f16
+    - Scenarios approval: 40231cdbd8ac87490358ad65a52afd7293577007e812e1430dfc67a7e8c913d2
+    - Source revision: 57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7
+  - Exit code: 0
+  - Output sha256: b2570ed56378ab56627e110d894fd0ba005a554fa3209ac9cef3f78fbb405c8f
+  - Output truncated: no
+  - Status: passed
+  - Status after: ready\_for\_verification
+- Qa:QA-UI-MOBILE:
+  - Check:
+    - Argv:
+      - node
+      - qa/run-check.mjs
+      - ui
+      - mobile-kiritimati
+    - Cases:
+      - TC-001
+      - TC-002
+      - TC-003
+      - TC-004
+      - TC-005
+      - TC-006
+      - TC-007
+      - TC-008
+      - TC-009
+      - TC-010
+      - TC-011
+      - TC-012
+      - TC-013
+      - TC-014
+      - TC-015
+      - TC-016
+      - TC-017
+      - TC-018
+      - TC-019
+      - TC-020
+      - TC-021
+      - TC-022
+      - TC-023
+    - Category: ui
+    - Cwd: .
+    - Id: QA-UI-MOBILE
+    - Requirements:
+      - AC-001
+      - AC-002
+      - AC-003
+      - AC-004
+      - AC-005
+      - AC-006
+      - AC-007
+      - AC-008
+      - AC-009
+      - AC-010
+      - AC-011
+      - AC-012
+      - AC-013
+      - AC-014
+      - AC-015
+      - FR-001
+      - FR-002
+      - FR-003
+      - FR-004
+      - FR-005
+      - FR-006
+      - FR-007
+    - Scenario: Real Chromium interactions and observable assertions for all 23 approved scenarios in mobile-kiritimati, with disposable databases, controlled local-day/timezone/DST/year fixtures, saved/invalid draft cancellation, completion/reopening, actual restart, original CRUD and responsive/focus checks. Screenshots, traces, videos and reports are retained in a fresh Epic evidence directory.
+    - Timeout: 120
+  - Check id: QA-UI-MOBILE
+  - Context:
+    - Analysis baseline: 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649
+    - Analysis handoff: faa97785-1068-4c72-9d78-e3683828ed05
+    - Automation: 114edc6ee5eb098a87474660941449c8c0554573e8f0c1eb8e4a7fc631f70ba7
+    - Automation approval: 763f343dd140bb52cd74bb1787db74e7bcebb07401d856baee87d8eac71036c6
+    - Engineering design: 3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a
+    - Engineering plan: a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966
+    - Implementation: c6718055bb384664309173b74610e918ef3ba677dfe6ccdf5458f95dfad3adf8
+    - Implementation approval: 144e7763e2c5638e9aeb3b925f599bea6d5d373fdea5cbfc1a42578b1f3622db
+    - Qa source revision: 53e61cb2c128c12db9e7a5843035d343bb140bbe7a3b1bc10fcd673318e95f16
+    - Scenarios approval: 40231cdbd8ac87490358ad65a52afd7293577007e812e1430dfc67a7e8c913d2
+    - Source revision: 57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7
+  - Exit code: 0
+  - Output sha256: 39ebd62aa113a06367dbf7207f13eb6070f1a238f2e4680f3a1a08555e06d9f5
+  - Output truncated: no
+  - Status: passed
+  - Status after: ready\_for\_verification
+
+Captured command output remains in the structured execution evidence; the results above retain its recorded hash and references when available.
+
+## Requirement coverage
+
+- AC-001:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-002, T-003, T-004. Actual behavior and independent QA results remain unverified.
+- AC-002:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-001, T-002, T-003, T-004. Actual behavior and independent QA results remain unverified.
+- AC-003:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-003, T-004. Actual behavior and independent QA results remain unverified.
+- AC-004:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-002, T-003, T-004. Actual behavior and independent QA results remain unverified.
+- AC-005:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-002, T-003, T-004. Actual behavior and independent QA results remain unverified.
+- AC-006:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-001, T-002, T-003, T-004. Actual behavior and independent QA results remain unverified.
+- AC-007:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-001, T-004. Actual behavior and independent QA results remain unverified.
+- AC-008:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-001, T-004. Actual behavior and independent QA results remain unverified.
+- AC-009:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-001, T-004. Actual behavior and independent QA results remain unverified.
+- AC-010:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-001, T-002, T-004. Actual behavior and independent QA results remain unverified.
+- AC-011:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-004. Actual behavior and independent QA results remain unverified.
+- AC-012:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-002. Actual behavior and independent QA results remain unverified.
+- AC-013:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-002, T-005. Actual behavior and independent QA results remain unverified.
+- AC-014:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-002, T-005. Actual behavior and independent QA results remain unverified.
+- AC-015:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-004, T-005. Actual behavior and independent QA results remain unverified.
+- FR-001:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-002, T-003, T-004. Actual behavior and independent QA results remain unverified.
+- FR-002:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-002, T-003, T-004. Actual behavior and independent QA results remain unverified.
+- FR-003:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-001, T-002, T-003, T-004. Actual behavior and independent QA results remain unverified.
+- FR-004:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-001, T-004. Actual behavior and independent QA results remain unverified.
+- FR-005:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-001, T-002, T-004. Actual behavior and independent QA results remain unverified.
+- FR-006:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-002, T-005. Actual behavior and independent QA results remain unverified.
+- FR-007:
+  - Disposition: implemented
+  - Reason: Planned Engineering scope covered by T-004, T-005. Actual behavior and independent QA results remain unverified.
+
+## Blocked requirements
+
+None recorded.
+
+## Unresolved questions and assumptions
+
+None recorded.
+
+## Excluded behavior
+
+None recorded.
+
+## Exclusion authority
+
+No exclusions recorded.
+
+## Authorized prototype limitations
+
+None recorded.
+
+## Residual risks
+
+- Semantic conformance is AI-assisted and human-reviewed; structural validation cannot prove an exhaustive behavior inventory.
+- Declared reviewer and approver identities are not authenticated.
+
+## Evidence and baseline references
+
+- Source revision: 57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7
+- Security:
+  - Document: [security-review.md](</Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/e531dace63d889808a1c71a3408c8fba2c9a335f3628adcebaf0f5275c795749/security-review.md>)
+  - Canonical name: security-review.md
+  - Legacy: no
+  - Title: Security Review
+- Qa context:
+  - Analysis baseline: 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649
+  - Analysis handoff: faa97785-1068-4c72-9d78-e3683828ed05
+  - Automation: 114edc6ee5eb098a87474660941449c8c0554573e8f0c1eb8e4a7fc631f70ba7
+  - Automation approval: 763f343dd140bb52cd74bb1787db74e7bcebb07401d856baee87d8eac71036c6
+  - Engineering design: 3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a
+  - Engineering plan: a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966
+  - Implementation: c6718055bb384664309173b74610e918ef3ba677dfe6ccdf5458f95dfad3adf8
+  - Implementation approval: 144e7763e2c5638e9aeb3b925f599bea6d5d373fdea5cbfc1a42578b1f3622db
+  - Qa source revision: 53e61cb2c128c12db9e7a5843035d343bb140bbe7a3b1bc10fcd673318e95f16
+  - Scenarios approval: 40231cdbd8ac87490358ad65a52afd7293577007e812e1430dfc67a7e8c913d2
+  - Source revision: 57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7
+- Analysis baseline: 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649
+- Analysis handoff: faa97785-1068-4c72-9d78-e3683828ed05
+- Design:
+  - Document: [technical-design.md](</Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a/technical-design.md>)
+  - Canonical name: technical-design.md
+  - Legacy: no
+  - Title: Technical Design
+- Design skills:
+  - Architecture:
+    - Digest: 85ecece8bf2c04a178d8bdbda84a769fe1a237593c01a8dbf18fcc9fd8215536
+    - Version: 1.3.0
+  - Security:
+    - Digest: 5698ff24151fffff13837297dbe36e33a0c26ffb180256c95814c3f1c63c94ee
+    - Version: 1.2.0
+- Implementation:
+  - Document: [code-review.md](</Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/c6718055bb384664309173b74610e918ef3ba677dfe6ccdf5458f95dfad3adf8/code-review.md>)
+  - Canonical name: code-review.md
+  - Legacy: no
+  - Title: Engineering Code Review
+- Implementation approval: 144e7763e2c5638e9aeb3b925f599bea6d5d373fdea5cbfc1a42578b1f3622db
+- Implementation skills:
+  - Development:
+    - Digest: fbae39f676cddab88b6b43a74f30df67f6797382ee6f539c2e0546510c119750
+    - Version: 1.3.0
+- Plan:
+  - Document: [implementation-plan.md](</Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966/implementation-plan.md>)
+  - Canonical name: implementation-plan.md
+  - Legacy: no
+  - Title: Engineering Implementation Plan
+- Plan approval: d1d860b533e25f26d55502ef4bfc283e8e6601f3db26d40830b7bfaae302025f
+- Plan skills:
+  - Development:
+    - Digest: fbae39f676cddab88b6b43a74f30df67f6797382ee6f539c2e0546510c119750
+    - Version: 1.3.0
+- Qa automation:
+  - Document: [test-automation.md](</Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/114edc6ee5eb098a87474660941449c8c0554573e8f0c1eb8e4a7fc631f70ba7/test-automation.md>)
+  - Canonical name: test-automation.md
+  - Legacy: no
+  - Title: QA Test Automation Review
+- Qa scenarios:
+  - Document: [test-scenarios.md](</Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/b26987cde4fc49dcca36cf35122a44a2e2b4e745fc04facba52be9d935c975df/test-scenarios.md>)
+  - Canonical name: test-scenarios.md
+  - Legacy: no
+  - Title: QA Test Scenarios
+- Qa strategy:
+  - Document: [test-strategy.md](</Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/e049b646afc18713965788880e2636bc850ba6574a6c07025ac2a42b05769f1c/test-strategy.md>)
+  - Canonical name: test-strategy.md
+  - Legacy: no
+  - Title: QA Test Strategy
+- Security assessment:
+  - Findings: None recorded
+  - Status: No open findings
+- Security skills:
+  - Security:
+    - Digest: 5698ff24151fffff13837297dbe36e33a0c26ffb180256c95814c3f1c63c94ee
+    - Version: 1.2.0

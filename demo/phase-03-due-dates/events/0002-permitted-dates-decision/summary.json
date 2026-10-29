@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-10-29T15:02:40.945045+00:00",
+  "event": "Explicit permitted-dates decision recorded; remaining defaults proposed for human confirmation",
+  "request_id": "REQ-0001",
+  "stage": "discovery",
+  "responsible_role": "Requester / Business Stakeholder",
+  "responsible_person": "David Krzystek",
+  "runtime_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+  "record_ids": [
+    "D-0009",
+    "D-0010",
+    "D-0011",
+    "D-0012",
+    "D-0013",
+    "D-0014",
+    "D-0015"
+  ],
+  "source_quote": "Yes. Allow any valid calendar date, including past dates, today and future dates.\nDue dates are optional. Do not reject a date simply because it is in the past.",
+  "recommendations_unconfirmed": [
+    {
+      "topic": "overdue_presentation",
+      "text": "Proposed, unconfirmed: an unfinished task is overdue only when its due date is earlier than today on the user device. Show an explicit Overdue label with a subtle warning color; today is not overdue. Preserve existing list ordering."
+    },
+    {
+      "topic": "calendar_interpretation",
+      "text": "Proposed, unconfirmed: due dates are calendar dates without a time, interpreted against the device local calendar, with no UTC conversion that shifts the selected day. Reject impossible calendar dates, preserving the previous saved value and showing a clear validation message."
+    },
+    {
+      "topic": "completed_due_dates",
+      "text": "Proposed, unconfirmed: completing a task retains its due date but removes overdue emphasis. Reopening the task restores overdue indication when the retained date is before today."
+    },
+    {
+      "topic": "date_editing",
+      "text": "Proposed, unconfirmed: date editing and clearing use existing autosave behavior. Clearing removes the optional date. Cancel discards only unsaved or invalid drafts; previously autosaved changes remain saved."
+    }
+  ],
+  "next_human_question": "Do you confirm the proposed defaults together: overdue only for unfinished tasks dated before device-local today, text plus subtle warning color without reordering; date-only local-calendar interpretation with invalid dates rejected while preserving the saved value; completed tasks retain dates without overdue emphasis, restored on reopening; and edit/clear follows existing autosave and cancel-draft behavior?",
+  "discovery_state": {
+    "questions": [
+      {
+        "id": "D-0008",
+        "status": "answered",
+        "resolution_id": "D-0009",
+        "revisit": null
+      },
+      {
+        "id": "D-0015",
+        "status": "open",
+        "resolution_id": null,
+        "revisit": null
+      }
+    ],
+    "assumptions": [
+      {
+        "id": "D-0007",
+        "status": "confirmed",
+        "resolution_id": "D-0010"
+      },
+      {
+        "id": "D-0011",
+        "status": "proposed",
+        "resolution_id": null
+      },
+      {
+        "id": "D-0012",
+        "status": "proposed",
+        "resolution_id": null
+      },
+      {
+        "id": "D-0013",
+        "status": "proposed",
+        "resolution_id": null
+      },
+      {
+        "id": "D-0014",
+        "status": "proposed",
+        "resolution_id": null
+      }
+    ],
+    "superseded_by": {}
+  },
+  "approval_recorded": false,
+  "lifecycle_advanced": false,
+  "baseline_application_and_prior_evidence_unchanged": true,
+  "test_execution": "Not run; no application implementation changes."
+}

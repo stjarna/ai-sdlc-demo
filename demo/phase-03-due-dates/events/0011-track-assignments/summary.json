@@ -1,0 +1,112 @@
+{
+  "timestamp": "2026-10-29T15:26:26.946304+00:00",
+  "event": "Separately confirmed Engineering and QA assignments recorded",
+  "request_id": "REQ-0001",
+  "decision": "I explicitly confirm assigning David Krzystek as both Engineering Lead and QA Lead / Tester for REQ-0001.",
+  "actor": "David Krzystek",
+  "identity_source": "local_profile",
+  "authenticated": false,
+  "tracks": {
+    "engineering": {
+      "status": "ready_for_technical_design",
+      "owner": "David Krzystek",
+      "assignee": "David Krzystek",
+      "required_role": "Engineering Lead",
+      "assignment_status": "assigned",
+      "target_stage": "engineering",
+      "since": "2026-10-29T15:26:21Z",
+      "history": [
+        {
+          "operation_id": "track-init-6a5371a23fcf1bb1056c07a39fbc34316714795b0bfbec021d7a2fe5b257ce53",
+          "action": "initialize",
+          "actor": "David Krzystek",
+          "identity_source": "local_profile",
+          "timestamp": "2026-10-29T15:21:05Z",
+          "expected_revision": null,
+          "from_owner": null,
+          "to_owner": "David Krzystek",
+          "assignee": null,
+          "required_role": "Engineering Lead",
+          "assignment_status": "awaiting_assignment",
+          "target_stage": "engineering",
+          "lifecycle_id": null,
+          "decision": "$sdlc advance"
+        },
+        {
+          "operation_id": "f442407b-2857-4539-a7ca-3e4d6a4114da",
+          "action": "assign",
+          "actor": "David Krzystek",
+          "identity_source": "local_profile",
+          "timestamp": "2026-10-29T15:26:21Z",
+          "expected_revision": "5c5fe673b0e0fb0067b0644d7e380b4e2ea63b91eb4dfd1f5c390b4ac50af9ee",
+          "from_owner": "David Krzystek",
+          "to_owner": "David Krzystek",
+          "assignee": "David Krzystek",
+          "required_role": "Engineering Lead",
+          "assignment_status": "assigned",
+          "target_stage": "engineering",
+          "lifecycle_id": null,
+          "decision": "I explicitly confirm assigning David Krzystek as both Engineering Lead and QA Lead / Tester for REQ-0001."
+        }
+      ],
+      "needs_reconciliation": false,
+      "next_action": "Start or review this track only when explicitly requested",
+      "revision": "34fedb4a29c43f8de9feafae95ea199a4afefed64b61a7f57df4bd0299ca354f"
+    },
+    "qa": {
+      "status": "ready_for_test_design",
+      "owner": "David Krzystek",
+      "assignee": "David Krzystek",
+      "required_role": "QA Lead / Tester",
+      "assignment_status": "assigned",
+      "target_stage": "qa",
+      "since": "2026-10-29T15:26:22Z",
+      "history": [
+        {
+          "operation_id": "track-init-12734754f9aeb07fc7803616bbea922e8ac512b5fc24ff24a2a7a17c6d82f1dd",
+          "action": "initialize",
+          "actor": "David Krzystek",
+          "identity_source": "local_profile",
+          "timestamp": "2026-10-29T15:21:05Z",
+          "expected_revision": null,
+          "from_owner": null,
+          "to_owner": "David Krzystek",
+          "assignee": null,
+          "required_role": "QA Lead / Tester",
+          "assignment_status": "awaiting_assignment",
+          "target_stage": "qa",
+          "lifecycle_id": null,
+          "decision": "$sdlc advance"
+        },
+        {
+          "operation_id": "caa878fc-96df-4800-822a-b4f9cd40c748",
+          "action": "assign",
+          "actor": "David Krzystek",
+          "identity_source": "local_profile",
+          "timestamp": "2026-10-29T15:26:22Z",
+          "expected_revision": "470ca3072cd908b66c287a5111c760824a23c70ffcf7f15959adcbfc54a8806f",
+          "from_owner": "David Krzystek",
+          "to_owner": "David Krzystek",
+          "assignee": "David Krzystek",
+          "required_role": "QA Lead / Tester",
+          "assignment_status": "assigned",
+          "target_stage": "qa",
+          "lifecycle_id": null,
+          "decision": "I explicitly confirm assigning David Krzystek as both Engineering Lead and QA Lead / Tester for REQ-0001."
+        }
+      ],
+      "needs_reconciliation": false,
+      "next_action": "Start or review this track only when explicitly requested",
+      "revision": "cf8556c9c54e4e96b2f4f5e16bf0f6045cfcfe03de4044cf590677f416f26a28"
+    }
+  },
+  "lifecycle_unchanged": true,
+  "approval_records_unchanged": true,
+  "business_and_analysis_approval_valid": true,
+  "baselines_unchanged": true,
+  "engineering_started": false,
+  "qa_started": false,
+  "application_and_prior_committed_evidence_unchanged": true,
+  "tests": "Not run; ownership-only change. Structural and baseline-integrity validation executed.",
+  "runtime_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6"
+}

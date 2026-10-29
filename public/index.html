@@ -43,6 +43,7 @@
             <div class="compose-line"><span class="compose-circle" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span><label class="sr-only" for="new-title">New task title</label><input id="new-title" name="title" required maxlength="120" placeholder="What would you like to get done?" autocomplete="off" aria-describedby="new-title-error"><button id="create-button" class="button primary" type="submit"><svg class="icon"><use href="#i-plus"/></svg><span>Add task</span></button></div>
             <p id="new-title-error" class="field-error compose-error" role="alert" hidden></p>
             <div id="new-description-section" class="compose-description" hidden><label class="sr-only" for="new-description">Task description</label><textarea id="new-description" name="description" maxlength="2000" rows="3" placeholder="A few details, if you need them…"></textarea></div>
+            <div class="due-date-field compose-due-date"><label for="new-due-date">Due date <span class="optional">optional</span></label><div class="due-date-controls"><input id="new-due-date" name="dueDate" type="date" aria-describedby="new-due-date-error"><button id="new-type-date" class="text-button" type="button">Type date</button><button id="new-clear-date" class="text-button" type="button">Clear due date</button></div><p id="new-due-date-error" class="field-error" role="alert" hidden></p></div>
             <button id="description-toggle" class="text-button description-toggle" type="button" aria-expanded="false" aria-controls="new-description-section"><svg class="icon"><use href="#i-note"/></svg><span>Add a description</span><span class="optional">optional</span></button>
           </form>
         </section>
@@ -63,6 +64,7 @@
       <label for="edit-title">Task title <span class="required-hint">required</span></label><input id="edit-title" name="title" maxlength="120" aria-describedby="edit-title-error" autocomplete="off" required>
       <p id="edit-title-error" class="field-error" role="alert" hidden></p>
       <label for="edit-description">Description <span class="optional">optional</span></label><textarea id="edit-description" name="description" maxlength="2000" rows="7" placeholder="Add a little context…"></textarea>
+      <div class="due-date-field"><label for="edit-due-date">Due date <span class="optional">optional</span></label><div class="due-date-controls"><input id="edit-due-date" name="dueDate" type="date" aria-describedby="edit-due-date-error"><button id="edit-type-date" class="text-button" type="button">Type date</button><button id="edit-clear-date" class="text-button" type="button">Clear due date</button></div><p id="edit-due-date-error" class="field-error" role="alert" hidden></p></div>
       <p id="edit-error" class="field-error" role="alert" hidden></p>
       <div class="save-status" id="edit-save-status" role="status">All changes saved</div>
       <div class="edit-help">Changes save automatically. Cancel discards only your unsaved draft; saved changes stay saved.</div>

@@ -1,0 +1,66 @@
+{
+  "records": [
+    {
+      "kind": "human_decision",
+      "topic": "permitted_dates",
+      "text": "Due dates remain optional. Any valid calendar date is permitted, including past dates, today and future dates. A date must not be rejected simply because it is in the past.",
+      "source": {
+        "actor": "user",
+        "quote": "Yes. Allow any valid calendar date, including past dates, today and future dates.\nDue dates are optional. Do not reject a date simply because it is in the past."
+      },
+      "action": "answer",
+      "target": "D-0008"
+    },
+    {
+      "kind": "human_decision",
+      "topic": "permitted_dates",
+      "text": "Explicitly confirms the proposed permission for past, current and future valid calendar dates; other proposed semantics remain undecided.",
+      "source": {
+        "actor": "user",
+        "quote": "Yes. Allow any valid calendar date, including past dates, today and future dates.\nDue dates are optional. Do not reject a date simply because it is in the past."
+      },
+      "action": "confirm",
+      "target": "D-0007"
+    },
+    {
+      "kind": "ai_assumption",
+      "topic": "overdue_presentation",
+      "text": "Proposed, unconfirmed: an unfinished task is overdue only when its due date is earlier than today on the user device. Show an explicit Overdue label with a subtle warning color; today is not overdue. Preserve existing list ordering.",
+      "source": {
+        "actor": "ai"
+      }
+    },
+    {
+      "kind": "ai_assumption",
+      "topic": "calendar_interpretation",
+      "text": "Proposed, unconfirmed: due dates are calendar dates without a time, interpreted against the device local calendar, with no UTC conversion that shifts the selected day. Reject impossible calendar dates, preserving the previous saved value and showing a clear validation message.",
+      "source": {
+        "actor": "ai"
+      }
+    },
+    {
+      "kind": "ai_assumption",
+      "topic": "completed_due_dates",
+      "text": "Proposed, unconfirmed: completing a task retains its due date but removes overdue emphasis. Reopening the task restores overdue indication when the retained date is before today.",
+      "source": {
+        "actor": "ai"
+      }
+    },
+    {
+      "kind": "ai_assumption",
+      "topic": "date_editing",
+      "text": "Proposed, unconfirmed: date editing and clearing use existing autosave behavior. Clearing removes the optional date. Cancel discards only unsaved or invalid drafts; previously autosaved changes remain saved.",
+      "source": {
+        "actor": "ai"
+      }
+    },
+    {
+      "kind": "question",
+      "topic": "remaining_date_behavior",
+      "text": "Do you confirm the proposed defaults together: overdue only for unfinished tasks dated before device-local today, text plus subtle warning color without reordering; date-only local-calendar interpretation with invalid dates rejected while preserving the saved value; completed tasks retain dates without overdue emphasis, restored on reopening; and edit/clear follows existing autosave and cancel-draft behavior?",
+      "source": {
+        "actor": "ai"
+      }
+    }
+  ]
+}

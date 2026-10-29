@@ -1,0 +1,2 @@
+Yes. Allow any valid calendar date, including past dates, today and future dates.
+Due dates are optional. Do not reject a date simply because it is in the past.
