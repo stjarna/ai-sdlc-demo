@@ -1,0 +1,27 @@
+{
+  "invocation": "codex exec --ephemeral --sandbox read-only --json",
+  "completed": true,
+  "final_message": "The registered skill at [SKILL.md](/Users/davidkrzystek/.agents/skills/sdlc/SKILL.md) is available for a future request in this project. Its pinned installed runtime passed the read-only integrity and environment check. Runtime base revision: `d058e5fad9fd8459068951f0dea19dbfabba5fd6`.\n\nThe shared commands are `status`, `start`, `review`, `approve`, `changes`, `advance`, `details`, `inbox`, `pending assignments`, and `assign`, invoked as `$sdlc <command>` or in natural language. Availability is **not** business approval or authorization to begin a workflow. I did not run project adoption preflight or start one.",
+  "commands": [
+    {
+      "command": "/bin/bash -lc 'cat /Users/davidkrzystek/.agents/skills/sdlc/SKILL.md'",
+      "exit_code": 0
+    },
+    {
+      "command": "/bin/bash -lc '/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python -B /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/install.py verify --runtime /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f --expected-digest 64a774d6980d081f67ef7e99d4e7639443f0f7f821f155a14ed60a9f55b5934a'",
+      "exit_code": 0
+    },
+    {
+      "command": "/bin/bash -lc 'cat /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/skill/SKILL.md'",
+      "exit_code": 0
+    },
+    {
+      "command": "/bin/bash -lc 'cat /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/skill/commands.md'",
+      "exit_code": 0
+    },
+    {
+      "command": "/bin/bash -lc 'cat /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/skill/conversation.md'",
+      "exit_code": 0
+    }
+  ]
+}

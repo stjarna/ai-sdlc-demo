@@ -1,0 +1,1 @@
+{"phase":"before","url":"http://127.0.0.1:61429","checks_passed":true,"browser":"156.0.8078.4","screenshot":"before-littlelist.png","recording":"before-littlelist.webm"}

@@ -1,0 +1,24 @@
+{
+  "source_command": "17-codex-discovery",
+  "source_stdout": "logs/17-codex-discovery.stdout.txt",
+  "displayed_excerpt": {
+    "method": "actual local Codex CLI app-server skills/list; no model turn",
+    "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+    "expected_path": "/Users/davidkrzystek/.agents/skills/sdlc/SKILL.md",
+    "sdlc_skills": [
+      {
+        "name": "sdlc",
+        "description": "Guide existing applications through Discovery, human approvals, Functional Analysis and governed Engineering and QA using a pinned external SDLC runtime.",
+        "path": "/Users/davidkrzystek/.agents/skills/sdlc/SKILL.md",
+        "scope": "user",
+        "enabled": true,
+        "pluginId": null
+      }
+    ],
+    "errors": [
+      []
+    ],
+    "verified": true
+  },
+  "method": "Playwright screenshot of explicitly labelled authentic output excerpt; not native terminal video"
+}

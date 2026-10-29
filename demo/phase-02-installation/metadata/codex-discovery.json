@@ -1,0 +1,19 @@
+{
+  "method": "actual local Codex CLI app-server skills/list; no model turn",
+  "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "expected_path": "/Users/davidkrzystek/.agents/skills/sdlc/SKILL.md",
+  "sdlc_skills": [
+    {
+      "name": "sdlc",
+      "description": "Guide existing applications through Discovery, human approvals, Functional Analysis and governed Engineering and QA using a pinned external SDLC runtime.",
+      "path": "/Users/davidkrzystek/.agents/skills/sdlc/SKILL.md",
+      "scope": "user",
+      "enabled": true,
+      "pluginId": null
+    }
+  ],
+  "errors": [
+    []
+  ],
+  "verified": true
+}

@@ -1,0 +1,11 @@
+{
+  "application_revision": "2f9578a04bd43aac788441e1407058a7532c8148",
+  "baseline_revision": "2f9578a04bd43aac788441e1407058a7532c8148",
+  "baseline_tag_object": "0d70b45339a407dcc0924a0128b061e1bf682fad",
+  "baseline_tag_target": "2f9578a04bd43aac788441e1407058a7532c8148",
+  "tracked_files": 51,
+  "all_baseline_files_unchanged": true,
+  "requirements_exists": false,
+  "qa_exists": false,
+  "project_skill_exists": false
+}

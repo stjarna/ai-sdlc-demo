@@ -1,0 +1,14 @@
+{
+  "source_command": "14-external-installation",
+  "source_stdout": "logs/14-external-installation.stdout.txt",
+  "displayed_excerpt": {
+    "ok": true,
+    "source_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+    "preview": false,
+    "runtime": "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f",
+    "registration": "/Users/davidkrzystek/.agents/skills/sdlc",
+    "snapshot_digest": "64a774d6980d081f67ef7e99d4e7639443f0f7f821f155a14ed60a9f55b5934a",
+    "replayed": false
+  },
+  "method": "Playwright screenshot of explicitly labelled authentic output excerpt; not native terminal video"
+}

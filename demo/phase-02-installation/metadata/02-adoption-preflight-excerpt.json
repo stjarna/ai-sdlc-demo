@@ -1,0 +1,26 @@
+{
+  "source_command": "12-adoption-preflight",
+  "source_stdout": "logs/12-adoption-preflight.stdout.txt",
+  "displayed_excerpt": {
+    "ok": true,
+    "ready": true,
+    "baseline_ready": true,
+    "application_revision": "2f9578a04bd43aac788441e1407058a7532c8148",
+    "working_tree_clean": true,
+    "diagnostics": [
+      {
+        "severity": "warning",
+        "code": "W_ADOPTION_UNREGISTERED",
+        "file": "/Users/davidkrzystek/Development/Interview/Alza",
+        "message": "Checkout mode: no verified external installation manifest. Install/register a pinned runtime before the independent-repository demonstration."
+      },
+      {
+        "severity": "warning",
+        "code": "W_ADOPTION_SKILL_MISSING",
+        "file": "/Users/davidkrzystek/.agents/skills",
+        "message": "No sdlc registration found in the inspected user/admin/project locations."
+      }
+    ]
+  },
+  "method": "Playwright screenshot of explicitly labelled authentic output excerpt; not native terminal video"
+}

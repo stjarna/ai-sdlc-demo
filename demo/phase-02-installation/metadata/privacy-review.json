@@ -1,0 +1,13 @@
+{
+  "purpose": "Pre-commit privacy review; no application or SDLC decision changes",
+  "file": "logs/codex-app-server.responses.jsonl",
+  "original_sha256": "d9303f6c4011cc59e592205c1eb7c1061fe0362998d88ef464ee8179a6204173",
+  "redacted_sha256": "9d990949d0d73656f2e50c20e87b068d19788878cbf5f44201fc940ee863ddfb",
+  "redactions": [
+    "Local hostname replaced with explicit redaction marker",
+    "Host installation identifier replaced with explicit redaction marker",
+    "17 unrelated skill entries omitted; sdlc discovery entry retained unchanged"
+  ],
+  "retained": "Actual protocol envelopes, initialization/tool versions, timestamps and SDLC discovery result. Project/runtime paths are intentional reproducibility evidence.",
+  "credential_scan": "No credential-format findings; no identity profiles, credentials, installed dependencies or Finder metadata staged."
+}

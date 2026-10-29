@@ -1,0 +1,2 @@
+origin	git@github.com:stjarna/ai-sdlc-demo.git (fetch)
+origin	git@github.com:stjarna/ai-sdlc-demo.git (push)

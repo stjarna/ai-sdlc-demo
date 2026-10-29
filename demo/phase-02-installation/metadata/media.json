@@ -1,0 +1,58 @@
+{
+  "recordings/after-littlelist.mp4": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "format": {
+      "duration": "7.840000"
+    }
+  },
+  "recordings/after-littlelist.webm": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "format": {
+      "duration": "7.840000"
+    }
+  },
+  "recordings/before-littlelist.mp4": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "format": {
+      "duration": "7.880000"
+    }
+  },
+  "recordings/before-littlelist.webm": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "format": {
+      "duration": "7.880000"
+    }
+  }
+}

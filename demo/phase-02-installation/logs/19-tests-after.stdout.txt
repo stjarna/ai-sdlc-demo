@@ -1,0 +1,79 @@
+
+> littlelist-crud-baseline@1.0.0 test
+> npm run test:unit && npm run test:integration && npm run test:browser
+
+
+> littlelist-crud-baseline@1.0.0 test:unit
+> node --test test/unit/*.test.mjs
+
+✔ default persistent data is outside the application and dependency directories (0.90525ms)
+✔ relative database overrides resolve from the application root (0.085333ms)
+✔ absolute database overrides retain their explicitly selected location (0.069917ms)
+✔ creates an unfinished task with optional description and opaque stable identity (3.731875ms)
+✔ newest-created tasks remain first when older tasks are edited (0.409542ms)
+✔ updates title and multiline description while retaining identity and completion (0.32275ms)
+✔ completion is reversible without extra state transitions (0.310125ms)
+✔ deletes both unfinished and completed tasks permanently (0.352625ms)
+✔ invalid edits preserve the last valid task (0.443833ms)
+✔ validates input types, supported fields and exact content bounds (0.248ms)
+✔ Unicode and markup remain literal user content (0.257667ms)
+✔ missing IDs produce a clear not-found diagnostic (0.363041ms)
+✔ stored tasks survive closing and reopening the database (3.17725ms)
+✔ independent database connections preserve partial updates (2.11975ms)
+✔ unsupported database schema fails without deleting stored data (2.947625ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.261459
+
+> littlelist-crud-baseline@1.0.0 test:integration
+> node --test test/integration/*.test.mjs
+
+✔ real HTTP CRUD, completion, ordering and persistence across server process restart (377.78425ms)
+✔ invalid edits and unsupported fields do not alter persisted task content (138.284542ms)
+✔ rejects malformed JSON, unexpected nodes, unsupported media and oversized bodies (127.307959ms)
+✔ serves local assets, rejects traversal and unknown methods, and emits protective headers (121.254416ms)
+✔ rejects foreign browser origins and untrusted Host headers without mutations (119.140917ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1006.379166
+
+> littlelist-crud-baseline@1.0.0 test:browser
+> playwright test
+
+
+Running 22 tests using 1 worker
+
+  ✓   1 [desktop] › test/browser/tasks.spec.mjs:6:1 › empty state, required title and quick creation without description (604ms)
+  ✓   2 [desktop] › test/browser/tasks.spec.mjs:16:1 › supports title and optional description, newest-first ordering and filters (662ms)
+  ✓   3 [desktop] › test/browser/tasks.spec.mjs:26:1 › autosaves valid edits and keeps previous valid title when draft is empty (1.4s)
+  ✓   4 [desktop] › test/browser/tasks.spec.mjs:40:1 › cancel discards only the unsaved draft, including a pending valid edit (587ms)
+  ✓   5 [desktop] › test/browser/tasks.spec.mjs:48:1 › delete is confirmed, cancellable, and works for completed tasks too (807ms)
+  ✓   6 [desktop] › test/browser/tasks.spec.mjs:60:1 › tasks and completion survive browser reload and actual server process restart (705ms)
+  ✓   7 [desktop] › test/browser/tasks.spec.mjs:69:1 › keyboard focus remains usable after completion and deleting the final task (674ms)
+  ✓   8 [desktop] › test/browser/tasks.spec.mjs:78:1 › personal text is rendered literally and never interpreted as HTML (461ms)
+  ✓   9 [desktop] › test/browser/tasks.spec.mjs:84:1 › network failure keeps a new-task draft and supports a successful retry (479ms)
+  ✓  10 [desktop] › test/browser/tasks.spec.mjs:91:1 › failed autosave is visible and does not pretend that the draft was persisted (1.4s)
+  ✓  11 [desktop] › test/browser/tasks.spec.mjs:101:1 › responsive layout has no horizontal overflow or date-related controls (638ms)
+  ✓  12 [mobile] › test/browser/tasks.spec.mjs:6:1 › empty state, required title and quick creation without description (497ms)
+  ✓  13 [mobile] › test/browser/tasks.spec.mjs:16:1 › supports title and optional description, newest-first ordering and filters (697ms)
+  ✓  14 [mobile] › test/browser/tasks.spec.mjs:26:1 › autosaves valid edits and keeps previous valid title when draft is empty (1.4s)
+  ✓  15 [mobile] › test/browser/tasks.spec.mjs:40:1 › cancel discards only the unsaved draft, including a pending valid edit (550ms)
+  ✓  16 [mobile] › test/browser/tasks.spec.mjs:48:1 › delete is confirmed, cancellable, and works for completed tasks too (659ms)
+  ✓  17 [mobile] › test/browser/tasks.spec.mjs:60:1 › tasks and completion survive browser reload and actual server process restart (700ms)
+  ✓  18 [mobile] › test/browser/tasks.spec.mjs:69:1 › keyboard focus remains usable after completion and deleting the final task (648ms)
+  ✓  19 [mobile] › test/browser/tasks.spec.mjs:78:1 › personal text is rendered literally and never interpreted as HTML (439ms)
+  ✓  20 [mobile] › test/browser/tasks.spec.mjs:84:1 › network failure keeps a new-task draft and supports a successful retry (431ms)
+  ✓  21 [mobile] › test/browser/tasks.spec.mjs:91:1 › failed autosave is visible and does not pretend that the draft was persisted (1.4s)
+  ✓  22 [mobile] › test/browser/tasks.spec.mjs:101:1 › responsive layout has no horizontal overflow or date-related controls (499ms)
+
+  22 passed (17.5s)

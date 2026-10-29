@@ -1,0 +1,1627 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-29T14:45:04.916900+00:00",
+  "project": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "baseline_commit": "2f9578a04bd43aac788441e1407058a7532c8148",
+  "baseline_tag": "baseline-crud",
+  "baseline_tag_object": "0d70b45339a407dcc0924a0128b061e1bf682fad",
+  "runtime_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+  "runtime_path": "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f",
+  "runtime_snapshot_digest": "64a774d6980d081f67ef7e99d4e7639443f0f7f821f155a14ed60a9f55b5934a",
+  "preview": false,
+  "registration_path": "/Users/davidkrzystek/.agents/skills/sdlc/SKILL.md",
+  "environment": {
+    "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64",
+    "python": "3.13.7",
+    "pyyaml": "6.0.3",
+    "git": "git version 2.41.0",
+    "node": "v25.9.0",
+    "npm": "11.12.1",
+    "codex": "codex-cli 0.165.0",
+    "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+    "playwright": "1.64.1",
+    "chromium": "156.0.8078.4"
+  },
+  "domain_skills": {
+    "architecture": {
+      "version": "1.3.0",
+      "digest": "85ecece8bf2c04a178d8bdbda84a769fe1a237593c01a8dbf18fcc9fd8215536"
+    },
+    "development": {
+      "version": "1.3.0",
+      "digest": "fbae39f676cddab88b6b43a74f30df67f6797382ee6f539c2e0546510c119750"
+    },
+    "testing": {
+      "version": "1.3.0",
+      "digest": "86975e0917f3db19923051aeee52c367b1b5c9ceac62985190cd4a2f0594de1f"
+    },
+    "security": {
+      "version": "1.2.0",
+      "digest": "5698ff24151fffff13837297dbe36e33a0c26ffb180256c95814c3f1c63c94ee"
+    }
+  },
+  "templates": {
+    "idea": {
+      "id": "idea",
+      "version": "1.0.0",
+      "digest": "e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f",
+      "content_digest": "d4492c9487fcd5d6c4690f342e7f7d6d391493fae13cfc180c6ea5905ace02bb",
+      "validation_contract": "discovery.idea/1"
+    },
+    "business": {
+      "id": "business",
+      "version": "1.0.0",
+      "digest": "e751d87744e2cd5e3881d3f5bd1b624d9fcd7a4b06336f41efdbb96a59645702",
+      "content_digest": "4f62a07aa6e955c8e142b8655beb9381a737c0877d4f045a4c1b2d822c1b9c20",
+      "validation_contract": "business.specification/1"
+    },
+    "specification": {
+      "id": "specification",
+      "version": "1.0.0",
+      "digest": "522f016b3a6f001617b6b7fc0fb3b7dd45131ff43150138dc4ae168ce39f6f9b",
+      "content_digest": "3fa18be92bf255044c0268efc2622098197772cee5c5a3b808f5165cb1897d33",
+      "validation_contract": "analysis.specification/1"
+    },
+    "technical-design": {
+      "id": "technical-design",
+      "version": "1.0.0",
+      "digest": "b502bf8fd1644f5d1359db4428ab02dbe546926681797b001d7ef9f17b879d02",
+      "content_digest": "29778705882c48595b45c5aaf44901640d7585284421d1097ef22988b35d8694",
+      "validation_contract": "engineering.design/1"
+    },
+    "implementation-plan": {
+      "id": "implementation-plan",
+      "version": "1.0.0",
+      "digest": "4413a6b2b15677cee4b71336454fe622b845757cb1694810f1b65f4bf911f4cb",
+      "content_digest": "e5a3af3058215208b141ef31487426f5b99d442bde88006ff20f9717f20cfff4",
+      "validation_contract": "engineering.plan/1"
+    },
+    "test-strategy": {
+      "id": "test-strategy",
+      "version": "1.0.0",
+      "digest": "3f40cf3336f0638dddb3dea2ac2f99d289622c3ccbbe55f9ddd8a61a1ecd7b39",
+      "content_digest": "bdc300739366a0235c3216106ee70a5b1b2a1f7433992faeac86b5beb95a82bc",
+      "validation_contract": "qa.strategy/1"
+    },
+    "test-scenarios": {
+      "id": "test-scenarios",
+      "version": "1.0.0",
+      "digest": "5a6f7243624a0a7f2e253a4b3e4ea355252ccb73b5dfed4572e888a876b32611",
+      "content_digest": "8af2fb84e133456a87266179716172a67a67426a69f569f9bfbb82de970dab01",
+      "validation_contract": "qa.scenarios/1"
+    },
+    "test-automation": {
+      "id": "test-automation",
+      "version": "1.0.0",
+      "digest": "c26cde8989be72483b4761fc084be2740b0028f6034ff13f99e91a1875b030e3",
+      "content_digest": "a7c664a097901b29e9f063d33c96b292220809488b8d3714d4e425202415a80d",
+      "validation_contract": "qa.automation/1"
+    },
+    "code-review": {
+      "id": "code-review",
+      "version": "1.0.0",
+      "digest": "dbd97b345c865f4a4ace3c25ae0c46f7bffc66f6e2746a2c3fd129c81803fc49",
+      "content_digest": "3c47914f27d2bcf0140e744f492aee030bd49242b4431e6ec6a042fd7b69deb5",
+      "validation_contract": "engineering.implementation/1"
+    },
+    "security-review": {
+      "id": "security-review",
+      "version": "1.0.0",
+      "digest": "96283c5fc503b09b9caa3954548cacfa5a581741c3eccb4580dd2779615da2e4",
+      "content_digest": "a7b6a6291f15c51222c63fa310b39050734f2876d9d3e0514a553fe94d685d32",
+      "validation_contract": "engineering.security/1"
+    },
+    "verification-report": {
+      "id": "verification-report",
+      "version": "1.0.0",
+      "digest": "d922e6ad56bcc39456dfbef89c5cfda295e5c59c25a561c89ea872be14be0c2c",
+      "content_digest": "078d42e003eb173fd0da5f9980b9461d555a2d6a606449940ae4f57a5c3e3d4f",
+      "validation_contract": "engineering.final/1"
+    }
+  },
+  "preflight": {
+    "before": {
+      "ok": true,
+      "operation": "adoption-preflight",
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "W_ADOPTION_UNREGISTERED",
+          "file": "/Users/davidkrzystek/Development/Interview/Alza",
+          "message": "Checkout mode: no verified external installation manifest. Install/register a pinned runtime before the independent-repository demonstration."
+        },
+        {
+          "severity": "warning",
+          "code": "W_ADOPTION_SKILL_MISSING",
+          "file": "/Users/davidkrzystek/.agents/skills",
+          "message": "No sdlc registration found in the inspected user/admin/project locations."
+        }
+      ],
+      "ready": true,
+      "baseline_ready": true,
+      "assessment": "structural preflight only; not business approval, test execution or lifecycle authorization",
+      "project": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "runtime": "/Users/davidkrzystek/Development/Interview/Alza",
+      "instructions": [],
+      "registrations": [],
+      "application_revision": "2f9578a04bd43aac788441e1407058a7532c8148",
+      "working_tree_clean": true,
+      "working_tree_status": [],
+      "environment": {
+        "python": "3.13.7",
+        "pyyaml": "6.0.3",
+        "skills": {
+          "architecture": {
+            "version": "1.3.0",
+            "digest": "85ecece8bf2c04a178d8bdbda84a769fe1a237593c01a8dbf18fcc9fd8215536"
+          },
+          "development": {
+            "version": "1.3.0",
+            "digest": "fbae39f676cddab88b6b43a74f30df67f6797382ee6f539c2e0546510c119750"
+          },
+          "testing": {
+            "version": "1.3.0",
+            "digest": "86975e0917f3db19923051aeee52c367b1b5c9ceac62985190cd4a2f0594de1f"
+          },
+          "security": {
+            "version": "1.2.0",
+            "digest": "5698ff24151fffff13837297dbe36e33a0c26ffb180256c95814c3f1c63c94ee"
+          }
+        },
+        "templates": {
+          "idea": {
+            "id": "idea",
+            "version": "1.0.0",
+            "digest": "e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f",
+            "content_digest": "d4492c9487fcd5d6c4690f342e7f7d6d391493fae13cfc180c6ea5905ace02bb",
+            "validation_contract": "discovery.idea/1"
+          },
+          "business": {
+            "id": "business",
+            "version": "1.0.0",
+            "digest": "e751d87744e2cd5e3881d3f5bd1b624d9fcd7a4b06336f41efdbb96a59645702",
+            "content_digest": "4f62a07aa6e955c8e142b8655beb9381a737c0877d4f045a4c1b2d822c1b9c20",
+            "validation_contract": "business.specification/1"
+          },
+          "specification": {
+            "id": "specification",
+            "version": "1.0.0",
+            "digest": "522f016b3a6f001617b6b7fc0fb3b7dd45131ff43150138dc4ae168ce39f6f9b",
+            "content_digest": "3fa18be92bf255044c0268efc2622098197772cee5c5a3b808f5165cb1897d33",
+            "validation_contract": "analysis.specification/1"
+          },
+          "technical-design": {
+            "id": "technical-design",
+            "version": "1.0.0",
+            "digest": "b502bf8fd1644f5d1359db4428ab02dbe546926681797b001d7ef9f17b879d02",
+            "content_digest": "29778705882c48595b45c5aaf44901640d7585284421d1097ef22988b35d8694",
+            "validation_contract": "engineering.design/1"
+          },
+          "implementation-plan": {
+            "id": "implementation-plan",
+            "version": "1.0.0",
+            "digest": "4413a6b2b15677cee4b71336454fe622b845757cb1694810f1b65f4bf911f4cb",
+            "content_digest": "e5a3af3058215208b141ef31487426f5b99d442bde88006ff20f9717f20cfff4",
+            "validation_contract": "engineering.plan/1"
+          },
+          "test-strategy": {
+            "id": "test-strategy",
+            "version": "1.0.0",
+            "digest": "3f40cf3336f0638dddb3dea2ac2f99d289622c3ccbbe55f9ddd8a61a1ecd7b39",
+            "content_digest": "bdc300739366a0235c3216106ee70a5b1b2a1f7433992faeac86b5beb95a82bc",
+            "validation_contract": "qa.strategy/1"
+          },
+          "test-scenarios": {
+            "id": "test-scenarios",
+            "version": "1.0.0",
+            "digest": "5a6f7243624a0a7f2e253a4b3e4ea355252ccb73b5dfed4572e888a876b32611",
+            "content_digest": "8af2fb84e133456a87266179716172a67a67426a69f569f9bfbb82de970dab01",
+            "validation_contract": "qa.scenarios/1"
+          },
+          "test-automation": {
+            "id": "test-automation",
+            "version": "1.0.0",
+            "digest": "c26cde8989be72483b4761fc084be2740b0028f6034ff13f99e91a1875b030e3",
+            "content_digest": "a7c664a097901b29e9f063d33c96b292220809488b8d3714d4e425202415a80d",
+            "validation_contract": "qa.automation/1"
+          },
+          "code-review": {
+            "id": "code-review",
+            "version": "1.0.0",
+            "digest": "dbd97b345c865f4a4ace3c25ae0c46f7bffc66f6e2746a2c3fd129c81803fc49",
+            "content_digest": "3c47914f27d2bcf0140e744f492aee030bd49242b4431e6ec6a042fd7b69deb5",
+            "validation_contract": "engineering.implementation/1"
+          },
+          "security-review": {
+            "id": "security-review",
+            "version": "1.0.0",
+            "digest": "96283c5fc503b09b9caa3954548cacfa5a581741c3eccb4580dd2779615da2e4",
+            "content_digest": "a7b6a6291f15c51222c63fa310b39050734f2876d9d3e0514a553fe94d685d32",
+            "validation_contract": "engineering.security/1"
+          },
+          "verification-report": {
+            "id": "verification-report",
+            "version": "1.0.0",
+            "digest": "d922e6ad56bcc39456dfbef89c5cfda295e5c59c25a561c89ea872be14be0c2c",
+            "content_digest": "078d42e003eb173fd0da5f9980b9461d555a2d6a606449940ae4f57a5c3e3d4f",
+            "validation_contract": "engineering.final/1"
+          }
+        }
+      }
+    },
+    "after_install_before_evidence": {
+      "ok": true,
+      "operation": "adoption-preflight",
+      "diagnostics": [],
+      "ready": true,
+      "baseline_ready": true,
+      "assessment": "structural preflight only; not business approval, test execution or lifecycle authorization",
+      "project": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "runtime": "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f",
+      "instructions": [],
+      "registrations": [
+        {
+          "scope": "user",
+          "path": "/Users/davidkrzystek/.agents/skills/sdlc/SKILL.md"
+        }
+      ],
+      "application_revision": "2f9578a04bd43aac788441e1407058a7532c8148",
+      "working_tree_clean": true,
+      "working_tree_status": [],
+      "installation": {
+        "runtime": "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f",
+        "source_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+        "preview": false,
+        "snapshot_digest": "64a774d6980d081f67ef7e99d4e7639443f0f7f821f155a14ed60a9f55b5934a",
+        "environment": {
+          "python": "3.13.7",
+          "pyyaml": "6.0.3",
+          "skills": {
+            "architecture": {
+              "version": "1.3.0",
+              "digest": "85ecece8bf2c04a178d8bdbda84a769fe1a237593c01a8dbf18fcc9fd8215536"
+            },
+            "development": {
+              "version": "1.3.0",
+              "digest": "fbae39f676cddab88b6b43a74f30df67f6797382ee6f539c2e0546510c119750"
+            },
+            "testing": {
+              "version": "1.3.0",
+              "digest": "86975e0917f3db19923051aeee52c367b1b5c9ceac62985190cd4a2f0594de1f"
+            },
+            "security": {
+              "version": "1.2.0",
+              "digest": "5698ff24151fffff13837297dbe36e33a0c26ffb180256c95814c3f1c63c94ee"
+            }
+          },
+          "templates": {
+            "idea": {
+              "id": "idea",
+              "version": "1.0.0",
+              "digest": "e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f",
+              "content_digest": "d4492c9487fcd5d6c4690f342e7f7d6d391493fae13cfc180c6ea5905ace02bb",
+              "validation_contract": "discovery.idea/1"
+            },
+            "business": {
+              "id": "business",
+              "version": "1.0.0",
+              "digest": "e751d87744e2cd5e3881d3f5bd1b624d9fcd7a4b06336f41efdbb96a59645702",
+              "content_digest": "4f62a07aa6e955c8e142b8655beb9381a737c0877d4f045a4c1b2d822c1b9c20",
+              "validation_contract": "business.specification/1"
+            },
+            "specification": {
+              "id": "specification",
+              "version": "1.0.0",
+              "digest": "522f016b3a6f001617b6b7fc0fb3b7dd45131ff43150138dc4ae168ce39f6f9b",
+              "content_digest": "3fa18be92bf255044c0268efc2622098197772cee5c5a3b808f5165cb1897d33",
+              "validation_contract": "analysis.specification/1"
+            },
+            "technical-design": {
+              "id": "technical-design",
+              "version": "1.0.0",
+              "digest": "b502bf8fd1644f5d1359db4428ab02dbe546926681797b001d7ef9f17b879d02",
+              "content_digest": "29778705882c48595b45c5aaf44901640d7585284421d1097ef22988b35d8694",
+              "validation_contract": "engineering.design/1"
+            },
+            "implementation-plan": {
+              "id": "implementation-plan",
+              "version": "1.0.0",
+              "digest": "4413a6b2b15677cee4b71336454fe622b845757cb1694810f1b65f4bf911f4cb",
+              "content_digest": "e5a3af3058215208b141ef31487426f5b99d442bde88006ff20f9717f20cfff4",
+              "validation_contract": "engineering.plan/1"
+            },
+            "test-strategy": {
+              "id": "test-strategy",
+              "version": "1.0.0",
+              "digest": "3f40cf3336f0638dddb3dea2ac2f99d289622c3ccbbe55f9ddd8a61a1ecd7b39",
+              "content_digest": "bdc300739366a0235c3216106ee70a5b1b2a1f7433992faeac86b5beb95a82bc",
+              "validation_contract": "qa.strategy/1"
+            },
+            "test-scenarios": {
+              "id": "test-scenarios",
+              "version": "1.0.0",
+              "digest": "5a6f7243624a0a7f2e253a4b3e4ea355252ccb73b5dfed4572e888a876b32611",
+              "content_digest": "8af2fb84e133456a87266179716172a67a67426a69f569f9bfbb82de970dab01",
+              "validation_contract": "qa.scenarios/1"
+            },
+            "test-automation": {
+              "id": "test-automation",
+              "version": "1.0.0",
+              "digest": "c26cde8989be72483b4761fc084be2740b0028f6034ff13f99e91a1875b030e3",
+              "content_digest": "a7c664a097901b29e9f063d33c96b292220809488b8d3714d4e425202415a80d",
+              "validation_contract": "qa.automation/1"
+            },
+            "code-review": {
+              "id": "code-review",
+              "version": "1.0.0",
+              "digest": "dbd97b345c865f4a4ace3c25ae0c46f7bffc66f6e2746a2c3fd129c81803fc49",
+              "content_digest": "3c47914f27d2bcf0140e744f492aee030bd49242b4431e6ec6a042fd7b69deb5",
+              "validation_contract": "engineering.implementation/1"
+            },
+            "security-review": {
+              "id": "security-review",
+              "version": "1.0.0",
+              "digest": "96283c5fc503b09b9caa3954548cacfa5a581741c3eccb4580dd2779615da2e4",
+              "content_digest": "a7b6a6291f15c51222c63fa310b39050734f2876d9d3e0514a553fe94d685d32",
+              "validation_contract": "engineering.security/1"
+            },
+            "verification-report": {
+              "id": "verification-report",
+              "version": "1.0.0",
+              "digest": "d922e6ad56bcc39456dfbef89c5cfda295e5c59c25a561c89ea872be14be0c2c",
+              "content_digest": "078d42e003eb173fd0da5f9980b9461d555a2d6a606449940ae4f57a5c3e3d4f",
+              "validation_contract": "engineering.final/1"
+            }
+          }
+        }
+      }
+    },
+    "final_with_untracked_evidence": {
+      "ok": true,
+      "operation": "adoption-preflight",
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "W_ADOPTION_DIRTY",
+          "file": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+          "message": "Working tree has existing changes. Preserve and review them; the initial product baseline is not clean."
+        }
+      ],
+      "ready": true,
+      "baseline_ready": false,
+      "assessment": "structural preflight only; not business approval, test execution or lifecycle authorization",
+      "project": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "runtime": "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f",
+      "instructions": [],
+      "registrations": [
+        {
+          "scope": "user",
+          "path": "/Users/davidkrzystek/.agents/skills/sdlc/SKILL.md"
+        }
+      ],
+      "application_revision": "2f9578a04bd43aac788441e1407058a7532c8148",
+      "working_tree_clean": false,
+      "working_tree_status": [
+        "?? demo/phase-02-installation/commands.jsonl",
+        "?? demo/phase-02-installation/logs/01-application-baseline.stderr.txt",
+        "?? demo/phase-02-installation/logs/01-application-baseline.stdout.txt",
+        "?? demo/phase-02-installation/logs/02-application-revision.stderr.txt",
+        "?? demo/phase-02-installation/logs/02-application-revision.stdout.txt",
+        "?? demo/phase-02-installation/logs/03-baseline-tag.stderr.txt",
+        "?? demo/phase-02-installation/logs/03-baseline-tag.stdout.txt",
+        "?? demo/phase-02-installation/logs/04-git-remote.stderr.txt",
+        "?? demo/phase-02-installation/logs/04-git-remote.stdout.txt",
+        "?? demo/phase-02-installation/logs/05-git-integrity.stderr.txt",
+        "?? demo/phase-02-installation/logs/05-git-integrity.stdout.txt",
+        "?? demo/phase-02-installation/logs/06-before-integrity.stderr.txt",
+        "?? demo/phase-02-installation/logs/06-before-integrity.stdout.txt",
+        "?? demo/phase-02-installation/logs/07-orchestrator-baseline.stderr.txt",
+        "?? demo/phase-02-installation/logs/07-orchestrator-baseline.stdout.txt",
+        "?? demo/phase-02-installation/logs/08-runtime-revision.stderr.txt",
+        "?? demo/phase-02-installation/logs/08-runtime-revision.stdout.txt",
+        "?? demo/phase-02-installation/logs/09-python-environment.stderr.txt",
+        "?? demo/phase-02-installation/logs/09-python-environment.stdout.txt",
+        "?? demo/phase-02-installation/logs/10-python-dependencies.stderr.txt",
+        "?? demo/phase-02-installation/logs/10-python-dependencies.stdout.txt",
+        "?? demo/phase-02-installation/logs/11-tests-before.stderr.txt",
+        "?? demo/phase-02-installation/logs/11-tests-before.stdout.txt",
+        "?? demo/phase-02-installation/logs/12-adoption-preflight.stderr.txt",
+        "?? demo/phase-02-installation/logs/12-adoption-preflight.stdout.txt",
+        "?? demo/phase-02-installation/logs/13-application-before.stderr.txt",
+        "?? demo/phase-02-installation/logs/13-application-before.stdout.txt",
+        "?? demo/phase-02-installation/logs/14-external-installation.stderr.txt",
+        "?? demo/phase-02-installation/logs/14-external-installation.stdout.txt",
+        "?? demo/phase-02-installation/logs/15-runtime-verification.stderr.txt",
+        "?? demo/phase-02-installation/logs/15-runtime-verification.stdout.txt",
+        "?? demo/phase-02-installation/logs/16-installed-preflight.stderr.txt",
+        "?? demo/phase-02-installation/logs/16-installed-preflight.stdout.txt",
+        "?? demo/phase-02-installation/logs/17-codex-discovery.stderr.txt",
+        "?? demo/phase-02-installation/logs/17-codex-discovery.stdout.txt",
+        "?? demo/phase-02-installation/logs/18-codex-model-inspection.stderr.txt",
+        "?? demo/phase-02-installation/logs/18-codex-model-inspection.stdout.txt",
+        "?? demo/phase-02-installation/logs/19-tests-after.stderr.txt",
+        "?? demo/phase-02-installation/logs/19-tests-after.stdout.txt",
+        "?? demo/phase-02-installation/logs/20-application-after.stderr.txt",
+        "?? demo/phase-02-installation/logs/20-application-after.stdout.txt",
+        "?? demo/phase-02-installation/logs/21-command-screenshots.stderr.txt",
+        "?? demo/phase-02-installation/logs/21-command-screenshots.stdout.txt",
+        "?? demo/phase-02-installation/logs/22-before-integrity-after.stderr.txt",
+        "?? demo/phase-02-installation/logs/22-before-integrity-after.stdout.txt",
+        "?? demo/phase-02-installation/logs/23-application-unchanged.stderr.txt",
+        "?? demo/phase-02-installation/logs/23-application-unchanged.stdout.txt",
+        "?? demo/phase-02-installation/logs/24-orchestrator-unchanged.stderr.txt",
+        "?? demo/phase-02-installation/logs/24-orchestrator-unchanged.stdout.txt",
+        "?? demo/phase-02-installation/logs/25-final-tag.stderr.txt",
+        "?? demo/phase-02-installation/logs/25-final-tag.stdout.txt",
+        "?? demo/phase-02-installation/logs/26-before-mp4.stderr.txt",
+        "?? demo/phase-02-installation/logs/26-before-mp4.stdout.txt",
+        "?? demo/phase-02-installation/logs/27-after-mp4.stderr.txt",
+        "?? demo/phase-02-installation/logs/27-after-mp4.stdout.txt",
+        "?? demo/phase-02-installation/logs/28-tool-versions.stderr.txt",
+        "?? demo/phase-02-installation/logs/28-tool-versions.stdout.txt",
+        "?? demo/phase-02-installation/logs/29-preservation.stderr.txt",
+        "?? demo/phase-02-installation/logs/29-preservation.stdout.txt",
+        "?? demo/phase-02-installation/logs/30-final-working-tree.stderr.txt",
+        "?? demo/phase-02-installation/logs/30-final-working-tree.stdout.txt",
+        "?? demo/phase-02-installation/logs/31-diff-whitespace.stderr.txt",
+        "?? demo/phase-02-installation/logs/31-diff-whitespace.stdout.txt",
+        "?? demo/phase-02-installation/logs/32-tracked-diff.stderr.txt",
+        "?? demo/phase-02-installation/logs/32-tracked-diff.stdout.txt",
+        "?? demo/phase-02-installation/logs/33-original-before-hashes.stderr.txt",
+        "?? demo/phase-02-installation/logs/33-original-before-hashes.stdout.txt",
+        "?? demo/phase-02-installation/logs/codex-app-server.requests.jsonl",
+        "?? demo/phase-02-installation/logs/codex-app-server.responses.jsonl",
+        "?? demo/phase-02-installation/logs/codex-app-server.stderr.txt",
+        "?? demo/phase-02-installation/metadata/02-adoption-preflight-excerpt.json",
+        "?? demo/phase-02-installation/metadata/03-external-installation-excerpt.json",
+        "?? demo/phase-02-installation/metadata/04-runtime-verification-excerpt.json",
+        "?? demo/phase-02-installation/metadata/05-codex-discovery-excerpt.json",
+        "?? demo/phase-02-installation/metadata/after-application.json",
+        "?? demo/phase-02-installation/metadata/before-application.json",
+        "?? demo/phase-02-installation/metadata/browser-results-after.json",
+        "?? demo/phase-02-installation/metadata/browser-results-before.json",
+        "?? demo/phase-02-installation/metadata/codex-discovery.json",
+        "?? demo/phase-02-installation/metadata/codex-model-result.json",
+        "?? demo/phase-02-installation/metadata/commands.json",
+        "?? demo/phase-02-installation/metadata/domain-skill-catalog.yaml",
+        "?? demo/phase-02-installation/metadata/environment.json",
+        "?? demo/phase-02-installation/metadata/installed-runtime-manifest.json",
+        "?? demo/phase-02-installation/metadata/preservation.json",
+        "?? demo/phase-02-installation/metadata/registered-loader.md",
+        "?? demo/phase-02-installation/metadata/registration.json",
+        "?? demo/phase-02-installation/metadata/template-catalog.yaml",
+        "?? demo/phase-02-installation/metadata/tools/capture-application.mjs",
+        "?? demo/phase-02-installation/metadata/tools/capture-command-screenshots.mjs",
+        "?? demo/phase-02-installation/metadata/tools/discover.py",
+        "?? demo/phase-02-installation/metadata/tools/environment.py",
+        "?? demo/phase-02-installation/metadata/tools/finalize.py",
+        "?? demo/phase-02-installation/metadata/tools/preservation.py",
+        "?? demo/phase-02-installation/metadata/tools/record.py",
+        "?? demo/phase-02-installation/recordings/after-littlelist.mp4",
+        "?? demo/phase-02-installation/recordings/after-littlelist.webm",
+        "?? demo/phase-02-installation/recordings/before-littlelist.mp4",
+        "?? demo/phase-02-installation/recordings/before-littlelist.webm",
+        "?? demo/phase-02-installation/report.md",
+        "?? demo/phase-02-installation/screenshots/02-adoption-preflight.png",
+        "?? demo/phase-02-installation/screenshots/03-external-installation.png",
+        "?? demo/phase-02-installation/screenshots/04-runtime-verification.png",
+        "?? demo/phase-02-installation/screenshots/05-codex-discovery.png",
+        "?? demo/phase-02-installation/screenshots/after-littlelist.png",
+        "?? demo/phase-02-installation/screenshots/before-littlelist.png",
+        "?? demo/phase-02-installation/storyboard.md",
+        "?? demo/phase-02-installation/terminal-transcript.txt"
+      ],
+      "installation": {
+        "runtime": "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f",
+        "source_revision": "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+        "preview": false,
+        "snapshot_digest": "64a774d6980d081f67ef7e99d4e7639443f0f7f821f155a14ed60a9f55b5934a",
+        "environment": {
+          "python": "3.13.7",
+          "pyyaml": "6.0.3",
+          "skills": {
+            "architecture": {
+              "version": "1.3.0",
+              "digest": "85ecece8bf2c04a178d8bdbda84a769fe1a237593c01a8dbf18fcc9fd8215536"
+            },
+            "development": {
+              "version": "1.3.0",
+              "digest": "fbae39f676cddab88b6b43a74f30df67f6797382ee6f539c2e0546510c119750"
+            },
+            "testing": {
+              "version": "1.3.0",
+              "digest": "86975e0917f3db19923051aeee52c367b1b5c9ceac62985190cd4a2f0594de1f"
+            },
+            "security": {
+              "version": "1.2.0",
+              "digest": "5698ff24151fffff13837297dbe36e33a0c26ffb180256c95814c3f1c63c94ee"
+            }
+          },
+          "templates": {
+            "idea": {
+              "id": "idea",
+              "version": "1.0.0",
+              "digest": "e1fafb2038d43d623c5ce8dd638e3e106b3f8e3ab62aaa5a0200bffdb2898d4f",
+              "content_digest": "d4492c9487fcd5d6c4690f342e7f7d6d391493fae13cfc180c6ea5905ace02bb",
+              "validation_contract": "discovery.idea/1"
+            },
+            "business": {
+              "id": "business",
+              "version": "1.0.0",
+              "digest": "e751d87744e2cd5e3881d3f5bd1b624d9fcd7a4b06336f41efdbb96a59645702",
+              "content_digest": "4f62a07aa6e955c8e142b8655beb9381a737c0877d4f045a4c1b2d822c1b9c20",
+              "validation_contract": "business.specification/1"
+            },
+            "specification": {
+              "id": "specification",
+              "version": "1.0.0",
+              "digest": "522f016b3a6f001617b6b7fc0fb3b7dd45131ff43150138dc4ae168ce39f6f9b",
+              "content_digest": "3fa18be92bf255044c0268efc2622098197772cee5c5a3b808f5165cb1897d33",
+              "validation_contract": "analysis.specification/1"
+            },
+            "technical-design": {
+              "id": "technical-design",
+              "version": "1.0.0",
+              "digest": "b502bf8fd1644f5d1359db4428ab02dbe546926681797b001d7ef9f17b879d02",
+              "content_digest": "29778705882c48595b45c5aaf44901640d7585284421d1097ef22988b35d8694",
+              "validation_contract": "engineering.design/1"
+            },
+            "implementation-plan": {
+              "id": "implementation-plan",
+              "version": "1.0.0",
+              "digest": "4413a6b2b15677cee4b71336454fe622b845757cb1694810f1b65f4bf911f4cb",
+              "content_digest": "e5a3af3058215208b141ef31487426f5b99d442bde88006ff20f9717f20cfff4",
+              "validation_contract": "engineering.plan/1"
+            },
+            "test-strategy": {
+              "id": "test-strategy",
+              "version": "1.0.0",
+              "digest": "3f40cf3336f0638dddb3dea2ac2f99d289622c3ccbbe55f9ddd8a61a1ecd7b39",
+              "content_digest": "bdc300739366a0235c3216106ee70a5b1b2a1f7433992faeac86b5beb95a82bc",
+              "validation_contract": "qa.strategy/1"
+            },
+            "test-scenarios": {
+              "id": "test-scenarios",
+              "version": "1.0.0",
+              "digest": "5a6f7243624a0a7f2e253a4b3e4ea355252ccb73b5dfed4572e888a876b32611",
+              "content_digest": "8af2fb84e133456a87266179716172a67a67426a69f569f9bfbb82de970dab01",
+              "validation_contract": "qa.scenarios/1"
+            },
+            "test-automation": {
+              "id": "test-automation",
+              "version": "1.0.0",
+              "digest": "c26cde8989be72483b4761fc084be2740b0028f6034ff13f99e91a1875b030e3",
+              "content_digest": "a7c664a097901b29e9f063d33c96b292220809488b8d3714d4e425202415a80d",
+              "validation_contract": "qa.automation/1"
+            },
+            "code-review": {
+              "id": "code-review",
+              "version": "1.0.0",
+              "digest": "dbd97b345c865f4a4ace3c25ae0c46f7bffc66f6e2746a2c3fd129c81803fc49",
+              "content_digest": "3c47914f27d2bcf0140e744f492aee030bd49242b4431e6ec6a042fd7b69deb5",
+              "validation_contract": "engineering.implementation/1"
+            },
+            "security-review": {
+              "id": "security-review",
+              "version": "1.0.0",
+              "digest": "96283c5fc503b09b9caa3954548cacfa5a581741c3eccb4580dd2779615da2e4",
+              "content_digest": "a7b6a6291f15c51222c63fa310b39050734f2876d9d3e0514a553fe94d685d32",
+              "validation_contract": "engineering.security/1"
+            },
+            "verification-report": {
+              "id": "verification-report",
+              "version": "1.0.0",
+              "digest": "d922e6ad56bcc39456dfbef89c5cfda295e5c59c25a561c89ea872be14be0c2c",
+              "content_digest": "078d42e003eb173fd0da5f9980b9461d555a2d6a606449940ae4f57a5c3e3d4f",
+              "validation_contract": "engineering.final/1"
+            }
+          }
+        }
+      }
+    }
+  },
+  "commands": [
+    {
+      "name": "01-application-baseline",
+      "started_at": "2026-10-29T14:35:49.500565+00:00",
+      "finished_at": "2026-10-29T14:35:49.511673+00:00",
+      "duration_seconds": 0.011,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--branch"
+      ],
+      "command": "git status --porcelain=v1 --branch",
+      "exit_code": 0,
+      "stdout": "logs/01-application-baseline.stdout.txt",
+      "stderr": "logs/01-application-baseline.stderr.txt"
+    },
+    {
+      "name": "02-application-revision",
+      "started_at": "2026-10-29T14:35:49.542131+00:00",
+      "finished_at": "2026-10-29T14:35:49.548339+00:00",
+      "duration_seconds": 0.006,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "command": "git rev-parse HEAD",
+      "exit_code": 0,
+      "stdout": "logs/02-application-revision.stdout.txt",
+      "stderr": "logs/02-application-revision.stderr.txt"
+    },
+    {
+      "name": "03-baseline-tag",
+      "started_at": "2026-10-29T14:35:49.579557+00:00",
+      "finished_at": "2026-10-29T14:35:49.587470+00:00",
+      "duration_seconds": 0.008,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "show-ref",
+        "--tags",
+        "-d"
+      ],
+      "command": "git show-ref --tags -d",
+      "exit_code": 0,
+      "stdout": "logs/03-baseline-tag.stdout.txt",
+      "stderr": "logs/03-baseline-tag.stderr.txt"
+    },
+    {
+      "name": "04-git-remote",
+      "started_at": "2026-10-29T14:35:49.623750+00:00",
+      "finished_at": "2026-10-29T14:35:49.630628+00:00",
+      "duration_seconds": 0.007,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "remote",
+        "-v"
+      ],
+      "command": "git remote -v",
+      "exit_code": 0,
+      "stdout": "logs/04-git-remote.stdout.txt",
+      "stderr": "logs/04-git-remote.stderr.txt"
+    },
+    {
+      "name": "05-git-integrity",
+      "started_at": "2026-10-29T14:35:49.661914+00:00",
+      "finished_at": "2026-10-29T14:35:49.707954+00:00",
+      "duration_seconds": 0.046,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "fsck",
+        "--no-dangling"
+      ],
+      "command": "git fsck --no-dangling",
+      "exit_code": 0,
+      "stdout": "logs/05-git-integrity.stdout.txt",
+      "stderr": "logs/05-git-integrity.stderr.txt"
+    },
+    {
+      "name": "06-before-integrity",
+      "started_at": "2026-10-29T14:35:49.737818+00:00",
+      "finished_at": "2026-10-29T14:35:49.830351+00:00",
+      "duration_seconds": 0.093,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "node",
+        "scripts/verify-before.mjs",
+        "--source"
+      ],
+      "command": "node scripts/verify-before.mjs --source",
+      "exit_code": 0,
+      "stdout": "logs/06-before-integrity.stdout.txt",
+      "stderr": "logs/06-before-integrity.stderr.txt"
+    },
+    {
+      "name": "07-orchestrator-baseline",
+      "started_at": "2026-10-29T14:35:49.863345+00:00",
+      "finished_at": "2026-10-29T14:35:49.887538+00:00",
+      "duration_seconds": 0.024,
+      "cwd": "/Users/davidkrzystek/Development/Interview/Alza",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "command": "git status --porcelain=v1",
+      "exit_code": 0,
+      "stdout": "logs/07-orchestrator-baseline.stdout.txt",
+      "stderr": "logs/07-orchestrator-baseline.stderr.txt"
+    },
+    {
+      "name": "08-runtime-revision",
+      "started_at": "2026-10-29T14:35:49.917686+00:00",
+      "finished_at": "2026-10-29T14:35:49.924073+00:00",
+      "duration_seconds": 0.007,
+      "cwd": "/Users/davidkrzystek/Development/Interview/Alza",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "command": "git rev-parse HEAD",
+      "exit_code": 0,
+      "stdout": "logs/08-runtime-revision.stdout.txt",
+      "stderr": "logs/08-runtime-revision.stderr.txt"
+    },
+    {
+      "name": "09-python-environment",
+      "started_at": "2026-10-29T14:35:49.954681+00:00",
+      "finished_at": "2026-10-29T14:35:51.617077+00:00",
+      "duration_seconds": 1.663,
+      "cwd": "/Users/davidkrzystek/Development/Interview/Alza",
+      "argv": [
+        "python3",
+        "-m",
+        "venv",
+        "/Users/davidkrzystek/.local/share/ai-sdlc/venv"
+      ],
+      "command": "python3 -m venv /Users/davidkrzystek/.local/share/ai-sdlc/venv",
+      "exit_code": 0,
+      "stdout": "logs/09-python-environment.stdout.txt",
+      "stderr": "logs/09-python-environment.stderr.txt"
+    },
+    {
+      "name": "10-python-dependencies",
+      "started_at": "2026-10-29T14:35:51.648032+00:00",
+      "finished_at": "2026-10-29T14:35:52.171617+00:00",
+      "duration_seconds": 0.524,
+      "cwd": "/Users/davidkrzystek/Development/Interview/Alza",
+      "argv": [
+        "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "/Users/davidkrzystek/Development/Interview/Alza/orchestrator/requirements.txt"
+      ],
+      "command": "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python -m pip install -r /Users/davidkrzystek/Development/Interview/Alza/orchestrator/requirements.txt",
+      "exit_code": 0,
+      "stdout": "logs/10-python-dependencies.stdout.txt",
+      "stderr": "logs/10-python-dependencies.stderr.txt"
+    },
+    {
+      "name": "12-adoption-preflight",
+      "started_at": "2026-10-29T14:36:13.881943+00:00",
+      "finished_at": "2026-10-29T14:36:14.305023+00:00",
+      "duration_seconds": 0.424,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+        "-B",
+        "/Users/davidkrzystek/Development/Interview/Alza/orchestrator/scripts/adoption.py",
+        "--project",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "--runtime",
+        "/Users/davidkrzystek/Development/Interview/Alza",
+        "--skill-root",
+        "/Users/davidkrzystek/.agents/skills"
+      ],
+      "command": "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python -B /Users/davidkrzystek/Development/Interview/Alza/orchestrator/scripts/adoption.py --project /Users/davidkrzystek/Development/Interview/ai-sdlc-demo --runtime /Users/davidkrzystek/Development/Interview/Alza --skill-root /Users/davidkrzystek/.agents/skills",
+      "exit_code": 0,
+      "stdout": "logs/12-adoption-preflight.stdout.txt",
+      "stderr": "logs/12-adoption-preflight.stderr.txt"
+    },
+    {
+      "name": "11-tests-before",
+      "started_at": "2026-10-29T14:36:05.458407+00:00",
+      "finished_at": "2026-10-29T14:36:25.324574+00:00",
+      "duration_seconds": 19.867,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "npm",
+        "test"
+      ],
+      "command": "npm test",
+      "exit_code": 0,
+      "stdout": "logs/11-tests-before.stdout.txt",
+      "stderr": "logs/11-tests-before.stderr.txt"
+    },
+    {
+      "name": "13-application-before",
+      "started_at": "2026-10-29T14:36:42.710231+00:00",
+      "finished_at": "2026-10-29T14:36:51.712090+00:00",
+      "duration_seconds": 9.002,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "node",
+        "/tmp/littlelist-phase02.xK8VyM/capture-application.mjs",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "/tmp/littlelist-phase02.xK8VyM/evidence",
+        "before"
+      ],
+      "command": "node /tmp/littlelist-phase02.xK8VyM/capture-application.mjs /Users/davidkrzystek/Development/Interview/ai-sdlc-demo /tmp/littlelist-phase02.xK8VyM/evidence before",
+      "exit_code": 0,
+      "stdout": "logs/13-application-before.stdout.txt",
+      "stderr": "logs/13-application-before.stderr.txt"
+    },
+    {
+      "name": "14-external-installation",
+      "started_at": "2026-10-29T14:37:13.581851+00:00",
+      "finished_at": "2026-10-29T14:37:14.163129+00:00",
+      "duration_seconds": 0.582,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+        "-B",
+        "/Users/davidkrzystek/Development/Interview/Alza/orchestrator/scripts/install.py",
+        "install",
+        "--source",
+        "/Users/davidkrzystek/Development/Interview/Alza",
+        "--revision",
+        "d058e5fad9fd8459068951f0dea19dbfabba5fd6",
+        "--project",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "--python",
+        "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python"
+      ],
+      "command": "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python -B /Users/davidkrzystek/Development/Interview/Alza/orchestrator/scripts/install.py install --source /Users/davidkrzystek/Development/Interview/Alza --revision d058e5fad9fd8459068951f0dea19dbfabba5fd6 --project /Users/davidkrzystek/Development/Interview/ai-sdlc-demo --python /Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+      "exit_code": 0,
+      "stdout": "logs/14-external-installation.stdout.txt",
+      "stderr": "logs/14-external-installation.stderr.txt"
+    },
+    {
+      "name": "15-runtime-verification",
+      "started_at": "2026-10-29T14:37:23.396177+00:00",
+      "finished_at": "2026-10-29T14:37:23.583553+00:00",
+      "duration_seconds": 0.188,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+        "-B",
+        "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/install.py",
+        "verify",
+        "--runtime",
+        "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f",
+        "--expected-digest",
+        "64a774d6980d081f67ef7e99d4e7639443f0f7f821f155a14ed60a9f55b5934a",
+        "--skill-root",
+        "/Users/davidkrzystek/.agents/skills"
+      ],
+      "command": "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python -B /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/install.py verify --runtime /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f --expected-digest 64a774d6980d081f67ef7e99d4e7639443f0f7f821f155a14ed60a9f55b5934a --skill-root /Users/davidkrzystek/.agents/skills",
+      "exit_code": 0,
+      "stdout": "logs/15-runtime-verification.stdout.txt",
+      "stderr": "logs/15-runtime-verification.stderr.txt"
+    },
+    {
+      "name": "16-installed-preflight",
+      "started_at": "2026-10-29T14:37:23.618715+00:00",
+      "finished_at": "2026-10-29T14:37:23.950380+00:00",
+      "duration_seconds": 0.332,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+        "-B",
+        "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/adoption.py",
+        "--project",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "--runtime",
+        "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f",
+        "--skill-root",
+        "/Users/davidkrzystek/.agents/skills"
+      ],
+      "command": "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python -B /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/adoption.py --project /Users/davidkrzystek/Development/Interview/ai-sdlc-demo --runtime /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f --skill-root /Users/davidkrzystek/.agents/skills",
+      "exit_code": 0,
+      "stdout": "logs/16-installed-preflight.stdout.txt",
+      "stderr": "logs/16-installed-preflight.stderr.txt"
+    },
+    {
+      "name": "17-codex-discovery",
+      "started_at": "2026-10-29T14:37:24.010797+00:00",
+      "finished_at": "2026-10-29T14:37:24.711894+00:00",
+      "duration_seconds": 0.702,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "python3",
+        "/tmp/littlelist-phase02.xK8VyM/discover.py",
+        "/tmp/littlelist-phase02.xK8VyM/evidence",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo"
+      ],
+      "command": "python3 /tmp/littlelist-phase02.xK8VyM/discover.py /tmp/littlelist-phase02.xK8VyM/evidence /Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "exit_code": 0,
+      "stdout": "logs/17-codex-discovery.stdout.txt",
+      "stderr": "logs/17-codex-discovery.stderr.txt"
+    },
+    {
+      "name": "18-codex-model-inspection",
+      "started_at": "2026-10-29T14:37:43.472869+00:00",
+      "finished_at": "2026-10-29T14:38:15.975465+00:00",
+      "duration_seconds": 32.504,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--sandbox",
+        "read-only",
+        "--color",
+        "never",
+        "--json",
+        "-C",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "$sdlc This is a READ-ONLY external installation acceptance check, not a product request. Use the registered user-scoped sdlc loader at /Users/davidkrzystek/.agents/skills/sdlc/SKILL.md. Verify the pinned installed runtime as instructed and inspect shared command guidance. Briefly report the skill path, runtime revision, supported SDLC commands and whether it is available for a future request in this project. Do not initialize Discovery, create any artifacts, load an identity profile, ask business questions, install anything, modify files, start any workflow, approve, advance, stage, commit or push. Do not inspect credentials, Git identity or environment secrets. Do not use subagents. Distinguish availability from business approval."
+      ],
+      "command": "codex exec --ephemeral --sandbox read-only --color never --json -C /Users/davidkrzystek/Development/Interview/ai-sdlc-demo '$sdlc This is a READ-ONLY external installation acceptance check, not a product request. Use the registered user-scoped sdlc loader at /Users/davidkrzystek/.agents/skills/sdlc/SKILL.md. Verify the pinned installed runtime as instructed and inspect shared command guidance. Briefly report the skill path, runtime revision, supported SDLC commands and whether it is available for a future request in this project. Do not initialize Discovery, create any artifacts, load an identity profile, ask business questions, install anything, modify files, start any workflow, approve, advance, stage, commit or push. Do not inspect credentials, Git identity or environment secrets. Do not use subagents. Distinguish availability from business approval.'",
+      "exit_code": 0,
+      "stdout": "logs/18-codex-model-inspection.stdout.txt",
+      "stderr": "logs/18-codex-model-inspection.stderr.txt"
+    },
+    {
+      "name": "19-tests-after",
+      "started_at": "2026-10-29T14:38:13.911015+00:00",
+      "finished_at": "2026-10-29T14:38:33.702289+00:00",
+      "duration_seconds": 19.792,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "npm",
+        "test"
+      ],
+      "command": "npm test",
+      "exit_code": 0,
+      "stdout": "logs/19-tests-after.stdout.txt",
+      "stderr": "logs/19-tests-after.stderr.txt"
+    },
+    {
+      "name": "20-application-after",
+      "started_at": "2026-10-29T14:38:24.742207+00:00",
+      "finished_at": "2026-10-29T14:38:33.904249+00:00",
+      "duration_seconds": 9.162,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "node",
+        "/tmp/littlelist-phase02.xK8VyM/capture-application.mjs",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "/tmp/littlelist-phase02.xK8VyM/evidence",
+        "after"
+      ],
+      "command": "node /tmp/littlelist-phase02.xK8VyM/capture-application.mjs /Users/davidkrzystek/Development/Interview/ai-sdlc-demo /tmp/littlelist-phase02.xK8VyM/evidence after",
+      "exit_code": 0,
+      "stdout": "logs/20-application-after.stdout.txt",
+      "stderr": "logs/20-application-after.stderr.txt"
+    },
+    {
+      "name": "21-command-screenshots",
+      "started_at": "2026-10-29T14:39:42.046950+00:00",
+      "finished_at": "2026-10-29T14:39:42.923089+00:00",
+      "duration_seconds": 0.878,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "node",
+        "/tmp/littlelist-phase02.xK8VyM/capture-command-screenshots.mjs",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "/tmp/littlelist-phase02.xK8VyM/evidence"
+      ],
+      "command": "node /tmp/littlelist-phase02.xK8VyM/capture-command-screenshots.mjs /Users/davidkrzystek/Development/Interview/ai-sdlc-demo /tmp/littlelist-phase02.xK8VyM/evidence",
+      "exit_code": 0,
+      "stdout": "logs/21-command-screenshots.stdout.txt",
+      "stderr": "logs/21-command-screenshots.stderr.txt"
+    },
+    {
+      "name": "22-before-integrity-after",
+      "started_at": "2026-10-29T14:39:59.513509+00:00",
+      "finished_at": "2026-10-29T14:39:59.599157+00:00",
+      "duration_seconds": 0.086,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "node",
+        "scripts/verify-before.mjs",
+        "--source"
+      ],
+      "command": "node scripts/verify-before.mjs --source",
+      "exit_code": 0,
+      "stdout": "logs/22-before-integrity-after.stdout.txt",
+      "stderr": "logs/22-before-integrity-after.stderr.txt"
+    },
+    {
+      "name": "23-application-unchanged",
+      "started_at": "2026-10-29T14:39:59.629619+00:00",
+      "finished_at": "2026-10-29T14:39:59.637650+00:00",
+      "duration_seconds": 0.008,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code",
+        "2f9578a04bd43aac788441e1407058a7532c8148",
+        "--"
+      ],
+      "command": "git diff --exit-code 2f9578a04bd43aac788441e1407058a7532c8148 --",
+      "exit_code": 0,
+      "stdout": "logs/23-application-unchanged.stdout.txt",
+      "stderr": "logs/23-application-unchanged.stderr.txt"
+    },
+    {
+      "name": "24-orchestrator-unchanged",
+      "started_at": "2026-10-29T14:39:59.671054+00:00",
+      "finished_at": "2026-10-29T14:39:59.685681+00:00",
+      "duration_seconds": 0.015,
+      "cwd": "/Users/davidkrzystek/Development/Interview/Alza",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "command": "git status --porcelain=v1",
+      "exit_code": 0,
+      "stdout": "logs/24-orchestrator-unchanged.stdout.txt",
+      "stderr": "logs/24-orchestrator-unchanged.stderr.txt"
+    },
+    {
+      "name": "25-final-tag",
+      "started_at": "2026-10-29T14:39:59.715705+00:00",
+      "finished_at": "2026-10-29T14:39:59.722671+00:00",
+      "duration_seconds": 0.007,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "show-ref",
+        "--tags",
+        "-d"
+      ],
+      "command": "git show-ref --tags -d",
+      "exit_code": 0,
+      "stdout": "logs/25-final-tag.stdout.txt",
+      "stderr": "logs/25-final-tag.stderr.txt"
+    },
+    {
+      "name": "26-before-mp4",
+      "started_at": "2026-10-29T14:40:30.995065+00:00",
+      "finished_at": "2026-10-29T14:40:31.825521+00:00",
+      "duration_seconds": 0.831,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-n",
+        "-i",
+        "/tmp/littlelist-phase02.xK8VyM/evidence/recordings/before-littlelist.webm",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "slow",
+        "-crf",
+        "22",
+        "-pix_fmt",
+        "yuv420p",
+        "-movflags",
+        "+faststart",
+        "-an",
+        "/tmp/littlelist-phase02.xK8VyM/evidence/recordings/before-littlelist.mp4"
+      ],
+      "command": "ffmpeg -hide_banner -loglevel error -n -i /tmp/littlelist-phase02.xK8VyM/evidence/recordings/before-littlelist.webm -c:v libx264 -preset slow -crf 22 -pix_fmt yuv420p -movflags +faststart -an /tmp/littlelist-phase02.xK8VyM/evidence/recordings/before-littlelist.mp4",
+      "exit_code": 0,
+      "stdout": "logs/26-before-mp4.stdout.txt",
+      "stderr": "logs/26-before-mp4.stderr.txt"
+    },
+    {
+      "name": "28-tool-versions",
+      "started_at": "2026-10-29T14:40:32.153601+00:00",
+      "finished_at": "2026-10-29T14:40:32.556107+00:00",
+      "duration_seconds": 0.403,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+        "/tmp/littlelist-phase02.xK8VyM/environment.py",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "/tmp/littlelist-phase02.xK8VyM/evidence"
+      ],
+      "command": "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python /tmp/littlelist-phase02.xK8VyM/environment.py /Users/davidkrzystek/Development/Interview/ai-sdlc-demo /tmp/littlelist-phase02.xK8VyM/evidence",
+      "exit_code": 0,
+      "stdout": "logs/28-tool-versions.stdout.txt",
+      "stderr": "logs/28-tool-versions.stderr.txt"
+    },
+    {
+      "name": "27-after-mp4",
+      "started_at": "2026-10-29T14:40:31.861847+00:00",
+      "finished_at": "2026-10-29T14:40:32.701114+00:00",
+      "duration_seconds": 0.839,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-n",
+        "-i",
+        "/tmp/littlelist-phase02.xK8VyM/evidence/recordings/after-littlelist.webm",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "slow",
+        "-crf",
+        "22",
+        "-pix_fmt",
+        "yuv420p",
+        "-movflags",
+        "+faststart",
+        "-an",
+        "/tmp/littlelist-phase02.xK8VyM/evidence/recordings/after-littlelist.mp4"
+      ],
+      "command": "ffmpeg -hide_banner -loglevel error -n -i /tmp/littlelist-phase02.xK8VyM/evidence/recordings/after-littlelist.webm -c:v libx264 -preset slow -crf 22 -pix_fmt yuv420p -movflags +faststart -an /tmp/littlelist-phase02.xK8VyM/evidence/recordings/after-littlelist.mp4",
+      "exit_code": 0,
+      "stdout": "logs/27-after-mp4.stdout.txt",
+      "stderr": "logs/27-after-mp4.stderr.txt"
+    },
+    {
+      "name": "29-preservation",
+      "started_at": "2026-10-29T14:41:06.187532+00:00",
+      "finished_at": "2026-10-29T14:41:06.628774+00:00",
+      "duration_seconds": 0.441,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "python3",
+        "/tmp/littlelist-phase02.xK8VyM/preservation.py",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "/tmp/littlelist-phase02.xK8VyM/evidence"
+      ],
+      "command": "python3 /tmp/littlelist-phase02.xK8VyM/preservation.py /Users/davidkrzystek/Development/Interview/ai-sdlc-demo /tmp/littlelist-phase02.xK8VyM/evidence",
+      "exit_code": 0,
+      "stdout": "logs/29-preservation.stdout.txt",
+      "stderr": "logs/29-preservation.stderr.txt"
+    },
+    {
+      "name": "30-final-working-tree",
+      "started_at": "2026-10-29T14:45:04.148594+00:00",
+      "finished_at": "2026-10-29T14:45:04.161145+00:00",
+      "duration_seconds": 0.013,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "command": "git status --porcelain=v1 --untracked-files=all",
+      "exit_code": 0,
+      "stdout": "logs/30-final-working-tree.stdout.txt",
+      "stderr": "logs/30-final-working-tree.stderr.txt"
+    },
+    {
+      "name": "31-diff-whitespace",
+      "started_at": "2026-10-29T14:45:04.161798+00:00",
+      "finished_at": "2026-10-29T14:45:04.167863+00:00",
+      "duration_seconds": 0.006,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "command": "git diff --check",
+      "exit_code": 0,
+      "stdout": "logs/31-diff-whitespace.stdout.txt",
+      "stderr": "logs/31-diff-whitespace.stderr.txt"
+    },
+    {
+      "name": "32-tracked-diff",
+      "started_at": "2026-10-29T14:45:04.168210+00:00",
+      "finished_at": "2026-10-29T14:45:04.174420+00:00",
+      "duration_seconds": 0.006,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code",
+        "2f9578a04bd43aac788441e1407058a7532c8148",
+        "--"
+      ],
+      "command": "git diff --exit-code 2f9578a04bd43aac788441e1407058a7532c8148 --",
+      "exit_code": 0,
+      "stdout": "logs/32-tracked-diff.stdout.txt",
+      "stderr": "logs/32-tracked-diff.stderr.txt"
+    },
+    {
+      "name": "33-original-before-hashes",
+      "started_at": "2026-10-29T14:45:04.174803+00:00",
+      "finished_at": "2026-10-29T14:45:04.268705+00:00",
+      "duration_seconds": 0.094,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "node",
+        "scripts/verify-before.mjs",
+        "--source"
+      ],
+      "command": "node scripts/verify-before.mjs --source",
+      "exit_code": 0,
+      "stdout": "logs/33-original-before-hashes.stdout.txt",
+      "stderr": "logs/33-original-before-hashes.stderr.txt"
+    },
+    {
+      "name": "34-current-preflight",
+      "started_at": "2026-10-29T14:45:04.269200+00:00",
+      "finished_at": "2026-10-29T14:45:04.563676+00:00",
+      "duration_seconds": 0.295,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+        "-B",
+        "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/adoption.py",
+        "--project",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+        "--runtime",
+        "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f",
+        "--skill-root",
+        "/Users/davidkrzystek/.agents/skills"
+      ],
+      "command": "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python -B /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f/orchestrator/scripts/adoption.py --project /Users/davidkrzystek/Development/Interview/ai-sdlc-demo --runtime /Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f --skill-root /Users/davidkrzystek/.agents/skills",
+      "exit_code": 0,
+      "stdout": "logs/34-current-preflight.stdout.txt",
+      "stderr": "logs/34-current-preflight.stderr.txt"
+    },
+    {
+      "name": "35-source-checkout",
+      "started_at": "2026-10-29T14:45:04.564340+00:00",
+      "finished_at": "2026-10-29T14:45:04.578685+00:00",
+      "duration_seconds": 0.015,
+      "cwd": "/Users/davidkrzystek/Development/Interview/Alza",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "command": "git status --porcelain=v1",
+      "exit_code": 0,
+      "stdout": "logs/35-source-checkout.stdout.txt",
+      "stderr": "logs/35-source-checkout.stderr.txt"
+    },
+    {
+      "name": "36-syntax-capture-application.mjs",
+      "started_at": "2026-10-29T14:45:04.579160+00:00",
+      "finished_at": "2026-10-29T14:45:04.635653+00:00",
+      "duration_seconds": 0.057,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "node",
+        "--check",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/metadata/tools/capture-application.mjs"
+      ],
+      "command": "node --check /Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/metadata/tools/capture-application.mjs",
+      "exit_code": 0,
+      "stdout": "logs/36-syntax-capture-application.mjs.stdout.txt",
+      "stderr": "logs/36-syntax-capture-application.mjs.stderr.txt"
+    },
+    {
+      "name": "36-syntax-capture-command-screenshots.mjs",
+      "started_at": "2026-10-29T14:45:04.636083+00:00",
+      "finished_at": "2026-10-29T14:45:04.693396+00:00",
+      "duration_seconds": 0.058,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "node",
+        "--check",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/metadata/tools/capture-command-screenshots.mjs"
+      ],
+      "command": "node --check /Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/metadata/tools/capture-command-screenshots.mjs",
+      "exit_code": 0,
+      "stdout": "logs/36-syntax-capture-command-screenshots.mjs.stdout.txt",
+      "stderr": "logs/36-syntax-capture-command-screenshots.mjs.stderr.txt"
+    },
+    {
+      "name": "37-media-after-littlelist-mp4",
+      "started_at": "2026-10-29T14:45:04.697994+00:00",
+      "finished_at": "2026-10-29T14:45:04.759707+00:00",
+      "duration_seconds": 0.062,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_entries",
+        "format=duration:stream=codec_name,width,height",
+        "-of",
+        "json",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/recordings/after-littlelist.mp4"
+      ],
+      "command": "ffprobe -v error -show_entries format=duration:stream=codec_name,width,height -of json /Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/recordings/after-littlelist.mp4",
+      "exit_code": 0,
+      "stdout": "logs/37-media-after-littlelist-mp4.stdout.txt",
+      "stderr": "logs/37-media-after-littlelist-mp4.stderr.txt"
+    },
+    {
+      "name": "37-media-after-littlelist-webm",
+      "started_at": "2026-10-29T14:45:04.760255+00:00",
+      "finished_at": "2026-10-29T14:45:04.795245+00:00",
+      "duration_seconds": 0.035,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_entries",
+        "format=duration:stream=codec_name,width,height",
+        "-of",
+        "json",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/recordings/after-littlelist.webm"
+      ],
+      "command": "ffprobe -v error -show_entries format=duration:stream=codec_name,width,height -of json /Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/recordings/after-littlelist.webm",
+      "exit_code": 0,
+      "stdout": "logs/37-media-after-littlelist-webm.stdout.txt",
+      "stderr": "logs/37-media-after-littlelist-webm.stderr.txt"
+    },
+    {
+      "name": "37-media-before-littlelist-mp4",
+      "started_at": "2026-10-29T14:45:04.795773+00:00",
+      "finished_at": "2026-10-29T14:45:04.828108+00:00",
+      "duration_seconds": 0.033,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_entries",
+        "format=duration:stream=codec_name,width,height",
+        "-of",
+        "json",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/recordings/before-littlelist.mp4"
+      ],
+      "command": "ffprobe -v error -show_entries format=duration:stream=codec_name,width,height -of json /Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/recordings/before-littlelist.mp4",
+      "exit_code": 0,
+      "stdout": "logs/37-media-before-littlelist-mp4.stdout.txt",
+      "stderr": "logs/37-media-before-littlelist-mp4.stderr.txt"
+    },
+    {
+      "name": "37-media-before-littlelist-webm",
+      "started_at": "2026-10-29T14:45:04.830208+00:00",
+      "finished_at": "2026-10-29T14:45:04.871673+00:00",
+      "duration_seconds": 0.042,
+      "cwd": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_entries",
+        "format=duration:stream=codec_name,width,height",
+        "-of",
+        "json",
+        "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/recordings/before-littlelist.webm"
+      ],
+      "command": "ffprobe -v error -show_entries format=duration:stream=codec_name,width,height -of json /Users/davidkrzystek/Development/Interview/ai-sdlc-demo/demo/phase-02-installation/recordings/before-littlelist.webm",
+      "exit_code": 0,
+      "stdout": "logs/37-media-before-littlelist-webm.stdout.txt",
+      "stderr": "logs/37-media-before-littlelist-webm.stderr.txt"
+    }
+  ],
+  "tests": {
+    "before": {
+      "unit": 15,
+      "integration": 5,
+      "real_browser": 22,
+      "total_passed": 42,
+      "failures": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "command": "npm test",
+      "evidence": "logs/11-tests-before.stdout.txt"
+    },
+    "after": {
+      "unit": 15,
+      "integration": 5,
+      "real_browser": 22,
+      "total_passed": 42,
+      "failures": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "command": "npm test",
+      "evidence": "logs/19-tests-after.stdout.txt"
+    }
+  },
+  "verification": {
+    "runtime_integrity": true,
+    "cli_discovery": true,
+    "read_only_model_invocation": true,
+    "ide_visual_discovery": "not performed",
+    "all_51_baseline_files_unchanged": true,
+    "baseline_tag_unchanged": true,
+    "orchestrator_clean": true,
+    "discovery_created": false,
+    "due_dates_implemented": false,
+    "staged": false,
+    "committed": false,
+    "pushed": false
+  },
+  "capture": {
+    "resolution": [
+      1920,
+      1080
+    ],
+    "terminal_method": "authentic timestamped transcript and labelled JSON-output-excerpt screenshots; no native terminal video captured",
+    "application_method": "actual Playwright browser screenshots and recordings, API-seeded fictional fixture, temporary SQLite DB, real UI actions",
+    "media": {
+      "recordings/after-littlelist.mp4": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080
+          }
+        ],
+        "format": {
+          "duration": "7.840000"
+        }
+      },
+      "recordings/after-littlelist.webm": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 1920,
+            "height": 1080
+          }
+        ],
+        "format": {
+          "duration": "7.840000"
+        }
+      },
+      "recordings/before-littlelist.mp4": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080
+          }
+        ],
+        "format": {
+          "duration": "7.880000"
+        }
+      },
+      "recordings/before-littlelist.webm": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 1920,
+            "height": 1080
+          }
+        ],
+        "format": {
+          "duration": "7.880000"
+        }
+      }
+    }
+  },
+  "files": {
+    "commands.jsonl": "e398a088c26a8334fbf122040726bd3b78690541d4f2c62e3434aa5de1088a29",
+    "logs/01-application-baseline.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/01-application-baseline.stdout.txt": "2a71b0d5075178a3681dddf7e4463555a25cb2590a3f0b663ae35a81ee6ecedc",
+    "logs/02-application-revision.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/02-application-revision.stdout.txt": "12484c4f537581d192c30e983c867855cbd31af216e0890faa95861ecc08fc57",
+    "logs/03-baseline-tag.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/03-baseline-tag.stdout.txt": "7706202017185f557c768e80b1a536e1dde0b74ba54c442eef4c8da598fafff5",
+    "logs/04-git-remote.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/04-git-remote.stdout.txt": "d50fb76e6238e3cfce9f880c0fcb8afb76ee5a7589764ee5019be5c1f5937bb5",
+    "logs/05-git-integrity.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/05-git-integrity.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/06-before-integrity.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/06-before-integrity.stdout.txt": "541975e4ca0a930490609a469a26e28f084ee71f65b0ca36975de1f7d1570db3",
+    "logs/07-orchestrator-baseline.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/07-orchestrator-baseline.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/08-runtime-revision.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/08-runtime-revision.stdout.txt": "046440d0a28d14998edf7100d81bd59dc901369c1c673b2b96551e2b16dd0e10",
+    "logs/09-python-environment.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/09-python-environment.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/10-python-dependencies.stderr.txt": "62872caf566e06a8db4366b57a1ecb9ac30c749776387a48d6291c1e1e38f849",
+    "logs/10-python-dependencies.stdout.txt": "d7c5ee36dfa575710b669467cfbca0391287e61a7cd52448b53a15ef63496240",
+    "logs/11-tests-before.stderr.txt": "763663db0f906f17f756b1b4f4d98758137a3629ef8ca2487a9b230eb4e48550",
+    "logs/11-tests-before.stdout.txt": "ad69e8bc18629a04b5d147f3cd5e8c3eb138d414e3189491d2ea0bac8c07829c",
+    "logs/12-adoption-preflight.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/12-adoption-preflight.stdout.txt": "ab7a699ea7da39a26db2fa46dba4232d3bc4be9ce839fae930c74b102d940223",
+    "logs/13-application-before.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/13-application-before.stdout.txt": "8e519fbc86246d9a56371b84e44cc6d1843a8f47d653fd537c9a9ded558780a2",
+    "logs/14-external-installation.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/14-external-installation.stdout.txt": "9049b73192c6faae73794abf83054a946122d9dfa4c6de09210b2cd2e55206bc",
+    "logs/15-runtime-verification.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/15-runtime-verification.stdout.txt": "743f4f7d2567ccc292d35a48a6b6207daf2e9b58802cb21a5bd027a6bfb76c4a",
+    "logs/16-installed-preflight.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/16-installed-preflight.stdout.txt": "22b90de80a707d17447a2786aace460d6c1f2036e03a4e9cb27dc238d5dfad0a",
+    "logs/17-codex-discovery.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/17-codex-discovery.stdout.txt": "e3417661f7912ae344351f1c1b2ab84630969ee1361ca6b2b841fa242876a25d",
+    "logs/18-codex-model-inspection.stderr.txt": "9926b99369e6655180b4992b28374d2522b320e12d578dc4228f6faa8233f7e9",
+    "logs/18-codex-model-inspection.stdout.txt": "74da7d7f238bfd053ad1ab08991758a02932d6ae816672a3d50e335b9511bfcc",
+    "logs/19-tests-after.stderr.txt": "9d3913a84734778eccf4d705c05349b95bacb741cb67ad108921ac273a3790b8",
+    "logs/19-tests-after.stdout.txt": "5c5c6903590651f49627ae86a95863bd3cf837b6b5df3c4e0f6ba6ad80707760",
+    "logs/20-application-after.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/20-application-after.stdout.txt": "bed129fb46488200d26891ab57facc8055af4794887761a44ff4c5589476303d",
+    "logs/21-command-screenshots.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/21-command-screenshots.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/22-before-integrity-after.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/22-before-integrity-after.stdout.txt": "541975e4ca0a930490609a469a26e28f084ee71f65b0ca36975de1f7d1570db3",
+    "logs/23-application-unchanged.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/23-application-unchanged.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/24-orchestrator-unchanged.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/24-orchestrator-unchanged.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/25-final-tag.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/25-final-tag.stdout.txt": "7706202017185f557c768e80b1a536e1dde0b74ba54c442eef4c8da598fafff5",
+    "logs/26-before-mp4.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/26-before-mp4.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/27-after-mp4.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/27-after-mp4.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/28-tool-versions.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/28-tool-versions.stdout.txt": "c7e8f13c405d1e59399d518404feb15a1b921cd00521cc8034085386d9982f8f",
+    "logs/29-preservation.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/29-preservation.stdout.txt": "1db4d6953753a2c6284c4e7e493ee7cf8e87f4fe481dca8f2d8252023199248a",
+    "logs/30-final-working-tree.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/30-final-working-tree.stdout.txt": "d93de6d119cac0c2bcccb438e2d4fdcb79818125496b89bbda6ca5e7299af5b4",
+    "logs/31-diff-whitespace.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/31-diff-whitespace.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/32-tracked-diff.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/32-tracked-diff.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/33-original-before-hashes.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/33-original-before-hashes.stdout.txt": "541975e4ca0a930490609a469a26e28f084ee71f65b0ca36975de1f7d1570db3",
+    "logs/34-current-preflight.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/34-current-preflight.stdout.txt": "662cf23143d1cbffcecbb07034531e4c6151f281d00bfe23103418192a8de1cf",
+    "logs/35-source-checkout.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/35-source-checkout.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/36-syntax-capture-application.mjs.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/36-syntax-capture-application.mjs.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/36-syntax-capture-command-screenshots.mjs.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/36-syntax-capture-command-screenshots.mjs.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/37-media-after-littlelist-mp4.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/37-media-after-littlelist-mp4.stdout.txt": "ef15f46b1faff197669e407c0093c42ff2edf73200af830166920cd1253c155f",
+    "logs/37-media-after-littlelist-webm.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/37-media-after-littlelist-webm.stdout.txt": "78c816bef67397a442e2f0c50127fe41cc114ca871dd6d5e120c27bee1323905",
+    "logs/37-media-before-littlelist-mp4.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/37-media-before-littlelist-mp4.stdout.txt": "7d011e5eda42b46f4dd7476f206553789d50e655919ddcc83503af9bb36205fd",
+    "logs/37-media-before-littlelist-webm.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/37-media-before-littlelist-webm.stdout.txt": "e9715c58a4f465123c765e40dd9b57d9f2c57d6c0b82f79f26d3ae00e9c1e1af",
+    "logs/codex-app-server.requests.jsonl": "652bcb45005f4fcaf437ee56d1b3be51015de76b3a387228176306e1f1a9ce9f",
+    "logs/codex-app-server.responses.jsonl": "9d990949d0d73656f2e50c20e87b068d19788878cbf5f44201fc940ee863ddfb",
+    "logs/codex-app-server.stderr.txt": "4a1ec62ee04c981bfeb7556033b14a2d65dac03be208907164eacff3a0c012b4",
+    "metadata/02-adoption-preflight-excerpt.json": "6bcd06761e58bc94434c26d8e386fd90b97b7178ee03c0f226c39ab20d5fd4d4",
+    "metadata/03-external-installation-excerpt.json": "6cc8a28b9148fe34d378f6fe6b0f51ced1b738e7c47df621914839d53f1a4c8c",
+    "metadata/04-runtime-verification-excerpt.json": "2423db0738ee366e052fde9800f0a85cfc2c00bdc541799b9ba05c5dfb914e78",
+    "metadata/05-codex-discovery-excerpt.json": "74e73903698a7b8757a5c2d99bde6a227da2cb36f4cca23d3b279b8f368a7b8a",
+    "metadata/after-application.json": "3c9fbc5ba4bf2bee21858fe880255458dbac095e1e59398d456e0eccfc589298",
+    "metadata/before-application.json": "2b49d23a376ea471be746313580795ebc5bd9e7a6c4a13ab116513f0bfde401d",
+    "metadata/browser-results-after.json": "5834a70e6278504f29bef8866bd9e30679ca5746da443431c458d55f8177a428",
+    "metadata/browser-results-before.json": "b8d9335b91bdea66768068d6fffc7de2756148ffb6d11d19fe678256b3581b30",
+    "metadata/codex-discovery.json": "e3417661f7912ae344351f1c1b2ab84630969ee1361ca6b2b841fa242876a25d",
+    "metadata/codex-model-result.json": "098dd7ca5c6d08f6856f04aa4b6c5508a646a99cf48f600a3c5d9dcaa15716c6",
+    "metadata/commands.json": "344a3b0a408a33820ddaf14dcccded96d212e0c902cbd73ba93609d28b64d4d7",
+    "metadata/domain-skill-catalog.yaml": "61304d701127479776c7157b6f0070797e98073ceef55edafdbb039965c68de9",
+    "metadata/environment.json": "c7e8f13c405d1e59399d518404feb15a1b921cd00521cc8034085386d9982f8f",
+    "metadata/installed-runtime-manifest.json": "5f1848d945e24c5a0fdb59429d2f5514e8c9aad5b7f0e9c28d28c0b90cda82b6",
+    "metadata/media.json": "af2afbf3f0dfacbb74ccb28354f8370ed0377cd107dd6e268e83cb15512c49e7",
+    "metadata/preservation.json": "db80a65f9a13f750b57337723b31695dba4ae9f9fddb21c17b840709b7a8dcc7",
+    "metadata/privacy-review.json": "a57bfcab26a51093662cd97f33c873b587e95009610aa74794c7073d7212d823",
+    "metadata/registered-loader.md": "380b89c13bc9aac0b82a7889149ae01937dbc9fee2171df717e1b76153f9d10c",
+    "metadata/registration.json": "8ef33411691aaae7c3c33db4cbe7718992aea84aeab105dda1a4da7fb0089c87",
+    "metadata/template-catalog.yaml": "58cd38153413cef5bff32179b120d54d8fd1c524b1993c18d6b6116ce3f78156",
+    "metadata/tools/capture-application.mjs": "e1863512076ca0e393028ec24bf7689d659f23ebbe8851b69dc08d8b97731382",
+    "metadata/tools/capture-command-screenshots.mjs": "7ba08b14d9f9f643f7d21290f96b6126108e510cfa60c63ae99a8d1b60dd9b4c",
+    "metadata/tools/discover.py": "230babe8b0eaa52e25d27d2b454cdbf5c9dd7c3fa4aaed1b73831d408cf819d7",
+    "metadata/tools/environment.py": "2370016912a79790ba5f4a2a1e48488ec670a91e46560e19141beceea65d1a61",
+    "metadata/tools/finalize.py": "38c1c1fbd941e220b7b7439ff6276c58021082d52d6404cb48a6e0076da8cd05",
+    "metadata/tools/preservation.py": "580199232380cb664e12b13ee62f47725dc6a0c4efbc4c412b7ebdec44feba35",
+    "metadata/tools/record.py": "6e11e5fd66b56f8dcc4988dcbcb95b933fc01cec67fbbdc6d19f730d1bf15c4b",
+    "recordings/after-littlelist.mp4": "fc2b251e05e5cb16114404db09a241ce0ac77c0211a2c68a229691cdc1d3c00d",
+    "recordings/after-littlelist.webm": "0fc41e07fb5a0beb5194440867c87c3d20b11fa4571b1ce84bddc760a1943ca3",
+    "recordings/before-littlelist.mp4": "a772660b39d1107d512415ab467bc420df3fe267b0a037b2e9da72b59e148938",
+    "recordings/before-littlelist.webm": "fbbb5b36b970a9a94f37b422e58de8d48c41058958b3bc30dc49dcc8916e9be4",
+    "report.md": "8ce79e87394b68cf2f72b25207ea17cc082ebecffe262d2ba481a871e4e73454",
+    "screenshots/02-adoption-preflight.png": "9aa04c0136c257e1609a19cc7e98f2fca613792b475d4b88cc3aacaacb8e59a3",
+    "screenshots/03-external-installation.png": "ffbcd5a821d77297a6f5a8caee0dc307423c3f3aa11d6ddc1d11826a8ecb423c",
+    "screenshots/04-runtime-verification.png": "a2de6c97c545e16504277821cef01aa5dc0c44aba4f7e0b1ef53faceb8a69c43",
+    "screenshots/05-codex-discovery.png": "57bf3048855812203b173caf33ff0c8e6945474d405345028eafcbc8be1199d7",
+    "screenshots/after-littlelist.png": "1ec6f68b88a74ba615fe3a1c07e1220478d6e36aa59515fd4af3f82ed09ba9a8",
+    "screenshots/before-littlelist.png": "1ec6f68b88a74ba615fe3a1c07e1220478d6e36aa59515fd4af3f82ed09ba9a8",
+    "storyboard.md": "21d7412a8c84be9c35782c9b524c75db5c6634080b5f035556cd4938bd0e0f5f",
+    "terminal-transcript.txt": "2960734f59669c12b06eb09d9ccbb2e77d21aa6b5c3d36cfab943ee2bb1b2910"
+  },
+  "privacy_review": "metadata/privacy-review.json"
+}
