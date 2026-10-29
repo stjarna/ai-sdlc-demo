@@ -1,0 +1,489 @@
+diff --git a/qa/README.md b/qa/README.md
+new file mode 100644
+index 0000000..b9e37d1
+--- /dev/null
++++ b/qa/README.md
+@@ -0,0 +1,36 @@
++# Littlelist independent QA automation — REQ-0001
++
++This suite implements the existing 23 approved scenarios without changing their expected outcomes. Approved Functional Analysis is the product authority; approved Design supplies API/DOM and SQLite interfaces. Engineering code, developer tests, dependencies, Plan and original evidence are not edited by QA.
++
++## Proposed checks (await human automation approval and separate advancement)
++
++- `QA-API`: `node qa/run-check.mjs integration` — real HTTP plus actual application process restarts using isolated temporary databases. Covers TC-001/002/004/005/006/012/013/014/016/017/023.
++- `QA-UI-DESKTOP`: `node qa/run-check.mjs ui desktop-los-angeles` — real Chromium interaction at desktop size in America/Los_Angeles.
++- `QA-UI-MOBILE`: `node qa/run-check.mjs ui mobile-kiritimati` — real Chromium at a phone viewport with touch in Pacific/Kiritimati.
++
++Each browser check covers all TC-001 through TC-023. Test titles expose the case mapping; several related cases share a single executable test. Both projects also exercise 320/390/768/1440 width overflow checks. This is browser emulation, not a physical-device or all-browser certification. A fixed local-day fixture controls the test, not the product’s date rules. Positive and negative offsets, DST-adjacent dates, a year boundary and next-day presentation are explicit fixtures.
++
++Integration checks assert status/body/storage outcomes through HTTP, never claim UI behavior. Browser checks use actual page controls and observable labels/errors/focus, plus server reads only to independently establish no invalid destructive autosave. The native partial-date regression uses real keyboard input, not an injected validity stub. Saved/unsaved/invalid and cleared states, past-date acceptance, manual extended-year fallback, completion/reopening, migration compatibility and actual process restarts are retained.
++
++`helpers.mjs` creates only fictional v1-schema fixtures in the OS temporary directory. This is a schema-compatible synthetic fixture; it does not run the historical baseline binary or modify its data. Each server is loopback-only on a free port and is stopped/removed after its test. Personal databases and historical demo fixtures are never opened.
++
++## Dependency setup (not yet authorized or executed)
++
++QA declares its own `@playwright/test` 1.64.1 dependency. The QA lockfile reuses the existing root lockfile’s exact registry URLs and integrity pins while changing only the root package name; no dependency lookup/install has been run. Root application package and lock files remain unchanged.
++
++After explicit setup authorization:
++
++```sh
++npm ci --prefix qa
++node qa/node_modules/@playwright/test/cli.js install chromium
++```
++
++This installs QA-local npm packages and Playwright’s pinned Chromium in the normal external browser cache. It introduces no application runtime dependency. No system package or external service is installed by these commands. Node 24–25 is required; the current environment is Node 25.9.0. If a required browser cannot be installed/launched, report it as blocked and preserve the actual diagnostic.
++
++## Evidence and limits
++
++Run functional checks only through the approved SDLC `qa-check-run` operations after automation approval and separate advancement. The runner assigns a fresh directory below `requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/` for each invocation. Browser JSON/HTML reports, screenshots, traces and videos are stored there; no historical evidence is overwritten. CLI output prints the exact directory and is retained with the immutable named-check result. Test exit statuses propagate to the orchestrator. All three checks have a maximum declared duration of 120 seconds each; any timeout/failure remains evidence, not a pass.
++
++Preparation provides syntax checks and case-mapping inspection only. No functional execution or UI rendering pass is claimed before it occurs. Passing a named command supports the assertions actually executed; it is not independent proof of every acceptance criterion or release authorization. New failures must be reported and routed to the relevant track without rewriting the approved expectations. No unresolved items, excluded approved requirements or prototype limitations are currently defined, so supplemental limitation checks are explicitly empty.
++
++Keep new supplemental presentation capture outside the application repository. Test evidence belongs in the reviewed Epic evidence location. No Git actions or application edits are performed by these runners.
+
+diff --git a/qa/browser/due-dates.spec.mjs b/qa/browser/due-dates.spec.mjs
+new file mode 100644
+index 0000000..f2c1809
+--- /dev/null
++++ b/qa/browser/due-dates.spec.mjs
+@@ -0,0 +1,173 @@
++import { test as base, expect } from '@playwright/test';
++import { isolatedApp } from '../helpers.mjs';
++const test = base.extend({
++  legacy: [false, { option: true }],
++  app: async ({ legacy }, use) => { const app = await isolatedApp({ legacy }); try { await use(app); } finally { await app.close(); } },
++  page: async ({ page, app }, use) => {
++    const errors = []; page.on('pageerror', e => errors.push(e.message));
++    // Same local 1 January in both projects. This controls test data, not a product rule.
++    await page.clock.install({ time: new Date('2026-01-01T08:00:00Z') });
++    await page.goto(app.url); await expect(page.locator('#loading')).toBeHidden();
++    await use(page); expect(errors, 'No unhandled browser application errors').toEqual([]);
++  },
++});
++function row(page, title) { return page.locator('.task-item').filter({ has: page.getByRole('button', { name: `Edit “${title}”`, exact: true }) }); }
++async function create(page, title, dueDate) {
++  await page.locator('#new-title').fill(title);
++  if (dueDate !== undefined) await page.locator('#new-due-date').fill(dueDate);
++  await page.getByRole('button', { name: 'Add task', exact: true }).click();
++  await expect(row(page, title)).toBeVisible();
++}
++async function edit(page, title) { await page.getByRole('button', { name: `Edit details for “${title}”`, exact: true }).click(); await expect(page.locator('#edit-dialog')).toBeVisible(); }
++async function saved(page) { await expect(page.locator('#edit-save-status')).toHaveText('All changes saved'); }
++async function close(page) { await page.getByRole('button', { name: 'Cancel draft', exact: true }).click(); await expect(page.locator('#edit-dialog')).not.toBeVisible(); }
++async function textMode(page) { if (await page.locator('#edit-type-date').isVisible()) await page.locator('#edit-type-date').click(); }
++async function all(page) { await page.getByRole('button', { name: /^All / }).click(); }
++
++test('TC-001: empty optional due date creates a usable undated task', async ({ page }) => {
++  await create(page, 'No date'); await expect(row(page, 'No date').locator('.task-due-date')).toHaveCount(0);
++  await edit(page, 'No date'); await expect(page.locator('#edit-due-date')).toHaveValue(''); await close(page);
++});
++test('TC-002 TC-003 TC-016: past/today/future dates accepted on creation and autosaved edits', async ({ page }) => {
++  await expect(page.locator('#new-due-date')).not.toHaveAttribute('min', /.+/);
++  for (const [name, date] of [['Past', '2025-12-31'], ['Today', '2026-01-01'], ['Future', '2026-01-02']]) {
++    await create(page, name, date); await expect(row(page, name).locator('.task-due-date')).toContainText(date);
++  }
++  await edit(page, 'Today');
++  for (const date of ['2025-12-31', '2026-01-01', '2026-01-02']) {
++    await page.locator('#edit-due-date').fill(date); await saved(page);
++    await expect(row(page, 'Today').locator('.task-due-date')).toContainText(date);
++  }
++  await close(page);
++});
++test('TC-004 TC-005: edit and clear autosave without a separate save action', async ({ page }) => {
++  await create(page, 'Edit date', '2026-01-01'); await edit(page, 'Edit date');
++  await page.locator('#edit-due-date').fill('2025-12-31'); await saved(page);
++  await expect(row(page, 'Edit date').locator('.overdue-label')).toBeVisible();
++  await page.locator('#edit-clear-date').click(); await saved(page); await close(page);
++  await expect(row(page, 'Edit date').locator('.task-due-date')).toHaveCount(0);
++  await expect(row(page, 'Edit date').locator('.overdue-label')).toHaveCount(0);
++  await edit(page, 'Edit date'); await expect(page.locator('#edit-due-date')).toHaveValue('');
++});
++test('TC-006 TC-017: impossible calendar drafts preserve the saved valid leap day', async ({ page, app }) => {
++  await create(page, 'Leap day', '2024-02-29'); await edit(page, 'Leap day'); await textMode(page);
++  for (const value of ['2025-02-29', '2024-02-30']) {
++    await page.locator('#edit-due-date').fill(value);
++    await expect(page.locator('#edit-due-date-error')).toBeVisible(); await expect(page.locator('#edit-done')).toBeDisabled();
++    // Let the real autosave interval elapse; asserting the server proves no destructive save occurred.
++    await page.waitForTimeout(650);
++    const tasks = (await (await page.request.get(app.url + '/api/tasks')).json()).tasks;
++    expect(tasks[0].dueDate).toBe('2024-02-29');
++  }
++  await close(page); await expect(row(page, 'Leap day').locator('.task-due-date')).toContainText('2024-02-29');
++});
++test('TC-006: native partial date input cannot silently clear the saved date', async ({ page, app }) => {
++  await create(page, 'Native draft', '2024-02-29'); await edit(page, 'Native draft');
++  const date = page.locator('#edit-due-date'); await date.focus();
++  // Real keyboard interaction with the first native date segment, not a mocked validity object.
++  await date.press('ArrowLeft'); await date.press('ArrowLeft'); await date.press('ArrowLeft'); await date.press('Delete');
++  await expect.poll(() => date.evaluate(el => el.validity.badInput)).toBe(true);
++  await expect(page.locator('#edit-due-date-error')).toBeVisible(); await expect(page.locator('#edit-done')).toBeDisabled();
++  await page.waitForTimeout(650);
++  const task = (await (await page.request.get(app.url + '/api/tasks')).json()).tasks[0]; expect(task.dueDate).toBe('2024-02-29');
++  await close(page); await expect(row(page, 'Native draft').locator('.task-due-date')).toContainText('2024-02-29');
++});
++test('TC-007 TC-018: local date survives reload/restart and DST-adjacent editing in each timezone', async ({ page, app }) => {
++  await create(page, 'Same calendar', '2026-03-29'); await page.reload();
++  await expect(row(page, 'Same calendar').locator('.task-due-date')).toContainText('2026-03-29');
++  await app.restart(); await page.goto(app.url); await edit(page, 'Same calendar');
++  await expect(page.locator('#edit-due-date')).toHaveValue('2026-03-29');
++  await page.locator('#edit-due-date').fill('2026-03-28'); await saved(page); await close(page);
++  await expect(row(page, 'Same calendar').locator('.task-due-date')).toContainText('2026-03-28');
++});
++test('TC-008 TC-009 TC-019: local year boundary, explicit subtle warning and unchanged ordering', async ({ page }) => {
++  await create(page, 'Yesterday', '2025-12-31'); await create(page, 'Today', '2026-01-01'); await create(page, 'Tomorrow', '2026-01-02'); await create(page, 'Undated');
++  await expect(page.locator('.task-title')).toHaveText(['Undated', 'Tomorrow', 'Today', 'Yesterday']);
++  const badge = row(page, 'Yesterday').locator('.overdue-label'); await expect(badge).toHaveText('Overdue');
++  expect(await badge.evaluate(el => getComputedStyle(el).backgroundColor)).not.toBe('rgba(0, 0, 0, 0)');
++  for (const name of ['Today', 'Tomorrow', 'Undated']) await expect(row(page, name).locator('.overdue-label')).toHaveCount(0);
++});
++test('TC-010 TC-021: completion retains date, removes warning, reopening restores it without reordering', async ({ page }) => {
++  await create(page, 'Overdue task', '2025-12-31'); await create(page, 'Newer'); await all(page);
++  await row(page, 'Overdue task').getByRole('button', { name: 'Mark “Overdue task” as complete', exact: true }).click();
++  await expect(row(page, 'Overdue task')).toHaveClass(/completed/);
++  await expect(row(page, 'Overdue task').locator('.task-due-date')).toHaveText('Due 2025-12-31');
++  await expect(row(page, 'Overdue task').locator('.overdue-label')).toHaveCount(0);
++  await page.getByRole('button', { name: /^Completed / }).click(); await expect(row(page, 'Overdue task')).toBeVisible();
++  await row(page, 'Overdue task').getByRole('button', { name: 'Mark “Overdue task” as unfinished', exact: true }).click();
++  await page.getByRole('button', { name: /^Active / }).click();
++  await expect(row(page, 'Overdue task').locator('.overdue-label')).toBeVisible();
++  await expect(page.locator('.task-title')).toHaveText(['Newer', 'Overdue task']);
++});
++test('TC-011 TC-022: Cancel keeps the latest saved date or saved cleared state, discarding only a draft', async ({ page }) => {
++  await create(page, 'Cancel safely', '2026-01-01'); await edit(page, 'Cancel safely');
++  await page.locator('#edit-due-date').fill('2024-02-29'); await saved(page); await close(page);
++  for (const state of ['2024-02-29', '']) {
++    if (state === '') { await edit(page, 'Cancel safely'); await page.locator('#edit-clear-date').click(); await saved(page); await close(page); }
++    await edit(page, 'Cancel safely'); await page.clock.pauseAt(await page.evaluate(() => Date.now() + 1000));
++    await page.locator('#edit-due-date').fill('2026-01-02'); await close(page); await page.clock.runFor(1000); await page.clock.resume();
++    await edit(page, 'Cancel safely'); await expect(page.locator('#edit-due-date')).toHaveValue(state);
++    await textMode(page); await page.locator('#edit-due-date').fill('2025-02-29');
++    await expect(page.locator('#edit-due-date-error')).toBeVisible(); await close(page);
++    await edit(page, 'Cancel safely'); await expect(page.locator('#edit-due-date')).toHaveValue(state); await close(page);
++  }
++});
++test('TC-012 TC-023: actual process restart retains dates, changes, clearing and completion', async ({ page, app }) => {
++  await create(page, 'Assigned', '2026-01-01'); await create(page, 'Changed', '2026-01-01'); await create(page, 'Cleared', '2025-12-31');
++  await edit(page, 'Changed'); await page.locator('#edit-due-date').fill('2026-03-29'); await saved(page); await close(page);
++  await edit(page, 'Cleared'); await page.locator('#edit-clear-date').click(); await saved(page); await close(page);
++  await row(page, 'Assigned').getByRole('button', { name: 'Mark “Assigned” as complete', exact: true }).click();
++  await app.restart(); await page.goto(app.url); await all(page);
++  await expect(row(page, 'Assigned')).toHaveClass(/completed/);
++  await expect(row(page, 'Assigned').locator('.task-due-date')).toHaveText('Due 2026-01-01');
++  await expect(row(page, 'Changed').locator('.task-due-date')).toContainText('2026-03-29');
++  await expect(row(page, 'Cleared').locator('.task-due-date')).toHaveCount(0);
++});
++test.describe('legacy v1 data', () => {
++  test.use({ legacy: true });
++  test('TC-013: legacy task fields/completion remain visible without dates after migration', async ({ page }) => {
++    await all(page); await expect(page.locator('.task-title')).toHaveText(['Legacy completed', 'Legacy active']);
++    await expect(row(page, 'Legacy active').locator('.task-description')).toHaveText('Original active details');
++    await expect(row(page, 'Legacy completed')).toHaveClass(/completed/);
++    await expect(row(page, 'Legacy completed').locator('.task-description')).toHaveText('Original completed details');
++    await expect(page.locator('.task-due-date')).toHaveCount(0);
++  });
++});
++test('TC-014: title validation, CRUD, completion, reopening and confirmed deletion remain usable', async ({ page }) => {
++  await create(page, 'CRUD task', '2025-12-31'); await edit(page, 'CRUD task');
++  await page.locator('#edit-title').fill(''); await expect(page.locator('#edit-title-error')).toBeVisible(); await close(page);
++  await expect(row(page, 'CRUD task')).toBeVisible(); await edit(page, 'CRUD task');
++  await page.locator('#edit-title').fill('Updated task'); await page.locator('#edit-description').fill('Updated description'); await saved(page); await close(page);
++  await all(page); await row(page, 'Updated task').getByRole('button', { name: 'Mark “Updated task” as complete', exact: true }).click();
++  await expect(row(page, 'Updated task')).toHaveClass(/completed/);
++  await row(page, 'Updated task').getByRole('button', { name: 'Mark “Updated task” as unfinished', exact: true }).click();
++  await expect(row(page, 'Updated task')).not.toHaveClass(/completed/);
++  await row(page, 'Updated task').getByRole('button', { name: 'Delete “Updated task”', exact: true }).click();
++  await page.getByRole('button', { name: 'Keep task', exact: true }).click(); await expect(row(page, 'Updated task')).toBeVisible();
++  await row(page, 'Updated task').getByRole('button', { name: 'Delete “Updated task”', exact: true }).click();
++  await page.getByRole('button', { name: 'Delete task', exact: true }).click(); await expect(row(page, 'Updated task')).toHaveCount(0);
++});
++test('TC-015: readable labelled date controls, responsive layout and restored keyboard focus', async ({ page }) => {
++  await expect(page.getByLabel('Due date optional', { exact: true }).first()).toBeVisible();
++  await create(page, 'Focus and layout', '2025-12-31');
++  for (const width of [320, 390, 768, 1440]) {
++    await page.setViewportSize({ width, height: 900 });
++    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
++    await expect(row(page, 'Focus and layout').locator('.overdue-label')).toBeVisible();
++  }
++  await edit(page, 'Focus and layout'); await expect(page.locator('#edit-title')).toBeFocused();
++  await page.locator('#edit-due-date').fill('2026-01-01'); await saved(page); await close(page);
++  await expect(page.getByRole('button', { name: 'Edit “Focus and layout”', exact: true })).toBeFocused();
++});
++test('TC-020: next local calendar day changes overdue presentation without changing the saved date', async ({ page }) => {
++  await create(page, 'Day rollover', '2026-01-01'); await expect(row(page, 'Day rollover').locator('.overdue-label')).toHaveCount(0);
++  await page.clock.fastForward(24 * 60 * 60 * 1000); await page.reload();
++  await expect(row(page, 'Day rollover').locator('.overdue-label')).toBeVisible();
++  await expect(row(page, 'Day rollover').locator('.task-due-date')).toContainText('2026-01-01');
++});
++test('TC-002 TC-004: extended calendar years do not silently clear on editing another field', async ({ page }) => {
++  await page.locator('#new-type-date').click(); await create(page, 'Extended year', '123456789012345678900-02-28');
++  await edit(page, 'Extended year'); await expect(page.locator('#edit-due-date')).toHaveValue('123456789012345678900-02-28');
++  await page.locator('#edit-description').fill('Preserve the calendar date'); await saved(page); await close(page);
++  await expect(row(page, 'Extended year').locator('.task-due-date')).toContainText('123456789012345678900-02-28');
++});
+
+diff --git a/qa/helpers.mjs b/qa/helpers.mjs
+new file mode 100644
+index 0000000..6972839
+--- /dev/null
++++ b/qa/helpers.mjs
+@@ -0,0 +1,58 @@
++import { spawn } from 'node:child_process';
++import { once } from 'node:events';
++import { createInterface } from 'node:readline';
++import { mkdtemp, rm } from 'node:fs/promises';
++import { tmpdir } from 'node:os';
++import { join } from 'node:path';
++import { fileURLToPath } from 'node:url';
++import { DatabaseSync } from 'node:sqlite';
++
++export const project = fileURLToPath(new URL('../', import.meta.url));
++export function seedLegacy(path) {
++  // Disposable fixture using the original baseline v1 schema; never personal data.
++  const db = new DatabaseSync(path);
++  db.exec(`CREATE TABLE tasks(sequence INTEGER PRIMARY KEY AUTOINCREMENT,id TEXT NOT NULL UNIQUE,
++    title TEXT NOT NULL CHECK(length(trim(title)) BETWEEN 1 AND 120),
++    description TEXT NOT NULL DEFAULT '' CHECK(length(description)<=2000),completed INTEGER NOT NULL DEFAULT 0 CHECK(completed IN (0,1)));
++    INSERT INTO tasks(id,title,description,completed) VALUES
++    ('00000000-0000-4000-8000-000000000001','Legacy active','Original active details',0),
++    ('00000000-0000-4000-8000-000000000002','Legacy completed','Original completed details',1);
++    PRAGMA user_version=1;`); db.close();
++}
++async function start(db) {
++  const child = spawn(process.execPath, ['src/server.mjs'], {
++    cwd: project, env: { ...process.env, PORT: '0', TODO_DB_PATH: db }, stdio: ['ignore', 'pipe', 'pipe'],
++  });
++  let stderr = ''; child.stderr.on('data', chunk => { stderr += chunk; });
++  const lines = createInterface({ input: child.stdout });
++  try {
++    const url = await new Promise((resolve, reject) => {
++      const timer = setTimeout(() => { child.kill('SIGKILL'); reject(new Error(`Startup timeout: ${stderr}`)); }, 10_000);
++      const fail = error => { clearTimeout(timer); reject(error); };
++      child.once('error', fail); child.once('exit', code => fail(new Error(`Server exited ${code}: ${stderr}`)));
++      lines.on('line', line => {
++        try { const v = JSON.parse(line); if (v.event === 'listening') { clearTimeout(timer); resolve(v.url); } } catch { /* Retain stderr separately. */ }
++      });
++    });
++    return { url, async stop() {
++      if (child.exitCode !== null || child.signalCode) { lines.close(); return; }
++      const exited = once(child, 'exit'); child.kill('SIGTERM');
++      const timer = setTimeout(() => child.kill('SIGKILL'), 5000);
++      try { await exited; } finally { clearTimeout(timer); lines.close(); }
++    } };
++  } catch (error) { child.kill('SIGKILL'); lines.close(); throw error; }
++}
++export async function isolatedApp({ legacy = false } = {}) {
++  const dir = await mkdtemp(join(tmpdir(), 'littlelist-qa-')); const db = join(dir, 'tasks.sqlite');
++  try {
++    if (legacy) seedLegacy(db);
++    let running = await start(db);
++    return { get url() { return running.url; }, async restart() { await running.stop(); running = await start(db); },
++      async close() { try { await running.stop(); } finally { await rm(dir, { recursive: true, force: true }); } } };
++  } catch (error) { await rm(dir, { recursive: true, force: true }); throw error; }
++}
++export async function request(app, path = '', method = 'GET', data) {
++  return fetch(app.url + '/api/tasks' + path, { method, ...(data === undefined ? {} : {
++    headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data),
++  }) });
++}
+
+diff --git a/qa/integration.test.mjs b/qa/integration.test.mjs
+new file mode 100644
+index 0000000..2139e21
+--- /dev/null
++++ b/qa/integration.test.mjs
+@@ -0,0 +1,58 @@
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { isolatedApp, request } from './helpers.mjs';
++async function fixture(t, options) { const app = await isolatedApp(options); t.after(() => app.close()); return app; }
++async function create(app, value) { const r = await request(app, '', 'POST', value); assert.equal(r.status, 201); return (await r.json()).task; }
++async function patch(app, id, value) { const r = await request(app, '/'+id, 'PATCH', value); assert.equal(r.status, 200); return (await r.json()).task; }
++async function get(app, id) { const r = await request(app, '/'+id); assert.equal(r.status, 200); return (await r.json()).task; }
++
++test('TC-001 / TC-002 / TC-016: optional dates and past/today/future acceptance through HTTP', async t => {
++  const app = await fixture(t);
++  const undated = await create(app, { title: 'Undated' }); assert.equal(undated.dueDate, null);
++  for (const dueDate of ['2025-12-31', '2026-01-01', '2026-01-02', '0001-01-01', '10000-12-31']) {
++    const task = await create(app, { title: dueDate, dueDate }); assert.equal(task.dueDate, dueDate);
++    assert.equal((await patch(app, undated.id, { dueDate })).dueDate, dueDate);
++  }
++});
++test('TC-004 / TC-005: edit, omit, clear, and completion-only PATCH preserve the correct saved date', async t => {
++  const app = await fixture(t), task = await create(app, { title: 'Change', dueDate: '2026-01-01' });
++  assert.equal((await patch(app, task.id, { dueDate: '2025-12-31' })).dueDate, '2025-12-31');
++  assert.equal((await patch(app, task.id, { completed: true })).dueDate, '2025-12-31');
++  assert.equal((await patch(app, task.id, { title: 'Edited' })).dueDate, '2025-12-31');
++  assert.equal((await patch(app, task.id, { dueDate: null })).dueDate, null);
++});
++test('TC-006 / TC-017: invalid dates cannot overwrite a saved leap day or other task fields', async t => {
++  const app = await fixture(t), task = await create(app, { title: 'Preserve', dueDate: '2024-02-29' });
++  for (const dueDate of ['2025-02-29', '2024-02-30', '', '2026-01-01T00:00:00Z', false, {}, [], 1]) {
++    const r = await request(app, '/'+task.id, 'PATCH', { dueDate, title: 'Must not save' }); assert.equal(r.status, 400);
++    const body = await r.json(); assert.equal(body.error.code, 'INVALID_DUE_DATE'); assert.equal(body.error.field, 'dueDate'); assert.ok(body.error.message);
++    assert.deepEqual(await get(app, task.id), task);
++  }
++});
++test('TC-012 / TC-023: assigned, changed and cleared dates survive actual server process restart', async t => {
++  const app = await fixture(t);
++  const assigned = await create(app, { title: 'Assigned', dueDate: '2026-01-01' });
++  const changed = await create(app, { title: 'Changed', dueDate: '2024-02-29' });
++  const cleared = await create(app, { title: 'Cleared', dueDate: '2025-12-31' });
++  const expected = [assigned, await patch(app, changed.id, { dueDate: '2026-03-29', completed: true }), await patch(app, cleared.id, { dueDate: null })];
++  await app.restart(); for (const task of expected) assert.deepEqual(await get(app, task.id), task);
++});
++test('TC-013: original v1-schema fixture migrates without losing identity, fields, completion or order', async t => {
++  const app = await fixture(t, { legacy: true });
++  const tasks = (await (await request(app)).json()).tasks;
++  assert.deepEqual(tasks, [
++    { id: '00000000-0000-4000-8000-000000000002', title: 'Legacy completed', description: 'Original completed details', completed: true, dueDate: null },
++    { id: '00000000-0000-4000-8000-000000000001', title: 'Legacy active', description: 'Original active details', completed: false, dueDate: null },
++  ]);
++  await app.restart(); assert.deepEqual((await (await request(app)).json()).tasks, tasks);
++});
++test('TC-014: original CRUD/completion semantics, errors and ordering remain available', async t => {
++  const app = await fixture(t), first = await create(app, { title: 'First', description: 'Keep' });
++  const second = await create(app, { title: 'Second', dueDate: '2025-12-31' });
++  const edited = await patch(app, first.id, { title: 'Edited', description: 'Detail' });
++  const invalid = await request(app, '/'+first.id, 'PATCH', { title: '' }); assert.equal(invalid.status, 400); assert.deepEqual(await get(app, first.id), edited);
++  assert.equal((await patch(app, second.id, { completed: true })).completed, true);
++  assert.equal((await patch(app, second.id, { completed: false })).completed, false);
++  assert.deepEqual((await (await request(app)).json()).tasks.map(v => v.id), [second.id, first.id]);
++  assert.equal((await request(app, '/'+first.id, 'DELETE')).status, 204); assert.equal((await request(app, '/'+first.id)).status, 404);
++});
+
+diff --git a/qa/package-lock.json b/qa/package-lock.json
+new file mode 100644
+index 0000000..c3c4e95
+--- /dev/null
++++ b/qa/package-lock.json
+@@ -0,0 +1,63 @@
++{
++  "name": "littlelist-qa",
++  "version": "1.0.0",
++  "lockfileVersion": 3,
++  "requires": true,
++  "packages": {
++    "": {
++      "name": "littlelist-qa",
++      "version": "1.0.0",
++      "devDependencies": {
++        "@playwright/test": "1.64.1"
++      },
++      "engines": {
++        "node": ">=24.0.0 <26"
++      }
++    },
++    "node_modules/@playwright/test": {
++      "version": "1.64.1",
++      "resolved": "https://registry.npmjs.org/@playwright/test/-/test-1.64.1.tgz",
++      "integrity": "sha512-IaYGml/nSOiZWROfPtuIL7neuu9qDOZ3TNvNljUIrhDMxiGTgPjzj/g9p9RxpS2tSepPDRY+UwAaEeiKtUvIAg==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "playwright": "1.64.1"
++      },
++      "bin": {
++        "playwright": "cli.js"
++      },
++      "engines": {
++        "node": ">=20"
++      }
++    },
++    "node_modules/playwright": {
++      "version": "1.64.1",
++      "resolved": "https://registry.npmjs.org/playwright/-/playwright-1.64.1.tgz",
++      "integrity": "sha512-HCrVhHr5QQuwYoswEUGTb7gGp522yflbv/ST8nF4sFWGuLjQCt17Q/EubpGGSNKYn1tsTCPZxqHhHCfVURu7UA==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "playwright-core": "1.64.1"
++      },
++      "bin": {
++        "playwright": "cli.js"
++      },
++      "engines": {
++        "node": ">=20"
++      }
++    },
++    "node_modules/playwright-core": {
++      "version": "1.64.1",
++      "resolved": "https://registry.npmjs.org/playwright-core/-/playwright-core-1.64.1.tgz",
++      "integrity": "sha512-BC4s8y6SEVA6Q1rSxZTto8hI1KUI3xXlHGZgvGqP4IqPdI/a6FX9H29IDNz7vKo9l21b6LfYosScPL6M3xxyDQ==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "bin": {
++        "playwright-core": "cli.js"
++      },
++      "engines": {
++        "node": ">=20"
++      }
++    }
++  }
++}
+
+diff --git a/qa/package.json b/qa/package.json
+new file mode 100644
+index 0000000..5ee2bc1
+--- /dev/null
++++ b/qa/package.json
+@@ -0,0 +1,13 @@
++{
++  "name": "littlelist-qa",
++  "version": "1.0.0",
++  "private": true,
++  "type": "module",
++  "description": "Independent approved-scenario automation for REQ-0001",
++  "engines": {
++    "node": ">=24.0.0 <26"
++  },
++  "devDependencies": {
++    "@playwright/test": "1.64.1"
++  }
++}
+
+diff --git a/qa/playwright.config.mjs b/qa/playwright.config.mjs
+new file mode 100644
+index 0000000..69d9ee7
+--- /dev/null
++++ b/qa/playwright.config.mjs
+@@ -0,0 +1,16 @@
++import { defineConfig } from '@playwright/test';
++import { join } from 'node:path';
++const evidence = process.env.SDLC_QA_EVIDENCE;
++if (!evidence) throw new Error('Use the reviewed qa/run-check.mjs ui runner to preserve fresh evidence.');
++export default defineConfig({
++  testDir: './browser', workers: 1, fullyParallel: false, retries: 0, forbidOnly: true,
++  timeout: 20_000, expect: { timeout: 5000 },
++  outputDir: join(evidence, 'results'),
++  reporter: [['list'], ['json', { outputFile: join(evidence, 'results.json') }], ['html', { outputFolder: join(evidence, 'report'), open: 'never' }]],
++  use: { browserName: 'chromium', locale: 'en-US', colorScheme: 'light', reducedMotion: 'reduce',
++    trace: 'on', screenshot: 'on', video: 'on' },
++  projects: [
++    { name: 'desktop-los-angeles', use: { viewport: { width: 1440, height: 1000 }, timezoneId: 'America/Los_Angeles' } },
++    { name: 'mobile-kiritimati', use: { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, timezoneId: 'Pacific/Kiritimati' } },
++  ],
++});
+
+diff --git a/qa/run-check.mjs b/qa/run-check.mjs
+new file mode 100644
+index 0000000..d3fb42a
+--- /dev/null
++++ b/qa/run-check.mjs
+@@ -0,0 +1,17 @@
++import { spawn } from 'node:child_process';
++import { mkdtemp, mkdir } from 'node:fs/promises';
++import { join } from 'node:path';
++import { project } from './helpers.mjs';
++const kind = process.argv[2];
++if (!['integration', 'ui'].includes(kind)) throw new Error('Choose integration or ui.');
++const browserProject = process.argv[3];
++if (kind === 'ui' && !['desktop-los-angeles', 'mobile-kiritimati'].includes(browserProject)) throw new Error('Choose a reviewed browser project.');
++const evidenceRoot = join(project, 'requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution');
++await mkdir(evidenceRoot, { recursive: true });
++const evidence = await mkdtemp(join(evidenceRoot, kind+'-'));
++console.log(JSON.stringify({ check: kind, evidence, note: 'Fresh execution evidence; no historical report is overwritten.' }));
++const args = kind === 'integration' ? ['--test', 'qa/integration.test.mjs'] : ['qa/node_modules/@playwright/test/cli.js', 'test', '--config=qa/playwright.config.mjs', '--project='+browserProject];
++const child = spawn(process.execPath, args, { cwd: project, stdio: 'inherit', env: { ...process.env, SDLC_QA_EVIDENCE: evidence } });
++process.on('SIGTERM', () => child.kill('SIGTERM'));
++child.on('error', error => { console.error(error); process.exitCode = 1; });
++child.on('exit', (code, signal) => { process.exitCode = signal ? 1 : code; });

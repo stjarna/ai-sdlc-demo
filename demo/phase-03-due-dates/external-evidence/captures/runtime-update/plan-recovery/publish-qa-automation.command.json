@@ -1,0 +1,21 @@
+[
+  "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+  "-B",
+  "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/5a634bea716a-8f8d160de2f808fb/orchestrator/scripts/sdlc.py",
+  "--project",
+  "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "qa-write",
+  "REQ-0001",
+  "--kind",
+  "automation",
+  "--expected-qa-revision",
+  "2bf5dcddaa1df1914c449ee95224355087dd7202363a374530ababe53af444ff",
+  "--operation-id",
+  "5bdf6e18-0b41-4f0c-813b-f8235a9e726e",
+  "--decision",
+  "AI-assisted preparation of QA automation explicitly requested by $sdlc start qa. Preserve approved scenario expectations; human automation approval, dependency setup and execution remain pending.",
+  "--expected-template-digest",
+  "c26cde8989be72483b4761fc084be2740b0028f6034ff13f99e91a1875b030e3",
+  "--input-file",
+  "/Users/davidkrzystek/.local/share/ai-sdlc/updates/5a634bea716a51ee/plan-recovery/qa-automation-input.json"
+]

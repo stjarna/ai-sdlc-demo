@@ -1,0 +1,24 @@
+{
+  "qa_stage": "ready_for_verification",
+  "qa_approvals": {
+    "scenarios": {
+      "valid": true
+    },
+    "automation": {
+      "valid": true
+    }
+  },
+  "engineering_stage": "verification",
+  "source_and_approvals_preserved": true,
+  "historical_baselines_preserved": true,
+  "checks_executed": false,
+  "changed_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml"
+  ],
+  "added_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/91e12a1289e5a17d32f801e3524d95b37c00dd733874668d7f58488e0d57b55e/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/91e12a1289e5a17d32f801e3524d95b37c00dd733874668d7f58488e0d57b55e/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/91e12a1289e5a17d32f801e3524d95b37c00dd733874668d7f58488e0d57b55e/metadata.yaml",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/91e12a1289e5a17d32f801e3524d95b37c00dd733874668d7f58488e0d57b55e/test-automation-advancement.md"
+  ]
+}

@@ -1,0 +1,2 @@
+User explicitly selected: Authorize local Playwright setup
+Scope: pinned QA-local Playwright packages and Chromium browser for the approved UI checks.

@@ -1,0 +1,24 @@
+{
+  "stage": "security_review",
+  "qa_stage": "verified",
+  "findings": [],
+  "source_approvals_evidence_preserved": true,
+  "checks_rerun": false,
+  "document": {
+    "name": "security-review.md",
+    "canonical_name": "security-review.md",
+    "title": "Security Review",
+    "legacy": false,
+    "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/e531dace63d889808a1c71a3408c8fba2c9a335f3628adcebaf0f5275c795749/security-review.md",
+    "link": "[security-review.md](</Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/e531dace63d889808a1c71a3408c8fba2c9a335f3628adcebaf0f5275c795749/security-review.md>)"
+  },
+  "changed_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml"
+  ],
+  "added_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/e531dace63d889808a1c71a3408c8fba2c9a335f3628adcebaf0f5275c795749/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/e531dace63d889808a1c71a3408c8fba2c9a335f3628adcebaf0f5275c795749/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/e531dace63d889808a1c71a3408c8fba2c9a335f3628adcebaf0f5275c795749/metadata.yaml",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/e531dace63d889808a1c71a3408c8fba2c9a335f3628adcebaf0f5275c795749/security-review.md"
+  ]
+}

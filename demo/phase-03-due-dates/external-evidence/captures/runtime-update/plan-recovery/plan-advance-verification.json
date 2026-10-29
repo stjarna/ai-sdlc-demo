@@ -1,0 +1,20 @@
+{
+  "stage": "ready_for_development",
+  "plan_approval": {
+    "valid": true
+  },
+  "development_start": {
+    "eligible": true
+  },
+  "source_unchanged": true,
+  "historical_baselines_unchanged": true,
+  "changed_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml"
+  ],
+  "added_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/6eb0a3240663d1b8acfb32953e6576ca2181dcbad2c1ac3c445b721b3774be39/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/6eb0a3240663d1b8acfb32953e6576ca2181dcbad2c1ac3c445b721b3774be39/implementation-plan-advancement.md",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/6eb0a3240663d1b8acfb32953e6576ca2181dcbad2c1ac3c445b721b3774be39/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/6eb0a3240663d1b8acfb32953e6576ca2181dcbad2c1ac3c445b721b3774be39/metadata.yaml"
+  ]
+}

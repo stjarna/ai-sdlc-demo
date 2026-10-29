@@ -1,0 +1,21 @@
+{
+  "changed_files": [
+    "qa/README.md",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml",
+    "qa/browser/due-dates.spec.mjs"
+  ],
+  "engineering_source_approval_preserved": true,
+  "scenario_unchanged": true,
+  "historical_evidence_unchanged": true,
+  "syntax_check": "passed",
+  "functional_checks": "not run against revised source; renewed approval required",
+  "qa_stage": "test_automation",
+  "document": {
+    "name": "test-automation.md",
+    "canonical_name": "test-automation.md",
+    "title": "QA Test Automation Review",
+    "legacy": false,
+    "path": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/114edc6ee5eb098a87474660941449c8c0554573e8f0c1eb8e4a7fc631f70ba7/test-automation.md",
+    "link": "[test-automation.md](</Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/114edc6ee5eb098a87474660941449c8c0554573e8f0c1eb8e4a7fc631f70ba7/test-automation.md>)"
+  }
+}

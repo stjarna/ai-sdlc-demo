@@ -1,0 +1,21 @@
+[
+  "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+  "-B",
+  "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/5a634bea716a-8f8d160de2f808fb/orchestrator/scripts/sdlc.py",
+  "--project",
+  "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "qa-write",
+  "REQ-0001",
+  "--kind",
+  "automation",
+  "--expected-qa-revision",
+  "c93643f30955dc78467dc04181f4243a523a4f028e692481efef92fa41f457e4",
+  "--operation-id",
+  "b1c9ca76-2664-43e4-9ca9-e4ed2400cfd7",
+  "--decision",
+  "AI-assisted mobile test interaction refinement explicitly requested by David Krzystek. Preserve approved scenario/expected behavior and historical execution evidence. Present new QA source for renewed human automation approval; do not execute or advance.",
+  "--expected-template-digest",
+  "c26cde8989be72483b4761fc084be2740b0028f6034ff13f99e91a1875b030e3",
+  "--input-file",
+  "/Users/davidkrzystek/.local/share/ai-sdlc/updates/5a634bea716a51ee/plan-recovery/mobile-refined-automation-input.json"
+]

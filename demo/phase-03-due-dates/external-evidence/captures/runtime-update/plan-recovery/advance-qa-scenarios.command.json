@@ -1,0 +1,19 @@
+[
+  "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+  "-B",
+  "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/5a634bea716a-8f8d160de2f808fb/orchestrator/scripts/sdlc.py",
+  "--project",
+  "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "qa-advance",
+  "REQ-0001",
+  "--kind",
+  "scenarios",
+  "--expected-qa-revision",
+  "a38e99718200b190b898c399ff24f588aba5aa5843695030ef802580c13990a4",
+  "--expected-profile-revision",
+  "2f8961b235e94179783cc06a23a4c93d293f5a63581b43cb8e902814842c9434",
+  "--operation-id",
+  "7745fb2d-7a93-453b-a44d-e62cf4417ebe",
+  "--decision",
+  "$sdlc advance qa"
+]

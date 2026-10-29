@@ -1,0 +1,261 @@
+{
+  "content": "# Code Review \u2014 REQ-0001\n\n## Scope and source\n\nAI-authored implementation summary and author review for David Krzystek\u2019s human code review. This is not independent review, code approval, QA verification or permission to advance.\n\nApproved Engineering Plan: a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966. Current implementation source fingerprint: 57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7. Approved Design, Business/Analysis requirements and independent QA scenario approval remain unchanged. All five planned tasks are implemented within their declared paths. No new dependency, prototype limitation, product exclusion or unresolved business decision was introduced.\n\n## Verification evidence\n\nThe current-source ENG-UNIT operation actually executed npm run test:unit: 25 passed, zero failed/skipped/cancelled. It covers calendar/date-draft semantics, past/today/future validity, extended years, opposite local timezones, optional/edit/clear date persistence, completion retention, invalid-write preservation, additive legacy migration, migration rollback, repeated startup and original CRUD/store regressions.\n\nThe current-source ENG-STATIC operation actually executed npm run check: passed, checking syntax and local-asset references for 19 JavaScript modules. Both named checks exited zero and retain actual output and source fingerprints in immutable check artifacts. Earlier-source results are preserved as history rather than substituted for current evidence.\n\nThe complete tracked diff and all four new source/test/document files were inspected; git diff --check passed. Every changed application path belongs to the approved Plan. Existing demo captures and all pre-existing baseline files remained byte-identical. No personal database was opened or migrated; tests use isolated disposable databases.\n\nIntegration and browser tests have not been executed in this Engineering step. Existing browser assertions were only maintained to replace the obsolete no-dates assertion; all original CRUD/responsive checks remain. Independent QA automation and its human approval/verification gates are still required. No UI/E2E, Security Review or Final Verification pass is claimed.\n\n## Semantic conformance\n\nAuthor review by the AI implementation agent, not independent or human review. Reviewed consequential negative conditions, defaults, validation and unsupported-operation responses against approved FR/AC authority. The structured inventory records current file/line references and explicitly traces each behavior.\n\nPast dates are accepted, including today and future dates; there is no min=today, artificial year window, UTC reference-day input rule or completed-task date rejection. Invalid calendar representations are distinct from chronological eligibility. Nullable omission/clearing, local overdue rules, completion retention, invalid-draft preservation and cancellation derive from approved requirements. The native calendar is supplemented by Type date entry to avoid a hidden browser year-window rule; saved values outside a native picker\u2019s representation fall back to text without silent clearing. No limitation_refs exist because no prototype exception is proposed or authorized.\n\n## Findings and limitations\n\nNo known unsupported business behavior was found in this author source review. This statement is limited to the inspected implementation and recorded unit/build checks; it is not proof of semantic completeness or independent review.\n\nRemaining verification risks: real native partial-date entry and manual-date fallback, autosave/cancel/network races, actual keyboard/focus and responsive layout, day rollover/timezone changes in the running browser, HTTP-level invalid-date preservation, and full legacy-to-current application restart behavior. These remain for the independent QA workflow; they are not waived, product exclusions or authorized prototype limitations. The pure/store unit checks do not demonstrate the corresponding browser/HTTP outcomes.\n\n## Change summary\n\n- T-001: Shared calendar validation/comparison/local-day/draft helpers and focused unit regressions.\n- T-002: Nullable dueDate DTO/storage, transactional v1-to-v2 migration and store/persistence regressions.\n- T-003: Existing API/store boundary exposes date-only changes and a fixed allowlist entry for the helper; existing transport protections stay intact.\n- T-004: Optional labelled creation/editor date controls, clear and manual-entry actions, autosave/draft preservation, date labels and subtle Overdue presentation with local-day refresh that preserves focused task controls.\n- T-005: Preserve existing CRUD regressions while updating only additive DTO/date-control expectations; document behavior, migration/backup and old-binary incompatibility. Frozen evidence, package/lock files, runtime and QA-owned automation remain untouched.\n\nEngineering is awaiting human code review. Approval, advancement and independent QA work remain separate decisions. No staging, commit or push occurred.\n",
+  "coverage": {
+    "AC-001": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-001 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-002": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-002 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-003": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-003 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-004": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-004 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-005": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-005 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-006": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-006 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-007": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-007 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-008": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-008 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-009": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-009 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-010": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-010 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-011": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-011 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-012": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-012 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-013": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-013 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-014": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-014 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "AC-015": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of AC-015 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "FR-001": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of FR-001 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "FR-002": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of FR-002 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "FR-003": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of FR-003 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "FR-004": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of FR-004 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "FR-005": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of FR-005 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "FR-006": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of FR-006 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    },
+    "FR-007": {
+      "disposition": "implemented",
+      "reason": "Engineering implementation coverage of FR-007 by completed T-001 through T-005, within the approved Design and Plan. Current source-bound unit/build evidence is available; full HTTP/UI acceptance for this item is pending the independent QA workflow, not claimed passed here."
+    }
+  },
+  "unresolved": [],
+  "source_revision": "57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7",
+  "plan": "a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966",
+  "completed_tasks": [
+    "T-001",
+    "T-002",
+    "T-003",
+    "T-004",
+    "T-005"
+  ],
+  "limitation_refs": [],
+  "conformance": {
+    "reviewer": "AI implementation agent",
+    "independence": "author_review",
+    "summary": "Source-bound author review against approved FR/AC authority; no unsupported restriction found. Unit/build executed; actual browser/HTTP QA and independent human code review remain pending.",
+    "reviewed_categories": [
+      "negative_condition",
+      "default",
+      "validation",
+      "unsupported_operation"
+    ],
+    "behaviors": [
+      {
+        "category": "validation",
+        "path": "src/tasks.mjs",
+        "line": 46,
+        "observable_behavior": "Invalid calendar representations fail before any create/update mutation; the previous task is preserved.",
+        "authority": {
+          "kind": "requirement",
+          "id": "AC-006"
+        },
+        "assessment": "conforms",
+        "reason": "Approved real-calendar validation; unit invalid-write regression asserts last saved title/date and task count remain unchanged."
+      },
+      {
+        "category": "negative_condition",
+        "path": "public/calendar-date.js",
+        "line": 25,
+        "observable_behavior": "Only unfinished dated tasks strictly before the device-local day are Overdue; today, future and undated tasks are not.",
+        "authority": {
+          "kind": "requirement",
+          "id": "FR-004"
+        },
+        "assessment": "conforms",
+        "reason": "Approved overdue predicate, not an input rejection. Unit tests distinguish past/today/future/undated/completed."
+      },
+      {
+        "category": "default",
+        "path": "src/tasks.mjs",
+        "line": 45,
+        "observable_behavior": "Create omission defaults to no date; PATCH omission leaves the previously saved date unchanged.",
+        "authority": {
+          "kind": "requirement",
+          "id": "FR-001"
+        },
+        "assessment": "conforms",
+        "reason": "Approved optional/additive field. Store regression covers omission and completion-only PATCH retention."
+      },
+      {
+        "category": "unsupported_operation",
+        "path": "public/calendar-date.js",
+        "line": 3,
+        "observable_behavior": "Non-calendar wire representations (including timestamps and wrong types) are rejected; no past-date or year-window rejection is imposed.",
+        "authority": {
+          "kind": "requirement",
+          "id": "FR-003"
+        },
+        "assessment": "conforms",
+        "reason": "Approved date-only representation and real-calendar validation. Positive years of at least four digits are checked by arithmetic, including beyond four digits."
+      },
+      {
+        "category": "validation",
+        "path": "public/calendar-date.js",
+        "line": 29,
+        "observable_behavior": "An empty native badInput draft is invalid and cannot be treated as an intentional clear.",
+        "authority": {
+          "kind": "requirement",
+          "id": "AC-006"
+        },
+        "assessment": "conforms",
+        "reason": "The draft helper and editor validity gate preserve the saved value; helper unit regression exercises the native validity contract. Actual browser entry remains QA work."
+      },
+      {
+        "category": "default",
+        "path": "public/app.js",
+        "line": 187,
+        "observable_behavior": "Manual canonical text entry supplements the native calendar picker; opening an unrepresentable saved native value falls back to text without clearing it.",
+        "authority": {
+          "kind": "requirement",
+          "id": "FR-003"
+        },
+        "assessment": "conforms",
+        "reason": "Avoids introducing a platform year-range business restriction. Browser-specific interactions still require actual QA execution."
+      },
+      {
+        "category": "negative_condition",
+        "path": "public/calendar-date.js",
+        "line": 25,
+        "observable_behavior": "Completed tasks retain due dates without overdue emphasis; reopening restores the indication if applicable.",
+        "authority": {
+          "kind": "requirement",
+          "id": "AC-010"
+        },
+        "assessment": "conforms",
+        "reason": "Completion changes no saved date. Store and predicate unit tests cover retention, reopening and warning predicate."
+      },
+      {
+        "category": "default",
+        "path": "public/calendar-date.js",
+        "line": 22,
+        "observable_behavior": "Today is derived from local calendar components; saved date strings never become UTC timestamps.",
+        "authority": {
+          "kind": "requirement",
+          "id": "AC-007"
+        },
+        "assessment": "conforms",
+        "reason": "Opposite-timezone subprocess unit checks and calendar comparisons exercise date-only semantics."
+      },
+      {
+        "category": "negative_condition",
+        "path": "public/app.js",
+        "line": 258,
+        "observable_behavior": "Cancel cancels only pending draft work and closes the editor; previous autosaves are not rolled back.",
+        "authority": {
+          "kind": "requirement",
+          "id": "AC-011"
+        },
+        "assessment": "conforms",
+        "reason": "Preserves existing cancellation contract. New date drafts join the same autosave/dirty state; real browser cancellation checks remain pending QA."
+      },
+      {
+        "category": "validation",
+        "path": "src/tasks.mjs",
+        "line": 66,
+        "observable_behavior": "Migration rechecks schema under a transaction; only the supported v1-to-v2 additive change runs, and failures roll back without replacing legacy tasks.",
+        "authority": {
+          "kind": "requirement",
+          "id": "FR-006"
+        },
+        "assessment": "conforms",
+        "reason": "Approved persistence/compatibility design. Store unit tests exercise migration, idempotency, rollback and reopen; existing unsupported-schema negative regression remains."
+      },
+      {
+        "category": "default",
+        "path": "src/tasks.mjs",
+        "line": 79,
+        "observable_behavior": "Date assignment, overdue state and completion do not reorder creation order.",
+        "authority": {
+          "kind": "requirement",
+          "id": "FR-004"
+        },
+        "assessment": "conforms",
+        "reason": "Existing sequence ordering remains unchanged; legacy migration and unit CRUD ordering regressions retain it."
+      },
+      {
+        "category": "default",
+        "path": "public/app.js",
+        "line": 95,
+        "observable_behavior": "Local day/visibility refresh updates only date labels, preserving task-control focus and open editor drafts.",
+        "authority": {
+          "kind": "requirement",
+          "id": "AC-015"
+        },
+        "assessment": "conforms",
+        "reason": "Date presentation update does not rebuild list buttons; this is author source review, with real keyboard/browser verification still pending."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "qa_stage": "test_automation",
+  "qa_approvals": {
+    "scenarios": {
+      "valid": true
+    },
+    "automation": {
+      "valid": true
+    }
+  },
+  "engineering_stage": "verification",
+  "engineering_approvals_unchanged": true,
+  "qa_source_unchanged": true,
+  "application_source_unchanged": true,
+  "historical_baselines_preserved": true,
+  "dependency_setup_executed": false,
+  "checks_executed": false,
+  "changed_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml"
+  ],
+  "added_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/778d7f680163f22a7df9c34b0a7c0199b18d274869f96ffd1a41ba9e962b4d3e/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/778d7f680163f22a7df9c34b0a7c0199b18d274869f96ffd1a41ba9e962b4d3e/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/778d7f680163f22a7df9c34b0a7c0199b18d274869f96ffd1a41ba9e962b4d3e/metadata.yaml",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/778d7f680163f22a7df9c34b0a7c0199b18d274869f96ffd1a41ba9e962b4d3e/test-automation-approval.md"
+  ]
+}

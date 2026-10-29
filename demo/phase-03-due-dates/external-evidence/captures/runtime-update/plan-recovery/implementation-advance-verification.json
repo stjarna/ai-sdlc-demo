@@ -1,0 +1,28 @@
+{
+  "stage": "verification",
+  "implementation_approval": {
+    "valid": true
+  },
+  "source_unchanged": true,
+  "historical_baselines_preserved": true,
+  "qa_stage": "test_design",
+  "qa_approvals": {
+    "scenarios": {
+      "valid": true
+    },
+    "automation": {
+      "valid": false,
+      "code": "E_QA_INPUT",
+      "reason": "No current QA automation artifact exists."
+    }
+  },
+  "changed_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml"
+  ],
+  "added_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/9cf0a16ce03633b86027bbbeb822e7d74769fa71597b91fb9a0bcff51005c741/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/9cf0a16ce03633b86027bbbeb822e7d74769fa71597b91fb9a0bcff51005c741/code-review-advancement.md",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/9cf0a16ce03633b86027bbbeb822e7d74769fa71597b91fb9a0bcff51005c741/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/9cf0a16ce03633b86027bbbeb822e7d74769fa71597b91fb9a0bcff51005c741/metadata.yaml"
+  ]
+}

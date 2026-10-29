@@ -1,0 +1,271 @@
+{
+  "content": "# Test Automation \u2014 REQ-0001\n\n## Authority and source\n\nAI-authored QA automation prepared following the explicit `$sdlc start qa` instruction. This is a proposal for human automation review, not approval, advancement or successful execution.\n\nProduct authority: approved Analysis baseline 63329d63c760e41f166e1b99d277534aeb8063e3469e7383a26e45ce4ad5e649, handoff faa97785-1068-4c72-9d78-e3683828ed05. Approved scenario artifact b26987cde4fc49dcca36cf35122a44a2e2b4e745fc04facba52be9d935c975df retains all 23 specified cases and seven FR/fifteen AC expectations. Approved Engineering Design artifact 3acdf7a21a0b0fe061526e93fb8a055b19640d4597ee9a7eb319f1bdce99613a supplies the existing API, native/text date controls and v1-to-v2 storage interface; it does not redefine product expectations. Engineering remains in Verification with current implementation approval. Testing skill 1.3.0 and the pinned Test Automation template define expertise and layout. The CLI binds the exact Design and scenario approval on publication.\n\nQA source fingerprint: db1e934326dd620732ab9e5d62ea763b44cc675bb7dd0479a53c44666a6498df. Reviewed paths: qa/README.md, qa/browser/due-dates.spec.mjs, qa/helpers.mjs, qa/integration.test.mjs, qa/package-lock.json, qa/package.json, qa/playwright.config.mjs, qa/run-check.mjs. Only QA-owned files are created. Engineering source fingerprint remains 57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7; no application/developer test/Plan, root dependency or historical evidence change is part of this preparation.\n\n## Product checks\n\n- QA-API (integration): node qa/run-check.mjs integration, cwd ., timeout 120 seconds. Cases: TC-001, TC-002, TC-004, TC-005, TC-006, TC-012, TC-013, TC-014, TC-016, TC-017, TC-023. Real HTTP status/envelope/content assertions, optional/edit/clear handling, past/today/future acceptance, invalid writes preserving the last saved leap day, legacy-schema fixture migration, CRUD/order and actual process restart with dated/changed/cleared/completed records. The fixture is synthetic and matches the original v1 schema; it does not execute a historical baseline binary or claim personal-data migration testing.\n- QA-UI-DESKTOP (ui): node qa/run-check.mjs ui desktop-los-angeles, cwd ., timeout 120 seconds. All TC-001 through TC-023 through actual Chromium UI in America/Los_Angeles at desktop size.\n- QA-UI-MOBILE (ui): node qa/run-check.mjs ui mobile-kiritimati, cwd ., timeout 120 seconds. The same approved cases in a phone viewport with touch and Pacific/Kiritimati. Viewport emulation is not a claim of physical-device testing.\n\nThe browser source contains explicit case IDs in test names; related cases share executable tests. Both projects cover past/today/future native entry, list display and autosave, editing/clearing, leap-date rejection with server preservation, real native partial-date keyboard entry, cancellation after saved changes and after saved clearing, positive/negative-offset date stability including DST-adjacent values, year/day boundaries, completed/reopened overdue presentation without sorting changes, actual server restart, synthetic legacy-schema compatibility, original CRUD/deletion confirmation, labels, keyboard focus and 320/390/768/1440 layout overflow. A manual extended-year regression verifies that a native picker limit does not silently clear a saved date when another field changes.\n\nThe controlled local date is a reproducible fixture, never a new UTC product rule. Expected outcomes remain those approved in Analysis/scenarios. Integration requests are not called UI tests, and unit/static Engineering results are not substituted for these checks.\n\n## Prototype limitation checks\n\nNone. limitation_checks is explicitly empty. No unresolved requirement, exclusion or prototype exception is used to narrow the expected product behavior. Negative outcomes are calendar-invalid representation checks, not rejection of past dates.\n\n## Execution and evidence\n\nPreparation executed node --check on the five QA JavaScript modules successfully and inspected scenario mappings, package/lock compatibility and source boundaries. No functional test, UI interaction, dependency installation or browser launch has been executed by this preparation. Availability and success remain unverified until the authorized checks run.\n\nAfter separate human automation approval, separate QA advancement and an explicit execution request, use the three named qa-check-run operations. Each runner creates a unique subdirectory of requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ and prints its path. Chromium retains actual screenshots, traces, videos, JSON results and an HTML report there. The orchestrator retains actual stdout, status, fingerprint, operation identity and requirement/case bindings in its immutable evidence. Historical evidence is never overwritten. Failures/timeouts are preserved and routed for authorized remediation, never hidden by changing expected outcomes.\n\nAll task data is fictional. Each test creates its own temporary SQLite database, starts the loopback application on a free port, and stops/removes it in teardown. No personal task data or historical fixture is opened. New presentation capture stays outside the repository. No Git operation is automatic.\n\n## Unresolved items\n\nNo unresolved product/Analysis items, blocked/excluded approved requirements or authorized limitations exist in the current cycle. Runtime verification remains pending. Browser-specific native keyboard entry, clock behavior, autosave races and dependency/browser availability must be established by actual execution; a prepared source file or green syntax check is not functional evidence. Human review is still required; this AI-authored preparation is not independent certification or release approval.\n\n## Dependency setup\n\nQA-local package.json pins @playwright/test 1.64.1; package-lock.json preserves the exact transitive versions, registry URLs and integrity values from the existing application lockfile, with only the root package name changed. The root application package/lock remain unchanged. No registry lookup or install ran during preparation.\n\nRequest explicit authorization for local setup before executing npm ci --prefix qa and node qa/node_modules/@playwright/test/cli.js install chromium. Packages stay in qa/node_modules and the browser in the normal external Playwright cache. Do not install system dependencies or modify application files silently. Node 24\u201325 is required (observed 25.9.0). If setup is unavailable or fails, retain the actual diagnostic and report blocked rather than passing or using an unpinned browser substitution.\n",
+  "coverage": {
+    "AC-001": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-001. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-002": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-002, TC-016. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-003": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-003. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-004": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-004. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-005": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-005. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-006": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-006, TC-017. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-007": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-007, TC-018. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-008": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-008, TC-019. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-009": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-009, TC-020. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-010": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-010, TC-021. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-011": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-011, TC-022. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-012": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-012, TC-023. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-013": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-013. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-014": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-014. This means scenario coverage only; automation and execution are not performed."
+    },
+    "AC-015": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-015. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-001": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-001, TC-002, TC-003, TC-016. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-002": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-004, TC-005, TC-011, TC-022. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-003": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-002, TC-006, TC-007, TC-016, TC-017, TC-018. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-004": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-008, TC-009, TC-019, TC-020. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-005": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-010, TC-021. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-006": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-012, TC-013, TC-014, TC-023. This means scenario coverage only; automation and execution are not performed."
+    },
+    "FR-007": {
+      "disposition": "implemented",
+      "reason": "Prepared approved-case automation mapping; no test execution or passing acceptance is claimed. Planned specified scenario coverage: TC-015. This means scenario coverage only; automation and execution are not performed."
+    }
+  },
+  "unresolved": [],
+  "paths": [
+    "qa/README.md",
+    "qa/browser/due-dates.spec.mjs",
+    "qa/helpers.mjs",
+    "qa/integration.test.mjs",
+    "qa/package-lock.json",
+    "qa/package.json",
+    "qa/playwright.config.mjs",
+    "qa/run-check.mjs"
+  ],
+  "checks": [
+    {
+      "id": "QA-API",
+      "category": "integration",
+      "argv": [
+        "node",
+        "qa/run-check.mjs",
+        "integration"
+      ],
+      "cwd": ".",
+      "timeout": 120,
+      "requirements": [
+        "AC-001",
+        "AC-002",
+        "AC-004",
+        "AC-005",
+        "AC-006",
+        "AC-012",
+        "AC-013",
+        "AC-014",
+        "FR-001",
+        "FR-002",
+        "FR-003",
+        "FR-006"
+      ],
+      "cases": [
+        "TC-001",
+        "TC-002",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-012",
+        "TC-013",
+        "TC-014",
+        "TC-016",
+        "TC-017",
+        "TC-023"
+      ],
+      "scenario": "Actual HTTP API, persistence and process-boundary checks against an isolated running server; optional/past dates, invalid-write preservation, edit/clear, legacy-schema migration and CRUD/restart compatibility. No UI outcome is inferred."
+    },
+    {
+      "id": "QA-UI-DESKTOP",
+      "category": "ui",
+      "argv": [
+        "node",
+        "qa/run-check.mjs",
+        "ui",
+        "desktop-los-angeles"
+      ],
+      "cwd": ".",
+      "timeout": 120,
+      "requirements": [
+        "AC-001",
+        "AC-002",
+        "AC-003",
+        "AC-004",
+        "AC-005",
+        "AC-006",
+        "AC-007",
+        "AC-008",
+        "AC-009",
+        "AC-010",
+        "AC-011",
+        "AC-012",
+        "AC-013",
+        "AC-014",
+        "AC-015",
+        "FR-001",
+        "FR-002",
+        "FR-003",
+        "FR-004",
+        "FR-005",
+        "FR-006",
+        "FR-007"
+      ],
+      "cases": [
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-007",
+        "TC-008",
+        "TC-009",
+        "TC-010",
+        "TC-011",
+        "TC-012",
+        "TC-013",
+        "TC-014",
+        "TC-015",
+        "TC-016",
+        "TC-017",
+        "TC-018",
+        "TC-019",
+        "TC-020",
+        "TC-021",
+        "TC-022",
+        "TC-023"
+      ],
+      "scenario": "Real Chromium interactions and observable assertions for all 23 approved scenarios in desktop-los-angeles, with disposable databases, controlled local-day/timezone/DST/year fixtures, saved/invalid draft cancellation, completion/reopening, actual restart, original CRUD and responsive/focus checks. Screenshots, traces, videos and reports are retained in a fresh Epic evidence directory."
+    },
+    {
+      "id": "QA-UI-MOBILE",
+      "category": "ui",
+      "argv": [
+        "node",
+        "qa/run-check.mjs",
+        "ui",
+        "mobile-kiritimati"
+      ],
+      "cwd": ".",
+      "timeout": 120,
+      "requirements": [
+        "AC-001",
+        "AC-002",
+        "AC-003",
+        "AC-004",
+        "AC-005",
+        "AC-006",
+        "AC-007",
+        "AC-008",
+        "AC-009",
+        "AC-010",
+        "AC-011",
+        "AC-012",
+        "AC-013",
+        "AC-014",
+        "AC-015",
+        "FR-001",
+        "FR-002",
+        "FR-003",
+        "FR-004",
+        "FR-005",
+        "FR-006",
+        "FR-007"
+      ],
+      "cases": [
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-007",
+        "TC-008",
+        "TC-009",
+        "TC-010",
+        "TC-011",
+        "TC-012",
+        "TC-013",
+        "TC-014",
+        "TC-015",
+        "TC-016",
+        "TC-017",
+        "TC-018",
+        "TC-019",
+        "TC-020",
+        "TC-021",
+        "TC-022",
+        "TC-023"
+      ],
+      "scenario": "Real Chromium interactions and observable assertions for all 23 approved scenarios in mobile-kiritimati, with disposable databases, controlled local-day/timezone/DST/year fixtures, saved/invalid draft cancellation, completion/reopening, actual restart, original CRUD and responsive/focus checks. Screenshots, traces, videos and reports are retained in a fresh Epic evidence directory."
+    }
+  ],
+  "source_revision": "db1e934326dd620732ab9e5d62ea763b44cc675bb7dd0479a53c44666a6498df",
+  "limitation_checks": []
+}

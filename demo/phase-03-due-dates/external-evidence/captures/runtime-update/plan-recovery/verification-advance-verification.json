@@ -1,0 +1,17 @@
+{
+  "engineering_stage": "security_review",
+  "qa_stage": "verified",
+  "integrated_verification_ready": true,
+  "source_and_approvals_preserved": true,
+  "historical_baselines_and_evidence_preserved": true,
+  "checks_rerun": false,
+  "changed_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml"
+  ],
+  "added_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/1af04a65acfd654dcef31c0778b3e048ac8d1cefa41c06c96a236e1f7ef969bc/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/1af04a65acfd654dcef31c0778b3e048ac8d1cefa41c06c96a236e1f7ef969bc/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/1af04a65acfd654dcef31c0778b3e048ac8d1cefa41c06c96a236e1f7ef969bc/metadata.yaml",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/1af04a65acfd654dcef31c0778b3e048ac8d1cefa41c06c96a236e1f7ef969bc/verification-advancement.md"
+  ]
+}

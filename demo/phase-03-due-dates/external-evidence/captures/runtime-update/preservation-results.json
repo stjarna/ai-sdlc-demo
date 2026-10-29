@@ -1,0 +1,30 @@
+{
+  "preservation_passed": true,
+  "littlelist_files_unchanged": 871,
+  "previous_runtime_files_unchanged": 119,
+  "previous_loader_files_preserved": 2,
+  "unrelated_skill_files_unchanged": 7,
+  "git": {
+    "head": "800679e2852eada6c8528f7a651bcd806ba01cb2",
+    "tag": "0d70b45339a407dcc0924a0128b061e1bf682fad",
+    "tag_commit": "2f9578a04bd43aac788441e1407058a7532c8148",
+    "status": "?? demo/phase-03-due-dates/\n?? requirements/",
+    "diff": ""
+  },
+  "source_repository_clean": true,
+  "existing_approvals_valid": [
+    "business",
+    "analysis",
+    "design",
+    "plan historical authority",
+    "qa scenarios"
+  ],
+  "development_start": {
+    "eligible": false,
+    "code": "E_APPROVAL_STALE",
+    "reason": "Application changed since the plan was generated; request Plan changes and replan before development."
+  },
+  "existing_warnings_unchanged": true,
+  "recovery_started": false,
+  "development_started": false
+}

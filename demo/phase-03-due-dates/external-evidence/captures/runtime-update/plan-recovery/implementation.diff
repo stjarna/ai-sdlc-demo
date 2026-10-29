@@ -1,0 +1,565 @@
+diff --git a/README.md b/README.md
+index 8a4dd7a..35de64b 100644
+--- a/README.md
++++ b/README.md
+@@ -1,6 +1,6 @@
+ # Littlelist
+ 
+-A calm, responsive personal task list. This standalone CRUD application is the **BEFORE** baseline for a future existing-project SDLC adoption demonstration. No SDLC Orchestrator is installed or invoked by this application.
++A calm, responsive personal task list. The original **BEFORE** CRUD baseline is preserved at `baseline-crud`. The current governed change adds optional task due dates; the SDLC runtime remains external to the application. See [due-date behavior and migration](docs/due-dates.md).
+ 
+ ![Desktop task list](demo/before/desktop-tasks.png)
+ 
+@@ -32,7 +32,7 @@ Relative database overrides resolve from the application root. `.env.example` do
+ - Empty titles show validation and retain the last saved value. **Cancel draft discards only unsaved/invalid edits; already autosaved changes remain saved.**
+ - Delete active or completed tasks after confirmation.
+ 
+-There are **no due dates, reminders, date fields, priorities, tags, multiple lists, accounts, synchronization or analytics**. See [behavior and architecture](docs/baseline.md) for implementation choices and limits.
++Due dates are optional: create, change or clear any valid calendar date, including past dates. Unfinished tasks before today in your device’s local calendar show **Overdue**; today is not overdue. Completed tasks retain their dates without warning emphasis. There are no reminders, priorities, tags, multiple lists, accounts, synchronization or analytics. See [behavior and architecture](docs/baseline.md) for implementation choices and limits.
+ 
+ ## Execute tests
+ 
+diff --git a/public/app.js b/public/app.js
+index 25c877b..9508cce 100644
+--- a/public/app.js
++++ b/public/app.js
+@@ -1,3 +1,5 @@
++import { dateDraft, isOverdue, localCalendarDate } from './calendar-date.js';
++
+ const $ = selector => document.querySelector(selector);
+ const list = $('#task-list');
+ const createForm = $('#create-form');
+@@ -68,6 +70,12 @@ function render() {
+       const description = document.createElement('p'); description.className = 'task-description';
+       description.textContent = task.description; text.append(description);
+     }
++    if (task.dueDate) {
++      const due = document.createElement('p'); due.className = 'task-due-date';
++      updateDateLabel(task, due);
++      row.classList.toggle('overdue', isOverdue(task));
++      text.append(due);
++    }
+     const actions = document.createElement('div'); actions.className = 'task-actions';
+     actions.append(actionButton('edit', `Edit details for “${task.title}”`, 'edit'), actionButton('delete', `Delete “${task.title}”`, 'trash', 'delete-button'));
+     row.append(check, text, actions); fragment.append(row);
+@@ -77,6 +85,21 @@ function render() {
+   const empty = !tasks.length ? ['A clear space. A fresh start.', 'Add your first task above. Small is a good place to start.'] : filter === 'completed' ? ['Good things take small steps.', 'Your completed tasks will appear here. Check one off when you’re ready.'] : ['A little lighter already.', 'You’ve cleared your active list. Enjoy the breathing room, or add something new.'];
+   $('#empty-title').textContent = empty[0]; $('#empty-copy').textContent = empty[1];
+ }
++function updateDateLabel(task, label) {
++  label.textContent = `Due ${task.dueDate}`;
++  if (isOverdue(task)) {
++    const badge = document.createElement('span'); badge.className = 'overdue-label';
++    badge.textContent = 'Overdue'; label.append(' ', badge);
++  }
++}
++function refreshDatePresentation() {
++  // Updating only date labels preserves focus and in-progress task interactions.
++  for (const row of list.querySelectorAll('[data-id]')) {
++    const task = tasks.find(item => item.id === row.dataset.id);
++    const label = row.querySelector('.task-due-date');
++    if (task && label) { updateDateLabel(task, label); row.classList.toggle('overdue', isOverdue(task)); }
++  }
++}
+ function focusList(index = 0) {
+   const checks = [...list.querySelectorAll('.task-check')];
+   (checks[Math.min(index, checks.length - 1)] ?? $('#new-title')).focus({ preventScroll: true });
+@@ -98,10 +121,15 @@ createForm.addEventListener('submit', async event => {
+     $('#new-title-error').textContent = 'A title is required.'; $('#new-title-error').hidden = false;
+     $('#new-title').setAttribute('aria-invalid', 'true'); $('#new-title').focus(); return;
+   }
++  const date = dateDraft($('#new-due-date').value, $('#new-due-date').validity);
++  if (!date.valid) {
++    showDateError('new', true); $('#new-due-date').focus(); return;
++  }
++  showDateError('new', false);
+   const description = $('#new-description').value;
+   const fields = [...createForm.querySelectorAll('input,textarea,button')]; fields.forEach(field => { field.disabled = true; });
+   try {
+-    const { task } = await api('', { method: 'POST', body: JSON.stringify({ title, description }) });
++    const { task } = await api('', { method: 'POST', body: JSON.stringify({ title, description, dueDate: date.value }) });
+     tasks.unshift(task); createForm.reset(); $('#new-title-error').hidden = true;
+     $('#new-title').removeAttribute('aria-invalid'); $('#new-description-section').hidden = true;
+     $('#description-toggle').setAttribute('aria-expanded', 'false');
+@@ -147,27 +175,55 @@ list.addEventListener('click', async event => {
+   finally { pending.delete(task.id); button.removeAttribute('aria-disabled'); }
+ });
+ 
++function showDateError(prefix, invalid) {
++  const field = $(`#${prefix}-due-date`), error = $(`#${prefix}-due-date-error`);
++  field.setAttribute('aria-invalid', String(invalid)); error.hidden = !invalid;
++  error.textContent = invalid ? 'Enter a valid calendar date, or use Clear due date. Your saved value is unchanged.' : '';
++}
++for (const prefix of ['new', 'edit']) {
++  $(`#${prefix}-type-date`).addEventListener('click', () => {
++    const field = $(`#${prefix}-due-date`);
++    if (field.validity.badInput) { showDateError(prefix, true); field.focus(); return; }
++    field.type = 'text'; field.placeholder = 'YYYY-MM-DD';
++    $(`#${prefix}-type-date`).hidden = true; field.focus();
++  });
++}
++$('#new-due-date').addEventListener('input' , () => {
++  showDateError('new', !dateDraft($('#new-due-date').value, $('#new-due-date').validity).valid);
++});
++$('#new-clear-date').addEventListener('click', () => {
++  $('#new-due-date').value = ''; showDateError('new', false); $('#new-due-date').focus();
++});
++
+ function draftValid() {
+-  return editor && Boolean(editor.draft.title.trim()) && [...editor.draft.title.trim()].length <= 120 && [...editor.draft.description].length <= 2000;
++  return editor && editor.dateValid && Boolean(editor.draft.title.trim()) && [...editor.draft.title.trim()].length <= 120 && [...editor.draft.description].length <= 2000;
+ }
+-function dirty() { return editor && (editor.draft.title.trim() !== editor.saved.title || editor.draft.description.trim() !== editor.saved.description); }
++function dirty() { return editor && (editor.draft.title.trim() !== editor.saved.title || editor.draft.description.trim() !== editor.saved.description || editor.draft.dueDate !== editor.saved.dueDate || !editor.dateValid); }
+ function editorStatus(message) { $('#edit-save-status').textContent = message; }
+ function validateEditor() {
+   const invalid = !editor.draft.title.trim();
+   $('#edit-title-error').hidden = !invalid;
+   $('#edit-title-error').textContent = invalid ? 'A title is required. Your previous saved title is unchanged.' : '';
+   $('#edit-title').setAttribute('aria-invalid', String(invalid));
++  showDateError('edit', !editor.dateValid);
+   $('#edit-done').disabled = !draftValid() || Boolean(editor.saving);
+ }
+ function openEditor(task) {
+-  editor = { id: task.id, saved: { ...task }, draft: { title: task.title, description: task.description }, timer: null, saving: null };
++  editor = { id: task.id, saved: { ...task }, draft: { title: task.title, description: task.description, dueDate: task.dueDate }, dateValid: true, timer: null, saving: null };
++  $('#edit-due-date').value = task.dueDate ?? '';
++  if (task.dueDate && $('#edit-due-date').value !== task.dueDate) {
++    $('#edit-due-date').type = 'text'; $('#edit-due-date').placeholder = 'YYYY-MM-DD';
++    $('#edit-due-date').value = task.dueDate; $('#edit-type-date').hidden = true;
++  }
+   $('#edit-title').value = task.title; $('#edit-description').value = task.description;
+   $('#edit-error').hidden = true; $('#edit-cancel').disabled = false; $('#edit-close').disabled = false;
+   validateEditor(); editorStatus('All changes saved'); editDialog.showModal(); $('#edit-title').focus();
+ }
+ function onDraftInput() {
+   if (!editor) return;
+-  editor.draft = { title: $('#edit-title').value, description: $('#edit-description').value };
++  const date = dateDraft($('#edit-due-date').value, $('#edit-due-date').validity);
++  editor.dateValid = date.valid;
++  editor.draft = { title: $('#edit-title').value, description: $('#edit-description').value, dueDate: date.value };
+   clearTimeout(editor.timer); $('#edit-error').hidden = true; validateEditor();
+   editorStatus(dirty() ? 'Unsaved draft' : 'All changes saved');
+   if (draftValid() && dirty()) editor.timer = setTimeout(() => { void saveEditor(); }, 450);
+@@ -178,7 +234,7 @@ async function saveEditor() {
+   if (state.saving) { await state.saving; return editor === state ? saveEditor() : false; }
+   if (!draftValid()) return false;
+   if (!dirty()) return true;
+-  const patch = { title: state.draft.title.trim(), description: state.draft.description.trim() };
++  const patch = { title: state.draft.title.trim(), description: state.draft.description.trim(), dueDate: state.draft.dueDate };
+   editorStatus('Saving changes…'); $('#edit-cancel').disabled = true; $('#edit-close').disabled = true; $('#edit-done').disabled = true;
+   let success = false;
+   state.saving = (async () => {
+@@ -205,15 +261,19 @@ function cancelEditor() {
+ }
+ $('#edit-title').addEventListener('input', onDraftInput);
+ $('#edit-description').addEventListener('input', onDraftInput);
++$('#edit-due-date').addEventListener('input', onDraftInput);
++$('#edit-clear-date').addEventListener('click', () => {
++  $('#edit-due-date').value = ''; onDraftInput(); $('#edit-due-date').focus();
++});
+ $('#edit-cancel').addEventListener('click', cancelEditor);
+ $('#edit-close').addEventListener('click', cancelEditor);
+ editDialog.addEventListener('cancel', event => { event.preventDefault(); cancelEditor(); });
+ $('#edit-form').addEventListener('submit', async event => {
+   event.preventDefault();
+   if (!editor || !draftValid()) return;
+-  $('#edit-title').disabled = true; $('#edit-description').disabled = true;
++  $('#edit-title').disabled = true; $('#edit-description').disabled = true; $('#edit-due-date').disabled = true; $('#edit-clear-date').disabled = true;
+   try { if (await saveEditor()) cancelEditor(); }
+-  finally { $('#edit-title').disabled = false; $('#edit-description').disabled = false; }
++  finally { $('#edit-title').disabled = false; $('#edit-description').disabled = false; $('#edit-due-date').disabled = false; $('#edit-clear-date').disabled = false; }
+ });
+ 
+ function openDelete(task) {
+@@ -237,4 +297,21 @@ $('#delete-confirm').addEventListener('click', async () => {
+   finally { $('#delete-confirm').disabled = false; $('#delete-cancel').disabled = false; }
+ });
+ $('#retry-load').addEventListener('click', load);
++let dayTimer;
++function scheduleDayRefresh() {
++  clearTimeout(dayTimer);
++  const now = new Date(), next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
++  dayTimer = setTimeout(() => { refreshDatePresentation(); scheduleDayRefresh(); }, next.getTime() - now.getTime() + 50);
++}
++let displayedDay = localCalendarDate();
++document.addEventListener('visibilitychange', () => {
++  if (document.visibilityState === 'visible') { refreshDatePresentation(); scheduleDayRefresh(); }
++});
++window.addEventListener('focus', () => { refreshDatePresentation(); scheduleDayRefresh(); });
++// Also notices clock/timezone changes while the app remains open.
++setInterval(() => {
++  const today = localCalendarDate();
++  if (today !== displayedDay) { displayedDay = today; refreshDatePresentation(); scheduleDayRefresh(); }
++}, 60_000);
++scheduleDayRefresh();
+ await load();
+diff --git a/public/index.html b/public/index.html
+index e43cad8..d9d0a97 100644
+--- a/public/index.html
++++ b/public/index.html
+@@ -43,6 +43,7 @@
+             <div class="compose-line"><span class="compose-circle" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span><label class="sr-only" for="new-title">New task title</label><input id="new-title" name="title" required maxlength="120" placeholder="What would you like to get done?" autocomplete="off" aria-describedby="new-title-error"><button id="create-button" class="button primary" type="submit"><svg class="icon"><use href="#i-plus"/></svg><span>Add task</span></button></div>
+             <p id="new-title-error" class="field-error compose-error" role="alert" hidden></p>
+             <div id="new-description-section" class="compose-description" hidden><label class="sr-only" for="new-description">Task description</label><textarea id="new-description" name="description" maxlength="2000" rows="3" placeholder="A few details, if you need them…"></textarea></div>
++            <div class="due-date-field compose-due-date"><label for="new-due-date">Due date <span class="optional">optional</span></label><div class="due-date-controls"><input id="new-due-date" name="dueDate" type="date" aria-describedby="new-due-date-error"><button id="new-type-date" class="text-button" type="button">Type date</button><button id="new-clear-date" class="text-button" type="button">Clear due date</button></div><p id="new-due-date-error" class="field-error" role="alert" hidden></p></div>
+             <button id="description-toggle" class="text-button description-toggle" type="button" aria-expanded="false" aria-controls="new-description-section"><svg class="icon"><use href="#i-note"/></svg><span>Add a description</span><span class="optional">optional</span></button>
+           </form>
+         </section>
+@@ -63,6 +64,7 @@
+       <label for="edit-title">Task title <span class="required-hint">required</span></label><input id="edit-title" name="title" maxlength="120" aria-describedby="edit-title-error" autocomplete="off" required>
+       <p id="edit-title-error" class="field-error" role="alert" hidden></p>
+       <label for="edit-description">Description <span class="optional">optional</span></label><textarea id="edit-description" name="description" maxlength="2000" rows="7" placeholder="Add a little context…"></textarea>
++      <div class="due-date-field"><label for="edit-due-date">Due date <span class="optional">optional</span></label><div class="due-date-controls"><input id="edit-due-date" name="dueDate" type="date" aria-describedby="edit-due-date-error"><button id="edit-type-date" class="text-button" type="button">Type date</button><button id="edit-clear-date" class="text-button" type="button">Clear due date</button></div><p id="edit-due-date-error" class="field-error" role="alert" hidden></p></div>
+       <p id="edit-error" class="field-error" role="alert" hidden></p>
+       <div class="save-status" id="edit-save-status" role="status">All changes saved</div>
+       <div class="edit-help">Changes save automatically. Cancel discards only your unsaved draft; saved changes stay saved.</div>
+diff --git a/public/styles.css b/public/styles.css
+index b1638bd..0d9f912 100644
+--- a/public/styles.css
++++ b/public/styles.css
+@@ -935,3 +935,15 @@
+                                                                                                                                                                                                                                                                                                                                                                                                                       width:40px;
+                                                                                                                                                                                                                                                                                                                                                                                                                       min-height:44px}
+                                                                                                                                                                                                                                                                                                                                                                                                                     }
++
++/* Date-only controls and status, retaining the existing task layout. */
++.due-date-field { margin-top:16px; min-width:0; }
++.compose-due-date { padding:0 20px 4px; }
++.due-date-field label { display:block; font-size:12px; margin-bottom:8px; }
++.due-date-controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center; min-width:0; }
++.due-date-controls input[type=date] { width:190px; max-width:100%; min-width:0; box-sizing:border-box; padding:10px 12px; border:1px solid #d9ddd7; border-radius:8px; background:#fff; color:#283a32; font:inherit; }
++.due-date-controls input[aria-invalid=true] { border-color:#a35036; }
++.task-due-date { margin:7px 0 0; font-size:12px; color:#62756b; overflow-wrap:anywhere; }
++.overdue-label { display:inline-block; margin-left:6px; padding:2px 7px; border-radius:12px; background:#f9ede2; color:#865323; font-size:11px; font-weight:600; }
++.completed .task-due-date { color:#7c8982; }
++@media(max-width:740px) { .compose-due-date { padding-inline:16px; } .due-date-controls button { min-height:44px; } }
+diff --git a/src/http.mjs b/src/http.mjs
+index 3b9871c..4d7febd 100644
+--- a/src/http.mjs
++++ b/src/http.mjs
+@@ -5,6 +5,7 @@ import { TaskError } from './tasks.mjs';
+ 
+ const assets = new Map([
+   ['/', ['index.html', 'text/html; charset=utf-8']],
++  ['/calendar-date.js', ['calendar-date.js', 'text/javascript; charset=utf-8']],
+   ['/app.js', ['app.js', 'text/javascript; charset=utf-8']],
+   ['/styles.css', ['styles.css', 'text/css; charset=utf-8']],
+   ['/favicon.svg', ['favicon.svg', 'image/svg+xml']],
+diff --git a/src/tasks.mjs b/src/tasks.mjs
+index ff9d1b9..e08a7ed 100644
+--- a/src/tasks.mjs
++++ b/src/tasks.mjs
+@@ -1,3 +1,4 @@
++import { validCalendarDate } from '../public/calendar-date.js';
+ import { DatabaseSync } from 'node:sqlite';
+ import { randomUUID } from 'node:crypto';
+ import { mkdirSync } from 'node:fs';
+@@ -14,7 +15,7 @@ export function validateTaskInput(input, { partial = false } = {}) {
+   if (!input || typeof input !== 'object' || Array.isArray(input)) {
+     throw new TaskError('INVALID_TASK', 'Supply a task object.');
+   }
+-  const allowed = partial ? ['title', 'description', 'completed'] : ['title', 'description'];
++  const allowed = partial ? ['title', 'description', 'completed', 'dueDate'] : ['title', 'description', 'dueDate'];
+   if (Object.keys(input).some(key => !allowed.includes(key)) || (partial && !Object.keys(input).length)) {
+     throw new TaskError('INVALID_FIELDS', 'The task contains unsupported or missing fields.');
+   }
+@@ -40,11 +41,18 @@ export function validateTaskInput(input, { partial = false } = {}) {
+     if (typeof input.completed !== 'boolean') throw new TaskError('INVALID_COMPLETION', 'Completion must be true or false.', 400, 'completed');
+     result.completed = input.completed;
+   }
++  if (!partial || Object.hasOwn(input, 'dueDate')) {
++    const dueDate = Object.hasOwn(input, 'dueDate') ? input.dueDate : null;
++    if (dueDate !== null && !validCalendarDate(dueDate)) {
++      throw new TaskError('INVALID_DUE_DATE', 'Enter a valid calendar date, or clear the due date.', 400, 'dueDate');
++    }
++    result.dueDate = dueDate;
++  }
+   return result;
+ }
+ 
+ function task(row) {
+-  return row ? { id: row.id, title: row.title, description: row.description, completed: row.completed === 1 } : null;
++  return row ? { id: row.id, title: row.title, description: row.description, completed: row.completed === 1, dueDate: row.due_date } : null;
+ }
+ 
+ export function createTaskStore(filename) {
+@@ -52,20 +60,26 @@ export function createTaskStore(filename) {
+   const db = new DatabaseSync(filename);
+   try {
+     db.exec('PRAGMA busy_timeout = 5000; PRAGMA journal_mode = WAL;');
+-    const version = db.prepare('PRAGMA user_version').get().user_version;
+-    if (![0, 1].includes(version)) throw new Error(`Unsupported database schema ${version}; existing data was not replaced.`);
+-    db.exec(`CREATE TABLE IF NOT EXISTS tasks (
+-      sequence INTEGER PRIMARY KEY AUTOINCREMENT,
+-      id TEXT NOT NULL UNIQUE,
+-      title TEXT NOT NULL CHECK(length(trim(title)) BETWEEN 1 AND 120),
+-      description TEXT NOT NULL DEFAULT '' CHECK(length(description) <= 2000),
+-      completed INTEGER NOT NULL DEFAULT 0 CHECK(completed IN (0,1))
+-    ); PRAGMA user_version = 1;`);
++    db.exec('BEGIN IMMEDIATE');
++    try {
++      // Re-read under the write lock so simultaneous startups cannot both migrate v1.
++      const version = db.prepare('PRAGMA user_version').get().user_version;
++      if (![0, 1, 2].includes(version)) throw new Error(`Unsupported database schema ${version}; existing data was not replaced.`);
++      if (version === 0) db.exec(`CREATE TABLE IF NOT EXISTS tasks (
++        sequence INTEGER PRIMARY KEY AUTOINCREMENT,
++        id TEXT NOT NULL UNIQUE,
++        title TEXT NOT NULL CHECK(length(trim(title)) BETWEEN 1 AND 120),
++        description TEXT NOT NULL DEFAULT '' CHECK(length(description) <= 2000),
++        completed INTEGER NOT NULL DEFAULT 0 CHECK(completed IN (0,1))
++      )`);
++      if (version < 2) db.exec('ALTER TABLE tasks ADD COLUMN due_date TEXT; PRAGMA user_version = 2;');
++      db.exec('COMMIT');
++    } catch (error) { db.exec('ROLLBACK'); throw error; }
+     const queries = {
+-      list: db.prepare('SELECT id,title,description,completed FROM tasks ORDER BY sequence DESC'),
+-      get: db.prepare('SELECT id,title,description,completed FROM tasks WHERE id = ?'),
+-      create: db.prepare('INSERT INTO tasks(id,title,description) VALUES(?,?,?)'),
+-      update: db.prepare('UPDATE tasks SET title=?,description=?,completed=? WHERE id=?'),
++      list: db.prepare('SELECT id,title,description,completed,due_date FROM tasks ORDER BY sequence DESC'),
++      get: db.prepare('SELECT id,title,description,completed,due_date FROM tasks WHERE id = ?'),
++      create: db.prepare('INSERT INTO tasks(id,title,description,due_date) VALUES(?,?,?,?)'),
++      update: db.prepare('UPDATE tasks SET title=?,description=?,completed=?,due_date=? WHERE id=?'),
+       remove: db.prepare('DELETE FROM tasks WHERE id=?'),
+     };
+     let closed = false;
+@@ -79,7 +93,7 @@ export function createTaskStore(filename) {
+       get,
+       create(input) {
+         const value = validateTaskInput(input); const id = randomUUID();
+-        queries.create.run(id, value.title, value.description); return get(id);
++        queries.create.run(id, value.title, value.description, value.dueDate); return get(id);
+       },
+       update(id, input) {
+         const changes = validateTaskInput(input, { partial: true });
+@@ -87,7 +101,7 @@ export function createTaskStore(filename) {
+         db.exec('BEGIN IMMEDIATE');
+         try {
+           const value = { ...get(id), ...changes };
+-          queries.update.run(value.title, value.description, Number(value.completed), id);
++          queries.update.run(value.title, value.description, Number(value.completed), value.dueDate, id);
+           db.exec('COMMIT'); return get(id);
+         } catch (error) { db.exec('ROLLBACK'); throw error; }
+       },
+diff --git a/test/browser/tasks.spec.mjs b/test/browser/tasks.spec.mjs
+index 182ef68..c4fcf5f 100644
+--- a/test/browser/tasks.spec.mjs
++++ b/test/browser/tasks.spec.mjs
+@@ -98,14 +98,15 @@ test('failed autosave is visible and does not pretend that the draft was persist
+   await page.getByRole('button',{ name:'Cancel draft' }).click();
+   await expect(page.locator('.task-title')).toHaveText(['Saved original']);
+ });
+-test('responsive layout has no horizontal overflow or date-related controls', async ({ page }) => {
++test('responsive layout has no horizontal overflow with optional due-date controls', async ({ page }) => {
+   await addTask(page,'A comfortably long task title that remains readable in a narrow window','A longer description to exercise wrapping rather than horizontal scrolling.');
+   for (const width of [320,390,768,1024,1440]) {
+     await page.setViewportSize({ width,height:900 });
+     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+   }
+   await page.setViewportSize({ width:320,height:700 });
+-  await expect(page.locator('input[type=date],input[type=datetime-local],input[type=time]')).toHaveCount(0);
++  await expect(page.locator('#new-due-date')).toBeVisible();
++  await expect(page.locator('input[type=datetime-local],input[type=time]')).toHaveCount(0);
+   await edit(page,'A comfortably long task title that remains readable in a narrow window');
+   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+   await expect(page.locator('#edit-title')).toBeFocused();
+diff --git a/test/unit/tasks.test.mjs b/test/unit/tasks.test.mjs
+index b47b8c3..663889f 100644
+--- a/test/unit/tasks.test.mjs
++++ b/test/unit/tasks.test.mjs
+@@ -10,7 +10,7 @@ function fixture(t) { const store = createTaskStore(':memory:'); t.after(() => s
+ 
+ test('creates an unfinished task with optional description and opaque stable identity', t => {
+   const store = fixture(t); const task = store.create({ title: '  Read a chapter  ' });
+-  assert.match(task.id, /^[0-9a-f-]{36}$/); assert.deepEqual(task, { id: task.id, title: 'Read a chapter', description: '', completed: false });
++  assert.match(task.id, /^[0-9a-f-]{36}$/); assert.deepEqual(task, { id: task.id, title: 'Read a chapter', description: '', completed: false, dueDate: null });
+   assert.deepEqual(store.get(task.id), task);
+ });
+ test('newest-created tasks remain first when older tasks are edited', t => {
+@@ -21,7 +21,7 @@ test('updates title and multiline description while retaining identity and compl
+   const store = fixture(t); const original = store.create({ title: 'Initial', description: 'Original' });
+   store.update(original.id, { completed: true });
+   const updated = store.update(original.id, { title: 'Updated', description: 'First line\nSecond line' });
+-  assert.deepEqual(updated, { id: original.id, title: 'Updated', description: 'First line\nSecond line', completed: true });
++  assert.deepEqual(updated, { id: original.id, title: 'Updated', description: 'First line\nSecond line', completed: true, dueDate: null });
+ });
+ test('completion is reversible without extra state transitions', t => {
+   const store = fixture(t); const task = store.create({ title: 'Small step' });
+
+diff --git a/public/calendar-date.js b/public/calendar-date.js
+new file mode 100644
+index 0000000..169dacb
+--- /dev/null
++++ b/public/calendar-date.js
+@@ -0,0 +1,31 @@
++// Calendar values stay strings, never UTC instants. BigInt avoids an arbitrary year window.
++export function calendarParts(value) {
++  if (typeof value !== 'string' || !/^(?:[0-9]{4}|[1-9][0-9]{4,})-[0-9]{2}-[0-9]{2}$/.test(value)) return null;
++  const [yearText, monthText, dayText] = value.split('-');
++  const year = BigInt(yearText), month = Number(monthText), day = Number(dayText);
++  if (year < 1n || month < 1 || month > 12) return null;
++  const leap = year % 4n === 0n && (year % 100n !== 0n || year % 400n === 0n);
++  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
++  return day >= 1 && day <= days[month - 1] ? { year, month, day } : null;
++}
++export function validCalendarDate(value) { return calendarParts(value) !== null; }
++export function compareCalendarDates(left, right) {
++  const a = calendarParts(left), b = calendarParts(right);
++  if (!a || !b) throw new TypeError('Compare valid calendar dates.');
++  for (const key of ['year', 'month', 'day']) {
++    if (a[key] < b[key]) return -1;
++    if (a[key] > b[key]) return 1;
++  }
++  return 0;
++}
++export function localCalendarDate(now = new Date()) {
++  return `${String(now.getFullYear()).padStart(4, '0')}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
++}
++export function isOverdue(task, today = localCalendarDate()) {
++  return !task.completed && validCalendarDate(task.dueDate) && compareCalendarDates(task.dueDate, today) < 0;
++}
++export function dateDraft(value, validity = {}) {
++  // Native partial input can expose an empty value with badInput=true; never clear it.
++  if (validity.badInput || validity.valid === false) return { valid: false, value: null };
++  return { valid: value === '' || validCalendarDate(value), value: value === '' ? null : value };
++}
+
+diff --git a/test/unit/calendar-date.test.mjs b/test/unit/calendar-date.test.mjs
+new file mode 100644
+index 0000000..3bee100
+--- /dev/null
++++ b/test/unit/calendar-date.test.mjs
+@@ -0,0 +1,36 @@
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { spawnSync } from 'node:child_process';
++import { validCalendarDate, compareCalendarDates, localCalendarDate, isOverdue, dateDraft } from '../../public/calendar-date.js';
++
++test('accepts past, current and future calendar dates without a date window', () => {
++  for (const value of ['0001-01-01', '1900-01-01', '2000-02-29', '2026-10-29', '9999-12-31', '10000-01-01', '123456789012345678900-02-28']) assert.equal(validCalendarDate(value), true, value);
++  assert.equal(compareCalendarDates('9999-12-31', '10000-01-01'), -1);
++  assert.equal(compareCalendarDates('10000-01-01', '9999-12-31'), 1);
++  assert.equal(compareCalendarDates('2000-02-29', '2000-02-29'), 0);
++});
++test('rejects impossible dates, timestamps, malformed representations and wrong types', () => {
++  for (const value of ['0000-01-01', '1900-02-29', '2100-02-29', '2026-04-31', '2026-00-01', '2026-13-01', '2026-01-00', '2026-1-01', '2026-01-01T00:00:00Z', '2026-01-01 ', '', null, 1, [], {}]) assert.equal(validCalendarDate(value), false, String(value));
++  assert.throws(() => compareCalendarDates('bad', '2026-01-01'), TypeError);
++});
++test('overdue means unfinished and strictly before the local calendar day', () => {
++  const today = '2026-10-29';
++  assert.equal(isOverdue({ dueDate: '2026-10-28', completed: false }, today), true);
++  for (const dueDate of [null, '2026-10-29', '2026-10-30']) assert.equal(isOverdue({ dueDate, completed: false }, today), false);
++  assert.equal(isOverdue({ dueDate: '2026-10-28', completed: true }, today), false);
++  assert.equal(isOverdue({ dueDate: '2026-10-28', completed: false }, today), true);
++});
++test('uses device-local calendar components across opposite timezones and DST', () => {
++  for (const [zone, expected] of [['America/Los_Angeles', '2026-10-28'], ['Pacific/Kiritimati', '2026-10-29']]) {
++    const code = `import {localCalendarDate} from './public/calendar-date.js';console.log(localCalendarDate(new Date('2026-10-29T01:00:00Z')));`;
++    const r = spawnSync(process.execPath, ['--input-type=module', '-e', code], { cwd: new URL('../../', import.meta.url), env: { ...process.env, TZ: zone }, encoding: 'utf8' });
++    assert.equal(r.status, 0, r.stderr); assert.equal(r.stdout.trim(), expected);
++  }
++  assert.equal(localCalendarDate(new Date(2026, 2, 29, 12)), '2026-03-29');
++});
++test('invalid and partial drafts cannot be mistaken for intentional clearing', () => {
++  assert.deepEqual(dateDraft('', { badInput: true, valid: false }), { valid: false, value: null });
++  assert.equal(dateDraft('2026-02-30').valid, false);
++  assert.deepEqual(dateDraft('', { valid: true }), { valid: true, value: null });
++  assert.deepEqual(dateDraft('2026-10-28', { valid: true }), { valid: true, value: '2026-10-28' });
++});
+
+diff --git a/test/unit/due-date-store.test.mjs b/test/unit/due-date-store.test.mjs
+new file mode 100644
+index 0000000..6ac7df4
+--- /dev/null
++++ b/test/unit/due-date-store.test.mjs
+@@ -0,0 +1,61 @@
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { mkdtempSync, rmSync } from 'node:fs';
++import { tmpdir } from 'node:os';
++import { join } from 'node:path';
++import { DatabaseSync } from 'node:sqlite';
++import { createTaskStore } from '../../src/tasks.mjs';
++
++function file(t) {
++  const dir = mkdtempSync(join(tmpdir(), 'littlelist-due-')); t.after(() => rmSync(dir, { recursive: true, force: true }));
++  return join(dir, 'tasks.sqlite');
++}
++function legacy(path, collision = false) {
++  const db = new DatabaseSync(path);
++  db.exec(`CREATE TABLE tasks(sequence INTEGER PRIMARY KEY AUTOINCREMENT, id TEXT NOT NULL UNIQUE, title TEXT NOT NULL, description TEXT NOT NULL DEFAULT '', completed INTEGER NOT NULL DEFAULT 0${collision ? ', due_date TEXT' : ''});
++    INSERT INTO tasks(id,title,description,completed) VALUES('old','Older','Original details',1),('new','Newer','',0);
++    PRAGMA user_version=1;`); db.close();
++}
++test('optional date can be assigned, edited and cleared independently of completion', t => {
++  const store = createTaskStore(':memory:'); t.after(() => store.close());
++  const original = store.create({ title: 'Undated' }); assert.equal(original.dueDate, null);
++  const dated = store.create({ title: 'Past', dueDate: '1900-01-01' }); assert.equal(dated.dueDate, '1900-01-01');
++  assert.equal(store.update(dated.id, { dueDate: '10000-12-31' }).dueDate, '10000-12-31');
++  assert.equal(store.update(dated.id, { completed: true }).dueDate, '10000-12-31');
++  assert.equal(store.update(dated.id, { completed: false }).dueDate, '10000-12-31');
++  assert.equal(store.update(dated.id, { dueDate: null }).dueDate, null);
++  assert.deepEqual(store.list().map(v => v.id), [dated.id, original.id]);
++});
++test('invalid date writes preserve all previously saved fields', t => {
++  const store = createTaskStore(':memory:'); t.after(() => store.close());
++  const task = store.create({ title: 'Keep title', dueDate: '2026-10-29' });
++  for (const dueDate of ['', '2026-02-30', '2026-01-01T12:00:00Z', false, 5, {}, [], undefined]) {
++    assert.throws(() => store.update(task.id, { title: 'Must not save', dueDate }), e => e.code === 'INVALID_DUE_DATE' && e.field === 'dueDate' && e.status === 400);
++    assert.deepEqual(store.get(task.id), task);
++    assert.throws(() => store.create({ title: 'Invalid', dueDate }));
++  }
++  assert.equal(store.list().length, 1);
++});
++test('v1 migration preserves IDs, sequence, business fields and order and is idempotent', t => {
++  const path = file(t); legacy(path);
++  const store = createTaskStore(path);
++  assert.deepEqual(store.list(), [{ id: 'new', title: 'Newer', description: '', completed: false, dueDate: null }, { id: 'old', title: 'Older', description: 'Original details', completed: true, dueDate: null }]);
++  store.update('old', { dueDate: '2000-02-29' }); const created = store.create({ title: 'Newest' }); store.close();
++  const reopened = createTaskStore(path); t.after(() => reopened.close());
++  assert.deepEqual(reopened.list().map(v => v.id), [created.id, 'new', 'old']); assert.equal(reopened.get('old').dueDate, '2000-02-29');
++  const db = new DatabaseSync(path); assert.equal(db.prepare('PRAGMA user_version').get().user_version, 2);
++  assert.deepEqual(db.prepare('SELECT sequence FROM tasks ORDER BY sequence').all().map(v => v.sequence), [1, 2, 3]);
++  assert.equal(db.prepare('PRAGMA table_info(tasks)').all().filter(v => v.name === 'due_date').length, 1); db.close();
++});
++test('failed migration rolls back without replacing data or advancing schema version', t => {
++  const path = file(t); legacy(path, true);
++  assert.throws(() => createTaskStore(path), /duplicate column/);
++  const db = new DatabaseSync(path); assert.equal(db.prepare('PRAGMA user_version').get().user_version, 1);
++  assert.equal(db.prepare('SELECT title FROM tasks WHERE id=?').get('old').title, 'Older'); assert.equal(db.prepare('SELECT count(*) AS n FROM tasks').get().n, 2); db.close();
++});
++test('date edits survive an actual database close and reopen', t => {
++  const path = file(t), first = createTaskStore(path);
++  const task = first.create({ title: 'Persist date', dueDate: '2026-01-01' }); first.update(task.id, { dueDate: '2025-02-28', completed: true }); first.close();
++  const second = createTaskStore(path); assert.equal(second.get(task.id).dueDate, '2025-02-28'); second.update(task.id, { dueDate: null }); second.close();
++  const third = createTaskStore(path); t.after(() => third.close()); assert.equal(third.get(task.id).dueDate, null); assert.equal(third.get(task.id).completed, true);
++});
+
+diff --git a/docs/due-dates.md b/docs/due-dates.md
+new file mode 100644
+index 0000000..cfe6428
+--- /dev/null
++++ b/docs/due-dates.md
+@@ -0,0 +1,21 @@
++# Optional task due dates
++
++This change follows the approved Business, Functional Analysis and Technical Design for REQ-0001. It introduces no prototype exceptions or new business limitations.
++
++Use the optional Due date control when creating or editing a task. Past dates, today and future dates are allowed. Clear due date removes it. Valid edits autosave after the existing 450 ms pause. Invalid or incomplete drafts show a correction message without replacing the last saved value. Cancel draft discards only unsaved/invalid changes; completed autosaves remain saved.
++
++Saved dates are calendar strings, not UTC instants. Overdue means an unfinished task strictly before the device-local day. Completed tasks keep dates without overdue emphasis; reopening restores the indication when applicable. Tasks remain ordered by creation. The display refreshes at local midnight and on return to the page; no due time is introduced.
++
++## Storage and compatibility
++
++SQLite schema v2 adds nullable `due_date TEXT` to the original v1 table. The additive migration runs in a write transaction, rechecks the version under the lock and preserves IDs, creation order, descriptions and completion. Repeated startup does not repeat migration. Unsupported schema versions and failed migration stop startup rather than replacing data.
++
++Before using this version with real data, stop the app and preserve an offline backup of the database (and any SQLite WAL/SHM files as a consistent set). Never use the old baseline binary against a migrated v2 database. For rollback, retain the old binary and its pre-migration database copy together; there is no destructive downgrade.
++
++POST accepts omitted dueDate or null for no date. PATCH omission preserves it; null clears it; a canonical valid calendar string assigns it. Invalid representations return HTTP 400 / INVALID_DUE_DATE / field dueDate before mutation. Calendar validation uses Gregorian components and positive years of at least four digits without a rolling date window. The native picker is the default; Type date provides canonical calendar-text entry without the native picker’s year-range constraints. Saved values the native control cannot represent reopen in text mode without clearing them. Browser-specific entry and draft behavior still require QA verification.
++
++## Development checks and evidence
++
++Startup and dependencies remain as documented in the main README; no new dependencies. `npm run test:unit` tests calendar semantics and isolated store/migration behavior. `npm run check` runs syntax/local-asset checks. These are Engineering checks, not proof of complete HTTP/UI acceptance. Separately approved QA automation owns integration/browser verification.
++
++The frozen BEFORE assets, baseline tag and all historical SDLC baselines remain unchanged. New presentation captures are stored outside this repository to preserve source-bound approvals. Unit tests use disposable databases, never personal or historical data.

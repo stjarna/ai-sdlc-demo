@@ -1,0 +1,24 @@
+{
+  "qa_stage": "verified",
+  "qa_approvals": {
+    "scenarios": {
+      "valid": true
+    },
+    "automation": {
+      "valid": true
+    }
+  },
+  "engineering_stage": "verification",
+  "source_and_approvals_preserved": true,
+  "historical_baselines_and_evidence_preserved": true,
+  "tests_rerun": false,
+  "changed_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml"
+  ],
+  "added_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/9c49bf09c97ce136d599d1ce2163ad98264816d12cb3470b2b794b5699ec3467/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/9c49bf09c97ce136d599d1ce2163ad98264816d12cb3470b2b794b5699ec3467/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/9c49bf09c97ce136d599d1ce2163ad98264816d12cb3470b2b794b5699ec3467/metadata.yaml",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/9c49bf09c97ce136d599d1ce2163ad98264816d12cb3470b2b794b5699ec3467/qa-verification-completion.md"
+  ]
+}

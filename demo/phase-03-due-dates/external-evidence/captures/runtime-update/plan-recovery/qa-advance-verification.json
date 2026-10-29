@@ -1,0 +1,26 @@
+{
+  "qa_stage": "test_automation",
+  "qa_approvals": {
+    "scenarios": {
+      "valid": true
+    },
+    "automation": {
+      "valid": false,
+      "code": "E_QA_INPUT",
+      "reason": "No current QA automation artifact exists."
+    }
+  },
+  "engineering_stage": "verification",
+  "engineering_approvals_unchanged": true,
+  "application_source_unchanged": true,
+  "historical_baselines_preserved": true,
+  "changed_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml"
+  ],
+  "added_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/9af6157876c5c70c10fcafa6b4bcffbd7c7319df542e91b89783a5f2db8ffe12/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/9af6157876c5c70c10fcafa6b4bcffbd7c7319df542e91b89783a5f2db8ffe12/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/9af6157876c5c70c10fcafa6b4bcffbd7c7319df542e91b89783a5f2db8ffe12/metadata.yaml",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-baselines/9af6157876c5c70c10fcafa6b4bcffbd7c7319df542e91b89783a5f2db8ffe12/test-scenarios-advancement.md"
+  ]
+}

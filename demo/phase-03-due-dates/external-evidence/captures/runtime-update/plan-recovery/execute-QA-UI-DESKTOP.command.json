@@ -1,0 +1,21 @@
+[
+  "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+  "-B",
+  "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/5a634bea716a-8f8d160de2f808fb/orchestrator/scripts/sdlc.py",
+  "--project",
+  "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "qa-check-run",
+  "REQ-0001",
+  "--check-id",
+  "QA-UI-DESKTOP",
+  "--expected-qa-revision",
+  "78cb914a374682b42a372e9efaa59ec17106daa1d2f412cc09b5d3facd52b426",
+  "--expected-source-revision",
+  "57d145e36757a77ff8fa1d175357a9e3ea8d00a6c48843e20b3fe4811c8176a7",
+  "--expected-profile-revision",
+  "2f8961b235e94179783cc06a23a4c93d293f5a63581b43cb8e902814842c9434",
+  "--operation-id",
+  "8b20d893-56ef-408f-8564-7407e2fc3d22",
+  "--decision",
+  "$sdlc start qa; local Playwright setup explicitly authorized by the user. Execute the approved named browser check and preserve actual results."
+]

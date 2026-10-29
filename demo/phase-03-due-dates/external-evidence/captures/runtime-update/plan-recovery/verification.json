@@ -1,0 +1,22 @@
+{
+  "source_fingerprint_unchanged": true,
+  "existing_baseline_files_unchanged": true,
+  "existing_decisions_preserved": true,
+  "business_analysis_design_qa_approvals_valid": true,
+  "stage": "implementation_planning",
+  "fresh_plan_awaits_approval": true,
+  "changed_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/metadata.yaml"
+  ],
+  "added_files": [
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966/implementation-plan.md",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966/metadata.yaml",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/f9c954e9e255bf7e89e0ad3d5f8e6811720b363e1f8413c501443b8ace1a1758/artifact.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/f9c954e9e255bf7e89e0ad3d5f8e6811720b363e1f8413c501443b8ace1a1758/implementation-plan-change-request.md",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/f9c954e9e255bf7e89e0ad3d5f8e6811720b363e1f8413c501443b8ace1a1758/manifest.json",
+    "requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/f9c954e9e255bf7e89e0ad3d5f8e6811720b363e1f8413c501443b8ace1a1758/metadata.yaml"
+  ],
+  "document": "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo/requirements/REQ-0001-littlelist-optional-task-due-dates/engineering-baselines/a11c7a1cfab6c0aa33b42d17d26e42b49f9868232bc37585ddc77340524ba966/implementation-plan.md"
+}

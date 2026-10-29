@@ -1,0 +1,30 @@
+from pathlib import Path
+import subprocess,json,datetime,hashlib,uuid,shlex
+project=Path('/Users/davidkrzystek/Development/Interview/ai-sdlc-demo');runtime=Path('/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/d058e5fad9fd-64a774d6980d081f');py='/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python';cli=[py,'-B',str(runtime/'orchestrator/scripts/sdlc.py'),'--project',str(project)]
+event=project/'demo/phase-03-due-dates/events/0006-business-approval';event.mkdir(exist_ok=False)
+def call(name,args):
+ start=datetime.datetime.now(datetime.timezone.utc).isoformat();r=subprocess.run(args,cwd=project,capture_output=True,text=True)
+ (event/(name+'.stdout.json')).write_text(r.stdout);(event/(name+'.stderr.txt')).write_text(r.stderr)
+ (event/(name+'.command.json')).write_text(json.dumps({'started_at':start,'finished_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'cwd':str(project),'argv':args,'command':shlex.join(args),'exit_code':r.returncode},indent=2)+'\n')
+ assert r.returncode==0,(name,r.stdout,r.stderr)
+ return json.loads(r.stdout)
+call('01-runtime-verify',[py,'-B',str(runtime/'orchestrator/scripts/install.py'),'verify','--runtime',str(runtime),'--expected-digest','64a774d6980d081f67ef7e99d4e7639443f0f7f821f155a14ed60a9f55b5934a'])
+profile=call('02-identity',cli+['identity-show'])['identity'];context=call('03-approval-context',cli+['command-context','approve','--request','REQ-0001']);review=call('04-current-review',cli+['business-review','REQ-0001'])
+shown=json.loads((project/'demo/phase-03-due-dates/events/0005-business-review/business-review.json').read_text())
+assert review['current']and not review['open_items'];assert review['review_revision']==shown['review_revision'];assert review['epic']['business']['revision']==shown['epic']['business']['revision'];assert review['epic']['metadata']['status']=='business_refinement';assert profile['display_name']=='David Krzystek'
+(event/'human-command.txt').write_text('```\n$sdlc approve\n```\n')
+result=call('05-business-approve',cli+['business-approve','REQ-0001','--expected-review-revision',shown['review_revision'],'--expected-business-revision',shown['epic']['business']['revision'],'--operation-id',str(uuid.uuid4()),'--expected-profile-revision',profile['profile_revision'],'--reason','Explicit short approval command following review of this exact Business specification; no unresolved items and no advancement authorization.','--decision','$sdlc approve'])
+verified=call('06-verified-approval',cli+['business-review','REQ-0001']);opened=call('07-open-approved-business',cli+['open','REQ-0001'])['epic'];validation=call('08-validate',cli+['validate','REQ-0001'])
+assert verified['approval']['valid'];assert opened['metadata']['status']=='business_refinement';assert not opened['analysis'];decision=verified['approval']['latest_decision'];assert decision['decision']=='$sdlc approve';assert decision['actor']==profile['display_name'];assert decision['identity_source']=='local_profile'
+baseline=Path(opened['directory'])/'business-baselines'/decision['baseline_id'];manifest=json.loads((baseline/'manifest.json').read_text())
+(event/'baseline-manifest.json').write_bytes((baseline/'manifest.json').read_bytes())
+for name in subprocess.check_output(['git','ls-tree','-r','--name-only','HEAD'],cwd=project,text=True).splitlines():assert (project/name).read_bytes()==subprocess.check_output(['git','show','HEAD:'+name],cwd=project)
+summary={'timestamp':datetime.datetime.now(datetime.timezone.utc).isoformat(),'event':'Explicit human Business approval recorded; lifecycle unchanged','request_id':'REQ-0001','stage':'business_refinement','actor':profile['display_name'],'identity_source':'local_profile','authenticated':False,'decision_wording':'$sdlc approve','approved_business_revision':shown['epic']['business']['revision'],'approval':verified['approval'],'baseline_path':str(baseline),'template':opened['business']['history'][-1]['template'],'runtime_revision':'d058e5fad9fd8459068951f0dea19dbfabba5fd6','unresolved_items':verified['open_items'],'advanced':False,'analysis_started':False,'owner':opened['ownership']['owner'],'assignment_status':opened['ownership']['assignment_status'],'application_and_prior_evidence_unchanged':True,'next_human_decision':'Separate explicit authorization to advance to Functional Analysis readiness. No drafting authorized by approval alone.','tests':'Not run; no application changes. CLI baseline-integrity review and structural validation executed.'}
+(event/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+index=project/'demo/phase-03-due-dates/README.md';text=index.read_text().replace('The AI-authored Business specification is prepared; Product Owner review and approval are pending.','The AI-authored Business specification is explicitly approved by David Krzystek through the reviewed short command. Lifecycle remains Business Refinement; separate advancement authorization is pending.');text+='\n- events/0005-business-review/: requested read-only Business review and presented approval context.\n- events/0006-business-approval/: actual short human decision, exact revision revalidation, profile-backed attribution, immutable baseline and verified unchanged lifecycle.\n';index.write_text(text)
+files={p.relative_to(project).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()for p in sorted(event.rglob('*'))if p.is_file()}
+for p in sorted(baseline.iterdir()):files[p.relative_to(project).as_posix()]=hashlib.sha256(p.read_bytes()).hexdigest()
+for name in ['metadata.yaml','idea.md','discovery.yaml','business.md','business-history.yaml']:
+ p=Path(opened['directory'])/name;files[p.relative_to(project).as_posix()]=hashlib.sha256(p.read_bytes()).hexdigest()
+(event/'checksums.sha256').write_text(''.join(f'{digest}  {name}\n'for name,digest in sorted(files.items())))
+print(json.dumps({'stage':opened['metadata']['status'],'approval':verified['approval'],'baseline_manifest_keys':list(manifest),'validation_errors':[d for d in validation['diagnostics']if d['severity']=='error']},indent=2))

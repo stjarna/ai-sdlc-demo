@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "check_id": "QA-API",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "check_id": "QA-UI-DESKTOP",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "check_id": "QA-UI-MOBILE",
+      "status": "failed",
+      "exit_code": 1
+    }
+  ],
+  "qa_stage": "ready_for_verification",
+  "engineering_stage": "verification",
+  "approvals_remain_valid": true,
+  "source_fingerprints_unchanged": true,
+  "historical_evidence_preserved": true,
+  "failure": {
+    "case": "TC-006 native partial date input, mobile-kiritimati",
+    "confirmed": "Keyboard ArrowLeft/Delete left the native date 2024-02-29 intact; badInput stayed false and trace has no PATCH request. The test failed before checking product invalid-draft preservation.",
+    "assessment": "Automation interaction did not establish the intended precondition. No application data-loss defect is demonstrated by this failure. Mobile native partial-input coverage remains unverified.",
+    "recommended_next_action": "Explicitly authorize QA automation refinement retaining the approved invalid-draft expectation, obtain renewed automation approval/advancement as required, and rerun source-bound checks. Do not modify application source on this evidence alone."
+  }
+}

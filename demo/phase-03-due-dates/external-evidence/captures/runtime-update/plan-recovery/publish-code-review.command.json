@@ -1,0 +1,21 @@
+[
+  "/Users/davidkrzystek/.local/share/ai-sdlc/venv/bin/python",
+  "-B",
+  "/Users/davidkrzystek/.local/share/ai-sdlc/runtimes/5a634bea716a-8f8d160de2f808fb/orchestrator/scripts/sdlc.py",
+  "--project",
+  "/Users/davidkrzystek/Development/Interview/ai-sdlc-demo",
+  "engineering-write",
+  "REQ-0001",
+  "--kind",
+  "implementation",
+  "--expected-engineering-revision",
+  "8a474ca1bfa573c53e6f5745f7603697213486ec87385e83d1c2995a04c39fa5",
+  "--operation-id",
+  "f3f8a088-ee6a-4363-96cb-bdbfcc9d6170",
+  "--decision",
+  "AI-authored implementation and source-bound author review after the explicitly authorized Development start and approved Plan. Present actual code/check evidence for human code approval; no human approval or advancement is inferred.",
+  "--expected-template-digest",
+  "dbd97b345c865f4a4ace3c25ae0c46f7bffc66f6e2746a2c3fd129c81803fc49",
+  "--input-file",
+  "/Users/davidkrzystek/.local/share/ai-sdlc/updates/5a634bea716a51ee/plan-recovery/implementation-review-input.json"
+]

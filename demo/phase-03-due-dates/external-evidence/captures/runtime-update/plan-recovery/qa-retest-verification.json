@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "check_id": "QA-API",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "check_id": "QA-UI-DESKTOP",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "check_id": "QA-UI-MOBILE",
+      "status": "passed",
+      "exit_code": 0
+    }
+  ],
+  "qa_stage": "ready_for_verification",
+  "engineering_stage": "verification",
+  "source_and_approvals_preserved": true,
+  "historical_files_preserved": 362
+}

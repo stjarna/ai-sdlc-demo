@@ -1,0 +1,31 @@
+{
+  "previous_commit": "e037e6db36e6a0e59ad0134f6ca26e25812b6a52",
+  "amended_commit": "ffa27b6bbac96de84b4142960de92845388a38f1",
+  "previous_tag_object": "e3ff8d6c5381fdb47aec5cff40a917a0e3c0d11c",
+  "new_tag_object": "145b22861f590f103b8f2674e0c06a095f558260",
+  "attachment_files_added": 181,
+  "all_git_bytes_verified": 1453,
+  "html_reports": [
+    {
+      "report": "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-Wb5uYF/report/index.html",
+      "attachment_references": 46,
+      "all_exist": true
+    },
+    {
+      "report": "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-XsRKBB/report/index.html",
+      "attachment_references": 45,
+      "all_exist": true
+    },
+    {
+      "report": "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-hqFw8I/report/index.html",
+      "attachment_references": 45,
+      "all_exist": true
+    },
+    {
+      "report": "requirements/REQ-0001-littlelist-optional-task-due-dates/qa-execution/ui-pBAvfy/report/index.html",
+      "attachment_references": 45,
+      "all_exist": true
+    }
+  ],
+  "working_tree_clean": true
+}
